@@ -21,55 +21,50 @@
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark and light mode" title="Toggle theme">
-    <span class="theme-toggle__track">
-      <span class="theme-toggle__knob"></span>
-    </span>
-    <span class="theme-toggle__label" aria-hidden="true">DARK</span>
-  </button>
-
   <main id="main-content" class="bento-grid">
 
     <!-- TILE 1: Hero / CIM Branding -->
     <section class="tile tile-hero" aria-label="CIM Hero">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark and light mode" title="Toggle theme">
+        <span class="theme-toggle__track">
+          <span class="theme-toggle__knob"></span>
+        </span>
+        <span class="theme-toggle__label" aria-hidden="true">DARK</span>
+      </button>
       <div class="tile-hero__label">KENNESAW STATE UNIVERSITY · OFFICE OF RESEARCH</div>
       <h1 class="tile-hero__title">CIM</h1>
       <p class="tile-hero__subtitle">Center for Interactive Media</p>
-      <div class="tile-detail">
-        <p class="tile-hero__desc">Where games, simulations, and immersive technology become research tools — advancing healthcare, preserving culture, and modeling the built world.</p>
-      </div>
+      <p class="tile-hero__desc">Where games, simulations, and immersive technology become research tools — advancing healthcare, preserving culture, and modeling the built world.</p>
     </section>
 
     <!-- TILE 2: Published Games — FEATURED -->
     <section class="tile tile-games-featured" aria-label="Published Games">
       <div class="tile-label">PUBLISHED ON STEAM</div>
-      <div class="tile-detail">
-        <div class="games-showcase">
-          <a href="https://store.steampowered.com/app/2946740/Corporation_Inc/" target="_blank" rel="noopener noreferrer" class="game-card">
-            <div class="game-card__img-wrap">
-              <img src="https://cdn.akamai.steamstatic.com/steam/apps/2946740/header.jpg" alt="Corporation Inc. — narrative hiring simulation" class="game-card__img" loading="lazy">
-              <div class="game-card__paper-overlay" aria-hidden="true"></div>
-            </div>
-            <div class="game-card__info">
-              <span class="game-card__title">Corporation Inc.</span>
-              <span class="game-card__tags">INTERACTIVE FICTION · EDUCATION</span>
-              <span class="game-card__meta">$2.99 · 2024</span>
-            </div>
-          </a>
-          <a href="https://store.steampowered.com/app/3660440/Chiba/" target="_blank" rel="noopener noreferrer" class="game-card">
-            <div class="game-card__img-wrap">
-              <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3660440/3f3da711226c0d4a057c837c2daf1260e5543f13/header.jpg" alt="Chiba — pixel art puzzle game" class="game-card__img" loading="lazy">
-              <div class="game-card__paper-overlay" aria-hidden="true"></div>
-            </div>
-            <div class="game-card__info">
-              <span class="game-card__title">Chiba</span>
-              <span class="game-card__tags">PUZZLE · PIXEL ART · COZY</span>
-              <span class="game-card__meta">$5.99 · 2025</span>
-            </div>
-          </a>
-        </div>
-        <div class="game-card__available"><span class="accent-dot" aria-hidden="true"></span> AVAILABLE NOW</div>
+      <div class="games-showcase">
+        <a href="https://store.steampowered.com/app/2946740/Corporation_Inc/" target="_blank" rel="noopener noreferrer" class="game-card">
+          <div class="game-card__img-wrap">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/2946740/header.jpg" alt="Corporation Inc. — narrative hiring simulation" class="game-card__img" loading="lazy">
+            <div class="game-card__paper-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="game-card__info">
+            <span class="game-card__title">Corporation Inc.</span>
+            <span class="game-card__tags">INTERACTIVE FICTION · EDUCATION</span>
+            <span class="game-card__meta">$2.99 · 2024</span>
+          </div>
+        </a>
+        <a href="https://store.steampowered.com/app/3660440/Chiba/" target="_blank" rel="noopener noreferrer" class="game-card">
+          <div class="game-card__img-wrap">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3660440/3f3da711226c0d4a057c837c2daf1260e5543f13/header.jpg" alt="Chiba — pixel art puzzle game" class="game-card__img" loading="lazy">
+            <div class="game-card__paper-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="game-card__info">
+            <span class="game-card__title">Chiba</span>
+            <span class="game-card__tags">PUZZLE · PIXEL ART · COZY</span>
+            <span class="game-card__meta">$5.99 · 2025</span>
+          </div>
+        </a>
       </div>
+      <div class="game-card__available"><span class="accent-dot" aria-hidden="true"></span> AVAILABLE NOW</div>
     </section>
 
     <!-- TILE 3: Launch Event -->
@@ -93,23 +88,21 @@
       <div class="tile-label">KSU GAME STUDIO</div>
       <div class="tile-stat-hero" aria-label="23 students">23</div>
       <span class="tile-stat-unit">STUDENTS</span>
-      <div class="tile-detail">
-        <div class="tile-projects">
-          <div class="project">
-            <span class="project-name">Project Excelsior</span>
-            <span class="project-tags">Visual Novel · Dungeon · Identity</span>
-            <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" aria-label="Early development">
-              <div class="progress-bar__fill" style="width: 40%"></div>
-              <span class="progress-bar__label">EARLY DEV</span>
-            </div>
+      <div class="tile-projects">
+        <div class="project">
+          <span class="project-name">Project Excelsior</span>
+          <span class="project-tags">Visual Novel · Dungeon · Identity</span>
+          <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" aria-label="Early development">
+            <div class="progress-bar__fill" style="width: 40%"></div>
+            <span class="progress-bar__label">EARLY DEV</span>
           </div>
-          <div class="project">
-            <span class="project-name">The Historians</span>
-            <span class="project-tags">Historical Arguments · Primary Sources</span>
-            <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" aria-label="Interactive demo">
-              <div class="progress-bar__fill" style="width: 50%"></div>
-              <span class="progress-bar__label">DEMO</span>
-            </div>
+        </div>
+        <div class="project">
+          <span class="project-name">The Historians</span>
+          <span class="project-tags">Historical Arguments · Primary Sources</span>
+          <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" aria-label="Interactive demo">
+            <div class="progress-bar__fill" style="width: 50%"></div>
+            <span class="progress-bar__label">DEMO</span>
           </div>
         </div>
       </div>
@@ -119,31 +112,29 @@
     <section class="tile tile-cluster tile-twin" aria-label="Digital Twin">
       <div class="tile-label">DIGITAL TWIN</div>
       <p class="tile-tagline">Modeling infrastructure, digitally</p>
-      <div class="tile-detail">
-        <div class="tile-projects">
-          <div class="project">
-            <span class="project-name">Smart Transportation</span>
-            <span class="project-tags">3 projects · ARC · NSF</span>
-            <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" aria-label="Active development">
-              <div class="progress-bar__fill progress-bar__fill--active" style="width: 50%"></div>
-              <span class="progress-bar__label">ACTIVE</span>
-            </div>
+      <div class="tile-projects">
+        <div class="project">
+          <span class="project-name">Smart Transportation</span>
+          <span class="project-tags">3 projects · ARC · NSF</span>
+          <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" aria-label="Active development">
+            <div class="progress-bar__fill progress-bar__fill--active" style="width: 50%"></div>
+            <span class="progress-bar__label">ACTIVE</span>
           </div>
-          <div class="project">
-            <span class="project-name">Communication &amp; Cybersecurity</span>
-            <span class="project-tags">NSF · DOT/DOD</span>
-            <div class="progress-bar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" aria-label="Literature review">
-              <div class="progress-bar__fill" style="width: 20%"></div>
-              <span class="progress-bar__label">LIT REVIEW</span>
-            </div>
+        </div>
+        <div class="project">
+          <span class="project-name">Communication &amp; Cybersecurity</span>
+          <span class="project-tags">NSF · DOT/DOD</span>
+          <div class="progress-bar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" aria-label="Literature review">
+            <div class="progress-bar__fill" style="width: 20%"></div>
+            <span class="progress-bar__label">LIT REVIEW</span>
           </div>
-          <div class="project">
-            <span class="project-name">Supply Chain &amp; Logistics</span>
-            <span class="project-tags">Framework Design</span>
-            <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" aria-label="Conceptualization">
-              <div class="progress-bar__fill" style="width: 10%"></div>
-              <span class="progress-bar__label">CONCEPT</span>
-            </div>
+        </div>
+        <div class="project">
+          <span class="project-name">Supply Chain &amp; Logistics</span>
+          <span class="project-tags">Framework Design</span>
+          <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" aria-label="Conceptualization">
+            <div class="progress-bar__fill" style="width: 10%"></div>
+            <span class="progress-bar__label">CONCEPT</span>
           </div>
         </div>
       </div>
@@ -153,31 +144,29 @@
     <section class="tile tile-cluster tile-xr" aria-label="XR and Healthcare">
       <div class="tile-label">XR &amp; HEALTHCARE</div>
       <p class="tile-tagline">Healing through immersion</p>
-      <div class="tile-detail">
-        <div class="tile-projects">
-          <div class="project">
-            <span class="project-name">Child Injury Prevention</span>
-            <span class="project-tags">NIH R15 · Prototype</span>
-            <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" aria-label="Prototype">
-              <div class="progress-bar__fill progress-bar__fill--warning" style="width: 45%"></div>
-              <span class="progress-bar__label">PROTOTYPE</span>
-            </div>
+      <div class="tile-projects">
+        <div class="project">
+          <span class="project-name">Child Injury Prevention</span>
+          <span class="project-tags">NIH R15 · Prototype</span>
+          <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" aria-label="Prototype">
+            <div class="progress-bar__fill progress-bar__fill--warning" style="width: 45%"></div>
+            <span class="progress-bar__label">PROTOTYPE</span>
           </div>
-          <div class="project">
-            <span class="project-name">Dementia Healthcare XR Training</span>
-            <span class="project-tags">Macy Foundation · NIH R15</span>
-            <div class="progress-bar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" aria-label="VIP / Planning">
-              <div class="progress-bar__fill" style="width: 20%"></div>
-              <span class="progress-bar__label">VIP / PLANNING</span>
-            </div>
+        </div>
+        <div class="project">
+          <span class="project-name">Dementia Healthcare XR Training</span>
+          <span class="project-tags">Macy Foundation · NIH R15</span>
+          <div class="progress-bar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" aria-label="VIP / Planning">
+            <div class="progress-bar__fill" style="width: 20%"></div>
+            <span class="progress-bar__label">VIP / PLANNING</span>
           </div>
-          <div class="project">
-            <span class="project-name">VR Blood Donation</span>
-            <span class="project-tags">NIH R15 · $530K</span>
-            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" aria-label="Submitted">
-              <div class="progress-bar__fill progress-bar__fill--success" style="width: 60%"></div>
-              <span class="progress-bar__label">SUBMITTED</span>
-            </div>
+        </div>
+        <div class="project">
+          <span class="project-name">VR Blood Donation</span>
+          <span class="project-tags">NIH R15 · $530K</span>
+          <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" aria-label="Submitted">
+            <div class="progress-bar__fill progress-bar__fill--success" style="width: 60%"></div>
+            <span class="progress-bar__label">SUBMITTED</span>
           </div>
         </div>
       </div>
@@ -201,31 +190,29 @@
     <section class="tile tile-cluster tile-imed" aria-label="Immersive Education">
       <div class="tile-label">IMMERSIVE EDUCATION</div>
       <p class="tile-tagline">AI meets the classroom</p>
-      <div class="tile-detail">
-        <div class="tile-projects">
-          <div class="project">
-            <span class="project-name">AI Avatar Coaching</span>
-            <span class="project-tags">Spencer · $371K</span>
-            <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" aria-label="Early development">
-              <div class="progress-bar__fill" style="width: 40%"></div>
-              <span class="progress-bar__label">EARLY DEV</span>
-            </div>
+      <div class="tile-projects">
+        <div class="project">
+          <span class="project-name">AI Avatar Coaching</span>
+          <span class="project-tags">Spencer · $371K</span>
+          <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" aria-label="Early development">
+            <div class="progress-bar__fill" style="width: 40%"></div>
+            <span class="progress-bar__label">EARLY DEV</span>
           </div>
-          <div class="project">
-            <span class="project-name">AI + Digital Narrative for STEM</span>
-            <span class="project-tags">NSF K-12 · $750K</span>
-            <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" aria-label="Drafting proposal">
-              <div class="progress-bar__fill" style="width: 30%"></div>
-              <span class="progress-bar__label">DRAFTING</span>
-            </div>
+        </div>
+        <div class="project">
+          <span class="project-name">AI + Digital Narrative for STEM</span>
+          <span class="project-tags">NSF K-12 · $750K</span>
+          <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" aria-label="Drafting proposal">
+            <div class="progress-bar__fill" style="width: 30%"></div>
+            <span class="progress-bar__label">DRAFTING</span>
           </div>
-          <div class="project">
-            <span class="project-name">VR Driving — Autism</span>
-            <span class="project-tags">Norton Center · Prototype</span>
-            <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" aria-label="Testing prototype">
-              <div class="progress-bar__fill progress-bar__fill--warning" style="width: 50%"></div>
-              <span class="progress-bar__label">TESTING</span>
-            </div>
+        </div>
+        <div class="project">
+          <span class="project-name">VR Driving — Autism</span>
+          <span class="project-tags">Norton Center · Prototype</span>
+          <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" aria-label="Testing prototype">
+            <div class="progress-bar__fill progress-bar__fill--warning" style="width: 50%"></div>
+            <span class="progress-bar__label">TESTING</span>
           </div>
         </div>
       </div>
@@ -235,10 +222,9 @@
     <section class="tile tile-cluster tile-humanities" aria-label="Digital Humanities and Arts">
       <div class="tile-label">DIGITAL HUMANITIES &amp; ARTS</div>
       <p class="tile-tagline">Technology meets culture</p>
-      <div class="tile-detail">
-        <div class="tile-projects">
-          <div class="project">
-            <span class="project-name">Playable Archives</span>
+      <div class="tile-projects">
+        <div class="project">
+          <span class="project-name">Playable Archives</span>
           <span class="project-tags">NEH · $350K · Game Preservation</span>
           <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Planning">
             <div class="progress-bar__fill" style="width: 25%"></div>
@@ -268,7 +254,6 @@
             <div class="progress-bar__fill" style="width: 20%"></div>
             <span class="progress-bar__label">FUNDING</span>
           </div>
-        </div>
         </div>
       </div>
     </section>
@@ -326,7 +311,7 @@
     </a>
 
     <!-- TILE 12: CIM World -->
-    <a href="https://world.centerforinteractivemedia.com" class="tile tile-world" target="_blank" rel="noopener noreferrer" aria-label="Enter CIM World — 3D virtual campus (opens in new tab)">
+    <a href="https://cim-world.vercel.app" class="tile tile-world" target="_blank" rel="noopener noreferrer" aria-label="Enter CIM World — 3D virtual campus (opens in new tab)">
       <div class="tile-world__dot-grid" aria-hidden="true"></div>
       <div class="tile-world__content">
         <div class="tile-label">CIM WORLD</div>
@@ -341,28 +326,24 @@
     <!-- TILE 13: Partners -->
     <section class="tile tile-partners" aria-label="Partners and Collaborators">
       <div class="tile-label">PARTNERS</div>
-      <div class="tile-detail">
-        <div class="partners-list">
-          <span>Amazon Web Services</span><span>Unity</span><span>SGR Law</span><span>Atlanta Regional Commission</span><span>GA Dept of Economic Dev</span><span>Provost Studio</span><span>Telmore Agency</span><span>Soapbox</span><span>Norton Autism Center</span><span>Georgia State University</span>
-        </div>
+      <div class="partners-list">
+        <span>Amazon Web Services</span><span>Unity</span><span>SGR Law</span><span>Atlanta Regional Commission</span><span>GA Dept of Economic Dev</span><span>Provost Studio</span><span>Telmore Agency</span><span>Soapbox</span><span>Norton Autism Center</span><span>Georgia State University</span>
       </div>
     </section>
 
     <!-- TILE 14: Contact -->
     <section class="tile tile-contact" aria-label="Contact CIM">
       <div class="tile-label">CONTACT</div>
-      <div class="tile-detail">
-        <div class="contact-info">
-          <a href="mailto:cim@kennesaw.edu" class="contact-email">cim@kennesaw.edu</a>
-          <a href="https://www.linkedin.com/showcase/ksu-cim/" target="_blank" rel="noopener noreferrer" class="contact-social">LINKEDIN →</a>
-          <address class="contact-address">
-            Robin &amp; Doug Shore Innovation Center<br>
-            970 Technology Way<br>
-            Marietta, GA 30060
-          </address>
-        </div>
-        <a href="mailto:cim@kennesaw.edu" class="btn-primary">START A CONVERSATION</a>
+      <div class="contact-info">
+        <a href="mailto:cim@kennesaw.edu" class="contact-email">cim@kennesaw.edu</a>
+        <a href="https://www.linkedin.com/showcase/ksu-cim/" target="_blank" rel="noopener noreferrer" class="contact-social">LINKEDIN →</a>
+        <address class="contact-address">
+          Robin &amp; Doug Shore Innovation Center<br>
+          970 Technology Way<br>
+          Marietta, GA 30060
+        </address>
       </div>
+      <a href="mailto:cim@kennesaw.edu" class="btn-primary">START A CONVERSATION</a>
     </section>
 
   </main>
@@ -409,152 +390,6 @@
           eventTile.classList.add('tile-event--past');
         }
       }
-    })();
-
-    // Expand / Collapse — FLIP animation for bento tiles
-    (function() {
-      const grid = document.querySelector('.bento-grid');
-      const isDesktop = () => window.innerWidth > 1200;
-
-      // Select expandable tiles: section.tile that aren't stats
-      const tiles = document.querySelectorAll('section.tile:not(.tile-stats)');
-      tiles.forEach(tile => {
-        tile.classList.add('expandable');
-        tile.setAttribute('tabindex', '0');
-        tile.setAttribute('role', 'button');
-        tile.setAttribute('aria-expanded', 'false');
-      });
-
-      let expandedTile = null;
-      let savedRect = null;
-
-      function expand(tile) {
-        if (!isDesktop()) return;
-        if (expandedTile) collapse(expandedTile, true);
-
-        // FIRST: capture current position
-        const first = tile.getBoundingClientRect();
-        savedRect = { top: first.top, left: first.left, width: first.width, height: first.height };
-
-        // LAST: apply expanded state (centered, fixed)
-        const maxW = Math.min(600, window.innerWidth * 0.9);
-        const expandedLeft = (window.innerWidth - maxW) / 2;
-        const expandedTop = window.innerHeight * 0.075;
-
-        tile.style.top = expandedTop + 'px';
-        tile.style.left = expandedLeft + 'px';
-        tile.style.width = maxW + 'px';
-        tile.classList.add('expanded');
-        grid.classList.add('has-expanded');
-        tile.setAttribute('aria-expanded', 'true');
-        expandedTile = tile;
-
-        // INVERT: calculate transform from final back to first
-        const dx = savedRect.left - expandedLeft;
-        const dy = savedRect.top - expandedTop;
-        const sw = savedRect.width / maxW;
-
-        tile.style.transform = 'translate(' + dx + 'px, ' + dy + 'px) scale(' + sw + ')';
-        tile.style.transformOrigin = 'top left';
-
-        // PLAY: animate to identity
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            tile.style.transition = 'transform 350ms cubic-bezier(0.25, 0.1, 0.25, 1)';
-            tile.style.transform = 'none';
-          });
-        });
-
-        // Stop clicks on links inside from propagating to collapse
-        tile.querySelectorAll('a').forEach(a => {
-          a.addEventListener('click', stopProp);
-        });
-      }
-
-      function collapse(tile, instant) {
-        if (!tile || !savedRect) return;
-
-        tile.querySelectorAll('a').forEach(a => {
-          a.removeEventListener('click', stopProp);
-        });
-
-        if (instant || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          resetTile(tile);
-          return;
-        }
-
-        // FLIP reverse: animate back to original rect
-        const currentLeft = parseFloat(tile.style.left);
-        const currentTop = parseFloat(tile.style.top);
-        const currentWidth = parseFloat(tile.style.width);
-        const dx = savedRect.left - currentLeft;
-        const dy = savedRect.top - currentTop;
-        const sw = savedRect.width / currentWidth;
-
-        tile.style.transition = 'transform 300ms cubic-bezier(0.25, 0.1, 0.25, 1)';
-        tile.style.transform = 'translate(' + dx + 'px, ' + dy + 'px) scale(' + sw + ')';
-
-        tile.addEventListener('transitionend', function handler() {
-          tile.removeEventListener('transitionend', handler);
-          resetTile(tile);
-        });
-      }
-
-      function resetTile(tile) {
-        tile.classList.remove('expanded');
-        grid.classList.remove('has-expanded');
-        tile.setAttribute('aria-expanded', 'false');
-        tile.style.top = '';
-        tile.style.left = '';
-        tile.style.width = '';
-        tile.style.transform = '';
-        tile.style.transformOrigin = '';
-        tile.style.transition = '';
-        expandedTile = null;
-        savedRect = null;
-      }
-
-      function stopProp(e) { e.stopPropagation(); }
-
-      // Click handler
-      tiles.forEach(tile => {
-        tile.addEventListener('click', function(e) {
-          if (!isDesktop()) return;
-          if (tile.classList.contains('expanded')) {
-            collapse(tile);
-          } else {
-            expand(tile);
-          }
-        });
-      });
-
-      // Keyboard: Enter/Space to expand, Escape to close
-      tiles.forEach(tile => {
-        tile.addEventListener('keydown', function(e) {
-          if (!isDesktop()) return;
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            if (tile.classList.contains('expanded')) {
-              collapse(tile);
-            } else {
-              expand(tile);
-            }
-          }
-        });
-      });
-
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && expandedTile) {
-          collapse(expandedTile);
-        }
-      });
-
-      // Click outside to close
-      document.addEventListener('click', function(e) {
-        if (expandedTile && !expandedTile.contains(e.target)) {
-          collapse(expandedTile);
-        }
-      });
     })();
   </script>
 
