@@ -1,0 +1,609 @@
+/* ============================================================
+   CIM — Center for Interactive Media
+   Nothing Design System · Bento Viewport Layout
+   Dark mode first. Light mode via prefers-color-scheme.
+   ============================================================ */
+
+/* --- TOKENS --- */
+:root {
+  /* Color: Dark Mode (default) */
+  --black: #000000;
+  --surface: #111111;
+  --surface-raised: #1A1A1A;
+  --border: #222222;
+  --border-visible: #333333;
+  --text-disabled: #666666;
+  --text-secondary: #999999;
+  --text-primary: #E8E8E8;
+  --text-display: #FFFFFF;
+  --accent: #D71921;
+  --accent-subtle: rgba(215, 25, 33, 0.15);
+  --success: #4A9E5C;
+  --warning: #D4A843;
+  --interactive: #5B9BF6;
+
+  /* Spacing */
+  --space-2xs: 2px;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+
+  /* Type Scale */
+  --display-xl: 72px;
+  --display-lg: 48px;
+  --display-md: 36px;
+  --heading: 24px;
+  --subheading: 18px;
+  --body: 16px;
+  --body-sm: 14px;
+  --caption: 12px;
+  --label: 11px;
+
+  /* Grid */
+  --tile-radius: 12px;
+  --tile-gap: 8px;
+  --grid-padding: 8px;
+  --footer-height: 32px;
+}
+
+/* --- LIGHT MODE --- */
+@media (prefers-color-scheme: light) {
+  :root {
+    --black: #F5F5F5;
+    --surface: #FFFFFF;
+    --surface-raised: #F0F0F0;
+    --border: #DDDDDD;
+    --border-visible: #CCCCCC;
+    --text-disabled: #999999;
+    --text-secondary: #666666;
+    --text-primary: #1A1A1A;
+    --text-display: #000000;
+    --interactive: #007AFF;
+  }
+}
+
+/* --- RESET --- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Space Grotesk', 'DM Sans', system-ui, sans-serif;
+  background: var(--black);
+  color: var(--text-primary);
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+address {
+  font-style: normal;
+}
+
+/* --- SKIP LINK (Accessibility) --- */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: var(--grid-padding);
+  z-index: 1000;
+  font-family: 'Space Mono', monospace;
+  font-size: var(--caption);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--black);
+  background: var(--text-display);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 999px;
+  text-decoration: none;
+  transition: top 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.skip-link:focus {
+  top: var(--grid-padding);
+}
+
+/* --- BENTO GRID --- */
+.bento-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: var(--tile-gap);
+  padding: var(--grid-padding);
+  padding-bottom: 0;
+  min-height: 0;
+  /*
+    Grid layout:
+    Row 1-2: Hero(4col) | Game Studio(4col) | Digital Twin(4col)
+    Row 3-4: Stats(4col) | XR Healthcare(4col) | Humanities(4col)
+    Row 5:   Partners(4col) | CIM World(4col) | Contact(4col)
+    Row 6:   Partners(cont) | CIM World(cont) | Contact(cont)
+  */
+  grid-template-areas:
+    "hero hero hero hero game game game game twin twin twin twin"
+    "hero hero hero hero game game game game twin twin twin twin"
+    "stats stats stats stats xr   xr   xr   xr   huma huma huma huma"
+    "stats stats stats stats xr   xr   xr   xr   huma huma huma huma"
+    "part  part  part  part  world world world world cont cont cont cont"
+    "part  part  part  part  world world world world cont cont cont cont";
+}
+
+/* --- BASE TILE --- */
+.tile {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--tile-radius);
+  padding: var(--space-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  transition: border-color 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.tile:hover {
+  border-color: var(--border-visible);
+}
+
+/* --- TILE LABEL (tertiary layer — instrument panel) --- */
+.tile-label {
+  font-family: 'Space Mono', 'JetBrains Mono', monospace;
+  font-size: var(--label);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  flex-shrink: 0;
+}
+
+/* --- TILE: HERO --- */
+.tile-hero {
+  grid-area: hero;
+  justify-content: center;
+  position: relative;
+}
+
+.tile-hero__label {
+  font-family: 'Space Mono', monospace;
+  font-size: var(--label);
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  margin-bottom: var(--space-md);
+}
+
+.tile-hero__title {
+  font-family: 'Doto', 'Space Mono', monospace;
+  font-size: clamp(48px, 8vw, 96px);
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: var(--text-display);
+  margin-bottom: var(--space-xs);
+}
+
+.tile-hero__subtitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: var(--heading);
+  font-weight: 300;
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+}
+
+.tile-hero__desc {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: var(--body-sm);
+  line-height: 1.5;
+  color: var(--text-secondary);
+  max-width: 40ch;
+}
+
+/* --- TILE: RESEARCH CLUSTER (shared) --- */
+.tile-game { grid-area: game; }
+.tile-twin { grid-area: twin; }
+.tile-xr { grid-area: xr; }
+.tile-humanities { grid-area: huma; }
+
+.tile-cluster {
+  gap: var(--space-xs);
+}
+
+.tile-tagline {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: var(--body-sm);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-sm);
+  flex-shrink: 0;
+}
+
+.tile-projects {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  overflow: hidden;
+  flex: 1;
+  min-height: 0;
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-xs) 0;
+  border-top: 1px solid var(--border);
+}
+
+.project:first-child {
+  border-top: none;
+}
+
+.project-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: var(--body-sm);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.project-tags {
+  font-family: 'Space Mono', monospace;
+  font-size: var(--caption);
+  letter-spacing: 0.02em;
+  color: var(--text-disabled);
+}
+
+/* --- TILE: STATS --- */
+.tile-stats {
+  grid-area: stats;
+}
+
+.stats-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 1fr;
+  gap: var(--space-sm);
+  min-height: 0;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-xs);
+}
+
+.stat-value {
+  font-family: 'Doto', 'Space Mono', monospace;
+  font-size: clamp(20px, 2.5vw, 36px);
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: var(--text-display);
+}
+
+.stat-label {
+  font-family: 'Space Mono', monospace;
+  font-size: var(--label);
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+/* --- TILE: CIM WORLD (accent tile — the ONE moment of surprise) --- */
+.tile-world {
+  grid-area: world;
+  position: relative;
+  cursor: pointer;
+  border-color: var(--accent);
+  overflow: hidden;
+}
+
+.tile-world:hover {
+  border-color: var(--accent);
+  background: var(--accent-subtle);
+}
+
+.tile-world__dot-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--accent) 1px, transparent 1px);
+  background-size: 16px 16px;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.tile-world__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.tile-world__cta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: auto;
+  margin-bottom: var(--space-xs);
+}
+
+.tile-world__title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: var(--subheading);
+  font-weight: 500;
+  color: var(--text-display);
+}
+
+.tile-world__arrow {
+  font-family: 'Space Mono', monospace;
+  font-size: var(--heading);
+  color: var(--accent);
+  transition: transform 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.tile-world:hover .tile-world__arrow {
+  transform: translateX(4px);
+}
+
+.tile-world__desc {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: var(--caption);
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* --- TILE: PARTNERS --- */
+.tile-partners {
+  grid-area: part;
+}
+
+.partners-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-content: start;
+  flex: 1;
+  min-height: 0;
+}
+
+.partners-list span {
+  font-family: 'Space Mono', monospace;
+  font-size: var(--caption);
+  letter-spacing: 0.04em;
+  color: var(--text-disabled);
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--border-visible);
+  border-radius: 999px;
+  white-space: nowrap;
+  transition: color 200ms cubic-bezier(0.25, 0.1, 0.25, 1),
+              border-color 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.partners-list span:hover {
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+}
+
+/* --- TILE: CONTACT --- */
+.tile-contact {
+  grid-area: cont;
+  justify-content: space-between;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.contact-email {
+  font-family: 'Space Mono', monospace;
+  font-size: var(--body-sm);
+  color: var(--interactive);
+  transition: color 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.contact-email:hover {
+  color: var(--text-display);
+}
+
+.contact-phone {
+  font-family: 'Space Mono', monospace;
+  font-size: var(--caption);
+  color: var(--text-secondary);
+}
+
+.contact-address {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: var(--caption);
+  line-height: 1.5;
+  color: var(--text-disabled);
+  margin-top: var(--space-xs);
+}
+
+/* Button: Primary (pill, inverted) */
+.btn-primary {
+  display: inline-block;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--black);
+  background: var(--text-display);
+  border: none;
+  border-radius: 999px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: opacity 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.btn-primary:hover {
+  opacity: 0.85;
+}
+
+/* --- FOOTER --- */
+.site-footer {
+  height: var(--footer-height);
+  flex-shrink: 0;
+  padding: 0 var(--grid-padding);
+  display: flex;
+  align-items: center;
+}
+
+.footer-inner {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.footer-clusters,
+.footer-copy,
+.footer-links a {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--text-disabled);
+  text-transform: uppercase;
+}
+
+.footer-links a {
+  color: var(--text-secondary);
+  transition: color 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.footer-links a:hover {
+  color: var(--text-display);
+}
+
+/* ============================================================
+   RESPONSIVE: MOBILE (single column, scrollable)
+   ============================================================ */
+@media (max-width: 768px) {
+  body {
+    height: auto;
+    overflow: auto;
+  }
+
+  .bento-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--tile-gap);
+    padding: var(--grid-padding);
+    padding-bottom: var(--tile-gap);
+  }
+
+  .tile {
+    min-height: auto;
+    padding: var(--space-md);
+  }
+
+  .tile-hero {
+    padding: var(--space-2xl) var(--space-md);
+  }
+
+  .tile-hero__title {
+    font-size: 64px;
+  }
+
+  .tile-projects {
+    overflow: visible;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: var(--space-md);
+    padding: var(--space-sm) 0;
+  }
+
+  .stat-value {
+    font-size: 28px;
+  }
+
+  .partners-list {
+    overflow: visible;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding: var(--space-sm) 0;
+    text-align: center;
+  }
+
+  .site-footer {
+    height: auto;
+    padding: var(--space-sm) var(--grid-padding);
+  }
+}
+
+/* Tablet breakpoint */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+      "hero  hero  hero  hero  hero  hero"
+      "game  game  game  twin  twin  twin"
+      "xr    xr    xr    huma  huma  huma"
+      "stats stats stats stats stats stats"
+      "world world world cont  cont  cont"
+      "part  part  part  part  part  part";
+  }
+
+  body {
+    height: auto;
+    overflow: auto;
+  }
+
+  .tile-hero__title {
+    font-size: 72px;
+  }
+}
+
+/* --- FOCUS STYLES (Accessibility) --- */
+.tile:focus-visible,
+a:focus-visible,
+.btn-primary:focus-visible {
+  outline: 2px solid var(--interactive);
+  outline-offset: 2px;
+}
+
+/* --- REDUCED MOTION --- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0ms !important;
+    animation-duration: 0ms !important;
+  }
+}
