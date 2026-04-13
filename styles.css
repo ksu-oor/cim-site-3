@@ -159,12 +159,13 @@ address { font-style: normal; }
   text-transform: uppercase;
 }
 
-/* --- BENTO GRID (14 tiles, 8 rows) --- */
+/* --- BENTO GRID (14 tiles, weighted rows) --- */
 .bento-grid {
   flex: 1;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(8, 1fr);
+  /* Weighted rows: hero row slightly taller, bottom row slightly compact */
+  grid-template-rows: 1.1fr 1.1fr 1fr 1fr 1fr 1fr 0.9fr 0.9fr;
   gap: var(--tile-gap);
   padding: var(--grid-padding);
   padding-bottom: 0;
@@ -197,10 +198,10 @@ address { font-style: normal; }
 /* --- TILE LABEL --- */
 .tile-label {
   font-family: 'Space Mono', monospace;
-  font-size: var(--label);
+  font-size: 10px;
   font-weight: 400;
-  letter-spacing: 0.08em;
-  color: var(--text-secondary);
+  letter-spacing: 0.12em;
+  color: var(--text-disabled);
   text-transform: uppercase;
   margin-bottom: var(--space-sm);
   flex-shrink: 0;
@@ -221,15 +222,18 @@ address { font-style: normal; }
   letter-spacing: 0.08em;
   color: var(--text-secondary);
   text-transform: uppercase;
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-sm);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .tile-hero__title {
   font-family: 'Doto', 'Space Mono', monospace;
-  font-size: clamp(48px, 6vw, 80px);
+  font-size: clamp(48px, 5.5vw, 80px);
   font-weight: 700;
-  line-height: 1.0;
-  letter-spacing: -0.03em;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
   color: var(--text-display);
   margin-bottom: var(--space-xs);
 }
@@ -239,7 +243,7 @@ address { font-style: normal; }
   font-size: var(--subheading);
   font-weight: 300;
   color: var(--text-primary);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-sm);
 }
 
 .tile-hero__desc {
@@ -248,6 +252,10 @@ address { font-style: normal; }
   line-height: 1.5;
   color: var(--text-secondary);
   max-width: 36ch;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* ============================================================
@@ -279,7 +287,8 @@ address { font-style: normal; }
   border-radius: 8px;
   overflow: hidden;
   aspect-ratio: 460 / 215;
-  flex-shrink: 0;
+  flex-shrink: 1;
+  min-height: 0;
 }
 
 .game-card__img {
@@ -326,7 +335,8 @@ address { font-style: normal; }
 .game-card__info {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 1px;
+  flex-shrink: 0;
 }
 
 .game-card__title {
@@ -390,20 +400,20 @@ address { font-style: normal; }
 
 .tile-event__date {
   font-family: 'Doto', 'Space Mono', monospace;
-  font-size: clamp(32px, 4vw, 56px);
+  font-size: clamp(28px, 3.5vw, 48px);
   font-weight: 700;
-  line-height: 1.0;
-  letter-spacing: -0.02em;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
   color: var(--text-display);
-  margin: var(--space-sm) 0;
+  margin: var(--space-xs) 0;
 }
 
 .tile-event__details {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 1px;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: var(--body-sm);
+  font-size: var(--caption);
   color: var(--text-secondary);
   line-height: 1.4;
 }
@@ -469,7 +479,7 @@ address { font-style: normal; }
   font-weight: 300;
   font-style: italic;
   color: var(--text-secondary);
-  margin-bottom: var(--space-xs);
+  margin-bottom: 2px;
   flex-shrink: 0;
 }
 
@@ -479,7 +489,7 @@ address { font-style: normal; }
   font-size: clamp(28px, 3vw, 40px);
   font-weight: 700;
   line-height: 1.0;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   color: var(--text-display);
 }
 
@@ -489,23 +499,26 @@ address { font-style: normal; }
   letter-spacing: 0.1em;
   color: var(--text-secondary);
   text-transform: uppercase;
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-xs);
 }
 
 .tile-projects {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
+  gap: 2px;
   overflow: hidden;
   flex: 1;
   min-height: 0;
+  /* Graceful fade instead of hard clip */
+  -webkit-mask-image: linear-gradient(to bottom, #000 85%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 85%, transparent 100%);
 }
 
 .project {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  padding: var(--space-xs) 0;
+  gap: 1px;
+  padding: 3px 0;
   border-top: 1px solid var(--border);
 }
 .project:first-child { border-top: none; }
@@ -515,6 +528,9 @@ address { font-style: normal; }
   font-size: var(--body-sm);
   font-weight: 500;
   color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .project-tags {
@@ -522,6 +538,9 @@ address { font-style: normal; }
   font-size: 10px;
   letter-spacing: 0.02em;
   color: var(--text-disabled);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* --- PROGRESS BARS --- */
@@ -625,10 +644,10 @@ address { font-style: normal; }
 
 .tile-transformer__name {
   font-family: 'Doto', 'Space Mono', monospace;
-  font-size: clamp(20px, 2.5vw, 32px);
+  font-size: clamp(24px, 3vw, 40px);
   font-weight: 700;
   line-height: 1.0;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   color: var(--text-display);
   margin: var(--space-sm) 0 var(--space-xs);
 }
@@ -688,10 +707,10 @@ address { font-style: normal; }
 
 .stat-value {
   font-family: 'Doto', 'Space Mono', monospace;
-  font-size: clamp(18px, 2vw, 28px);
+  font-size: clamp(22px, 2.5vw, 36px);
   font-weight: 700;
   line-height: 1.0;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   color: var(--text-display);
 }
 
@@ -720,7 +739,7 @@ address { font-style: normal; }
 
 .tile-faculty__hero {
   font-family: 'Doto', 'Space Mono', monospace;
-  font-size: clamp(32px, 4vw, 48px);
+  font-size: clamp(40px, 5vw, 64px);
   font-weight: 700;
   line-height: 1.0;
   color: var(--text-display);
@@ -983,8 +1002,8 @@ address { font-style: normal; }
       "games  games  games  games  games  games"
       "gstu   gstu   gstu   twin   twin   twin"
       "xr     xr     xr     trans  trans  trans"
-      "imed   imed   imed   huma   huma   huma"
       "stats  stats  stats  facul  facul  facul"
+      "imed   imed   imed   huma   huma   huma"
       "world  world  world  cont   cont   cont"
       "part   part   part   part   part   part";
   }
@@ -994,8 +1013,18 @@ address { font-style: normal; }
     overflow: auto;
   }
 
-  .tile-hero__title { font-size: 64px; }
+  .tile { padding: var(--space-lg); }
+  .tile-hero__title { font-size: 56px; }
   .tile-event__date { font-size: 36px; }
+  .tile-stat-hero { font-size: 32px; }
+  .stat-value { font-size: 22px; }
+  .tile-faculty__hero { font-size: 48px; }
+  .tile-transformer__name { font-size: 28px; }
+
+  .tile-projects {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
 }
 
 /* ============================================================
@@ -1026,7 +1055,15 @@ address { font-style: normal; }
 
   .tile-hero__title { font-size: 56px; }
   .tile-event__date { font-size: 40px; }
-  .tile-transformer__name { font-size: 24px; }
+  .tile-transformer__name { font-size: 28px; }
+  .tile-stat-hero { font-size: 32px; }
+  .tile-faculty__hero { font-size: 48px; }
+
+  .tile-projects {
+    -webkit-mask-image: none;
+    mask-image: none;
+    overflow: visible;
+  }
 
   .games-showcase {
     flex-direction: column;
@@ -1041,7 +1078,7 @@ address { font-style: normal; }
     padding: var(--space-sm) 0;
   }
 
-  .stat-value { font-size: 24px; }
+  .stat-value { font-size: 28px; }
 
   .partners-list { overflow: visible; }
 
