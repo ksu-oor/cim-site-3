@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CIM Launch Event — April 27, 2026</title>
+  <meta name="description" content="Center for Interactive Media launch event at Kennesaw State University — demos, research showcase, panels on the future of interactive media.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@400;700&family=Space+Grotesk:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Shared tokens — same as main site */
+    [data-theme="dark"], :root {
+      --black: #000000;
+      --surface: #111111;
+      --surface-raised: #1A1A1A;
+      --border: #222222;
+      --border-visible: #333333;
+      --text-disabled: #666666;
+      --text-secondary: #999999;
+      --text-primary: #E8E8E8;
+      --text-display: #FFFFFF;
+      --accent: #D71921;
+      --accent-subtle: rgba(215, 25, 33, 0.15);
+      --success: #4A9E5C;
+      --warning: #D4A843;
+      --interactive: #5B9BF6;
+      --space-xs: 4px; --space-sm: 8px; --space-md: 16px;
+      --space-lg: 24px; --space-xl: 32px; --space-2xl: 48px;
+      --space-3xl: 64px; --space-4xl: 96px;
+      --label: 11px; --caption: 12px; --body-sm: 14px;
+      --body: 16px; --subheading: 18px; --heading: 24px;
+      --display-md: 36px; --display-lg: 48px; --display-xl: 72px;
+    }
+
+    [data-theme="light"] {
+      --black: #F5F5F5; --surface: #FFFFFF; --surface-raised: #F0F0F0;
+      --border: #E8E8E8; --border-visible: #CCCCCC;
+      --text-disabled: #999999; --text-secondary: #666666;
+      --text-primary: #1A1A1A; --text-display: #000000;
+      --interactive: #007AFF;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+
+    body {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      background: var(--black);
+      color: var(--text-primary);
+      min-height: 100vh;
+    }
+
+    /* Desktop: full viewport, no scroll */
+    .event-page {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+    }
+
+    /* Left panel: hero */
+    .event-hero {
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      padding: var(--space-3xl);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    .event-hero__back {
+      position: absolute;
+      top: var(--space-lg);
+      left: var(--space-lg);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--surface-raised);
+      border: 1px solid var(--border-visible);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Mono', monospace;
+      font-size: var(--subheading);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: border-color 200ms cubic-bezier(0.25, 0.1, 0.25, 1),
+                  color 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    .event-hero__back:hover {
+      border-color: var(--text-secondary);
+      color: var(--text-display);
+    }
+
+    .event-hero__label {
+      font-family: 'Space Mono', monospace;
+      font-size: var(--label);
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: var(--space-lg);
+    }
+
+    .event-hero__date {
+      font-family: 'Doto', 'Space Mono', monospace;
+      font-size: clamp(48px, 8vw, 96px);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      color: var(--text-display);
+      margin-bottom: var(--space-sm);
+    }
+
+    .event-hero__year {
+      font-family: 'Space Mono', monospace;
+      font-size: var(--heading);
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+      margin-bottom: var(--space-2xl);
+    }
+
+    .event-hero__info {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .event-hero__info-row {
+      display: flex;
+      gap: var(--space-md);
+      align-items: baseline;
+    }
+
+    .event-hero__info-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: var(--text-disabled);
+      text-transform: uppercase;
+      min-width: 60px;
+    }
+
+    .event-hero__info-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: var(--body-sm);
+      color: var(--text-primary);
+    }
+
+    .event-hero__cta {
+      margin-top: var(--space-2xl);
+      display: inline-block;
+      font-family: 'Space Mono', monospace;
+      font-size: var(--label);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-align: center;
+      color: var(--black);
+      background: var(--text-display);
+      border: none;
+      border-radius: 999px;
+      padding: 14px 32px;
+      cursor: pointer;
+      transition: opacity 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+      text-decoration: none;
+      align-self: flex-start;
+    }
+    .event-hero__cta:hover { opacity: 0.85; }
+
+    /* Right panel: program */
+    .event-program {
+      padding: var(--space-3xl);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2xl);
+    }
+
+    .program-section__title {
+      font-family: 'Space Mono', monospace;
+      font-size: var(--label);
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      margin-bottom: var(--space-md);
+      padding-bottom: var(--space-sm);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Agenda items */
+    .agenda-item {
+      display: flex;
+      gap: var(--space-lg);
+      padding: var(--space-md) 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .agenda-item__time {
+      font-family: 'Space Mono', monospace;
+      font-size: var(--body-sm);
+      color: var(--text-secondary);
+      min-width: 80px;
+      flex-shrink: 0;
+    }
+
+    .agenda-item__content {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .agenda-item__title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: var(--body);
+      font-weight: 500;
+      color: var(--text-display);
+    }
+
+    .agenda-item__desc {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: var(--body-sm);
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .agenda-item__speaker {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.04em;
+      color: var(--text-disabled);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* Sponsors & guests */
+    .sponsor-grid {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .sponsor-item {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-md);
+      padding: var(--space-sm) 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sponsor-item__name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: var(--body-sm);
+      font-weight: 500;
+      color: var(--text-primary);
+      flex: 1;
+    }
+
+    .sponsor-item__role {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.04em;
+      color: var(--text-disabled);
+      text-transform: uppercase;
+    }
+
+    /* Guest list */
+    .guest-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+
+    .guest {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-md);
+      padding: var(--space-xs) 0;
+    }
+
+    .guest__name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: var(--body-sm);
+      color: var(--text-primary);
+    }
+
+    .guest__org {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.04em;
+      color: var(--text-disabled);
+      text-transform: uppercase;
+    }
+
+    /* Mobile: vertical scroll */
+    @media (max-width: 900px) {
+      .event-page {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .event-hero {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: var(--space-2xl) var(--space-lg);
+        min-height: 60vh;
+      }
+
+      .event-hero__date { font-size: 64px; }
+
+      .event-program {
+        padding: var(--space-lg);
+      }
+    }
+
+    /* Focus */
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--interactive);
+      outline-offset: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition-duration: 0ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="event-page">
+
+    <!-- Left: Hero -->
+    <div class="event-hero">
+      <a href="index.html" class="event-hero__back" aria-label="Back to CIM home">&lt;</a>
+      <div class="event-hero__label">CIM LAUNCH EVENT</div>
+      <div class="event-hero__date">APR 27</div>
+      <div class="event-hero__year">2026</div>
+      <div class="event-hero__info">
+        <div class="event-hero__info-row">
+          <span class="event-hero__info-label">TIME</span>
+          <span class="event-hero__info-value">9:00 AM – 2:00 PM</span>
+        </div>
+        <div class="event-hero__info-row">
+          <span class="event-hero__info-label">VENUE</span>
+          <span class="event-hero__info-value">Robin &amp; Doug Shore Innovation Center</span>
+        </div>
+        <div class="event-hero__info-row">
+          <span class="event-hero__info-label">ADDRESS</span>
+          <span class="event-hero__info-value">970 Technology Way, Marietta, GA 30060</span>
+        </div>
+        <div class="event-hero__info-row">
+          <span class="event-hero__info-label">TARGET</span>
+          <span class="event-hero__info-value">~100 attendees</span>
+        </div>
+      </div>
+      <a href="https://kennesawstateuniversity-vbzux.formstack.com/forms/cim_launch_event" target="_blank" rel="noopener noreferrer" class="event-hero__cta">REGISTER NOW →</a>
+    </div>
+
+    <!-- Right: Program -->
+    <div class="event-program">
+
+      <div class="program-section">
+        <div class="program-section__title">PROGRAM</div>
+        <div class="agenda-item">
+          <span class="agenda-item__time">9:00 AM</span>
+          <div class="agenda-item__content">
+            <span class="agenda-item__title">Interactive Demos &amp; Breakfast</span>
+            <span class="agenda-item__desc">Hands-on demonstrations from CIM research teams and industry partners.</span>
+            <span class="agenda-item__speaker">SPONSORED BY UNITY</span>
+          </div>
+        </div>
+        <div class="agenda-item">
+          <span class="agenda-item__time">10:00 AM</span>
+          <div class="agenda-item__content">
+            <span class="agenda-item__title">CIM Research Showcase</span>
+            <span class="agenda-item__desc">Project spotlights across all four research clusters — Digital Twin, XR &amp; Healthcare, Immersive Education, and Digital Humanities &amp; Arts.</span>
+          </div>
+        </div>
+        <div class="agenda-item">
+          <span class="agenda-item__time">11:00 AM</span>
+          <div class="agenda-item__content">
+            <span class="agenda-item__title">Panel: The Future of Interactive Media</span>
+            <span class="agenda-item__desc">Industry leaders and academic researchers explore where games, XR, and AI-driven narratives are headed.</span>
+            <span class="agenda-item__speaker">DANIEL LEE (AWS) · PETER PROVOST (PROVOST STUDIO) · YASMEEN TELSEM (TELMORE AGENCY)</span>
+          </div>
+        </div>
+        <div class="agenda-item">
+          <span class="agenda-item__time">11:45 AM</span>
+          <div class="agenda-item__content">
+            <span class="agenda-item__title">Panel: Smart Cities &amp; Connected Communities</span>
+            <span class="agenda-item__desc">How digital twins, simulation, and interactive technology are shaping urban planning and community engagement.</span>
+            <span class="agenda-item__speaker">GUY ROUSSEAU (ATLANTA REGIONAL COMMISSION)</span>
+          </div>
+        </div>
+        <div class="agenda-item">
+          <span class="agenda-item__time">12:30 PM</span>
+          <div class="agenda-item__content">
+            <span class="agenda-item__title">Invitation-Only Lunch</span>
+            <span class="agenda-item__desc">Networking with CIM leadership, industry partners, and featured speakers.</span>
+            <span class="agenda-item__speaker">SPONSORED BY AMAZON WEB SERVICES</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="program-section">
+        <div class="program-section__title">FEATURED PRESENTATIONS</div>
+        <div class="guest-list">
+          <div class="guest">
+            <span class="guest__name">Dr. Melissa Osborne</span>
+            <span class="guest__org">WELLSTAR COLLEGE · XR &amp; HEALTHCARE</span>
+          </div>
+          <div class="guest">
+            <span class="guest__name">Dr. Erin Bahl &amp; Shuchita Mishra</span>
+            <span class="guest__org">APPLIED CARTOONING &amp; FOLKLORE</span>
+          </div>
+          <div class="guest">
+            <span class="guest__name">Andrea Knowlton &amp; Dr. Kyungeun Lim</span>
+            <span class="guest__org">FULL-BODY MOVEMENT IN XR ART ED</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="program-section">
+        <div class="program-section__title">SPONSORS</div>
+        <div class="sponsor-grid">
+          <div class="sponsor-item">
+            <span class="sponsor-item__name">Amazon Web Services</span>
+            <span class="sponsor-item__role">LUNCH SPONSOR</span>
+          </div>
+          <div class="sponsor-item">
+            <span class="sponsor-item__name">Unity</span>
+            <span class="sponsor-item__role">BREAKFAST SPONSOR</span>
+          </div>
+          <div class="sponsor-item">
+            <span class="sponsor-item__name">SGR Law</span>
+            <span class="sponsor-item__role">EVENT SPONSOR</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="program-section">
+        <div class="program-section__title">NOTABLE GUESTS</div>
+        <div class="guest-list">
+          <div class="guest">
+            <span class="guest__name">Daniel Lee</span>
+            <span class="guest__org">AWS FOR GAMES</span>
+          </div>
+          <div class="guest">
+            <span class="guest__name">Peter Provost</span>
+            <span class="guest__org">PROVOST STUDIO · CEO</span>
+          </div>
+          <div class="guest">
+            <span class="guest__name">Yasmeen Telsem</span>
+            <span class="guest__org">TELMORE AGENCY · FOUNDER</span>
+          </div>
+          <div class="guest">
+            <span class="guest__name">Guy Rousseau</span>
+            <span class="guest__org">ATLANTA REGIONAL COMMISSION</span>
+          </div>
+          <div class="guest">
+            <span class="guest__name">Andrew Greenberg</span>
+            <span class="guest__org">GGDA</span>
+          </div>
+          <div class="guest">
+            <span class="guest__name">Brennen Dicker</span>
+            <span class="guest__org">DIRECTOR · CMII</span>
+          </div>
+          <div class="guest">
+            <span class="guest__name">Bert Huffman</span>
+            <span class="guest__org">GEORGIA PUBLIC BROADCASTING</span>
+          </div>
+          <div class="guest">
+            <span class="guest__name">Dave Wallens</span>
+            <span class="guest__org">INVITED GUEST</span>
+          </div>
+          <div class="guest">
+            <span class="guest__name">Joe Darko</span>
+            <span class="guest__org">SNAPCHAT</span>
+          </div>
+          <div class="guest">
+            <span class="guest__name">Drew Pearson</span>
+            <span class="guest__org">XR DOJO</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="program-section">
+        <div class="program-section__title">PARTICIPATING ORGANIZATIONS</div>
+        <div class="guest-list" style="flex-direction: row; flex-wrap: wrap; gap: 8px;">
+          <span style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--text-disabled); padding: 4px 10px; border: 1px solid var(--border-visible); border-radius: 999px;">Soapbox</span>
+          <span style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--text-disabled); padding: 4px 10px; border: 1px solid var(--border-visible); border-radius: 999px;">Amazon Web Services</span>
+          <span style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--text-disabled); padding: 4px 10px; border: 1px solid var(--border-visible); border-radius: 999px;">GA Dept of Economic Development</span>
+          <span style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--text-disabled); padding: 4px 10px; border: 1px solid var(--border-visible); border-radius: 999px;">Unity</span>
+          <span style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--text-disabled); padding: 4px 10px; border: 1px solid var(--border-visible); border-radius: 999px;">Provost Studio</span>
+          <span style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--text-disabled); padding: 4px 10px; border: 1px solid var(--border-visible); border-radius: 999px;">Telmore Agency</span>
+          <span style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--text-disabled); padding: 4px 10px; border: 1px solid var(--border-visible); border-radius: 999px;">Atlanta Regional Commission</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    // Inherit theme from main site
+    (function() {
+      const saved = localStorage.getItem('cim-theme');
+      if (saved) document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
+
+</body>
+</html>

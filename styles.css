@@ -1,12 +1,11 @@
 /* ============================================================
    CIM — Center for Interactive Media
    Nothing Design System · Bento Viewport Layout
-   Dark mode first. Light mode via prefers-color-scheme.
+   Dark mode default via data-theme. Manual toggle.
    ============================================================ */
 
-/* --- TOKENS --- */
-:root {
-  /* Color: Dark Mode (default) */
+/* --- TOKENS (Dark Mode Default) --- */
+[data-theme="dark"], :root {
   --black: #000000;
   --surface: #111111;
   --surface-raised: #1A1A1A;
@@ -52,19 +51,17 @@
 }
 
 /* --- LIGHT MODE --- */
-@media (prefers-color-scheme: light) {
-  :root {
-    --black: #F5F5F5;
-    --surface: #FFFFFF;
-    --surface-raised: #F0F0F0;
-    --border: #DDDDDD;
-    --border-visible: #CCCCCC;
-    --text-disabled: #999999;
-    --text-secondary: #666666;
-    --text-primary: #1A1A1A;
-    --text-display: #000000;
-    --interactive: #007AFF;
-  }
+[data-theme="light"] {
+  --black: #F5F5F5;
+  --surface: #FFFFFF;
+  --surface-raised: #F0F0F0;
+  --border: #E8E8E8;
+  --border-visible: #CCCCCC;
+  --text-disabled: #999999;
+  --text-secondary: #666666;
+  --text-primary: #1A1A1A;
+  --text-display: #000000;
+  --interactive: #007AFF;
 }
 
 /* --- RESET --- */
@@ -90,16 +87,10 @@ body {
   flex-direction: column;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+a { color: inherit; text-decoration: none; }
+address { font-style: normal; }
 
-address {
-  font-style: normal;
-}
-
-/* --- SKIP LINK (Accessibility) --- */
+/* --- SKIP LINK --- */
 .skip-link {
   position: absolute;
   top: -100px;
@@ -116,35 +107,77 @@ address {
   text-decoration: none;
   transition: top 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
+.skip-link:focus { top: var(--grid-padding); }
 
-.skip-link:focus {
-  top: var(--grid-padding);
+/* --- THEME TOGGLE (mechanical switch) --- */
+.theme-toggle {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  padding: var(--space-xs);
 }
 
-/* --- BENTO GRID --- */
+.theme-toggle__track {
+  display: block;
+  width: 36px;
+  height: 18px;
+  background: var(--surface-raised);
+  border: 1px solid var(--border-visible);
+  border-radius: 999px;
+  position: relative;
+  transition: background 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.theme-toggle__knob {
+  display: block;
+  width: 12px;
+  height: 12px;
+  background: var(--text-display);
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+[data-theme="light"] .theme-toggle__knob {
+  transform: translateX(18px);
+}
+
+.theme-toggle__label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: var(--text-disabled);
+  text-transform: uppercase;
+}
+
+/* --- BENTO GRID (14 tiles, 8 rows) --- */
 .bento-grid {
   flex: 1;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-rows: repeat(8, 1fr);
   gap: var(--tile-gap);
   padding: var(--grid-padding);
   padding-bottom: 0;
   min-height: 0;
-  /*
-    Grid layout:
-    Row 1-2: Hero(4col) | Game Studio(4col) | Digital Twin(4col)
-    Row 3-4: Stats(4col) | XR Healthcare(4col) | Humanities(4col)
-    Row 5:   Partners(4col) | CIM World(4col) | Contact(4col)
-    Row 6:   Partners(cont) | CIM World(cont) | Contact(cont)
-  */
   grid-template-areas:
-    "hero hero hero hero game game game game twin twin twin twin"
-    "hero hero hero hero game game game game twin twin twin twin"
-    "stats stats stats stats xr   xr   xr   xr   huma huma huma huma"
-    "stats stats stats stats xr   xr   xr   xr   huma huma huma huma"
-    "part  part  part  part  world world world world cont cont cont cont"
-    "part  part  part  part  world world world world cont cont cont cont";
+    "hero  hero  hero  games games games games games event event event event"
+    "hero  hero  hero  games games games games games event event event event"
+    "gstu  gstu  gstu  twin  twin  twin  xr    xr    xr    trans trans trans"
+    "gstu  gstu  gstu  twin  twin  twin  xr    xr    xr    trans trans trans"
+    "imed  imed  imed  huma  huma  huma  stats stats stats facul facul facul"
+    "imed  imed  imed  huma  huma  huma  stats stats stats facul facul facul"
+    "part  part  part  part  world world world world cont  cont  cont  cont"
+    "part  part  part  part  world world world world cont  cont  cont  cont";
 }
 
 /* --- BASE TILE --- */
@@ -159,14 +192,11 @@ address {
   min-height: 0;
   transition: border-color 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
+.tile:hover { border-color: var(--border-visible); }
 
-.tile:hover {
-  border-color: var(--border-visible);
-}
-
-/* --- TILE LABEL (tertiary layer — instrument panel) --- */
+/* --- TILE LABEL --- */
 .tile-label {
-  font-family: 'Space Mono', 'JetBrains Mono', monospace;
+  font-family: 'Space Mono', monospace;
   font-size: var(--label);
   font-weight: 400;
   letter-spacing: 0.08em;
@@ -176,7 +206,9 @@ address {
   flex-shrink: 0;
 }
 
-/* --- TILE: HERO --- */
+/* ============================================================
+   TILE: HERO
+   ============================================================ */
 .tile-hero {
   grid-area: hero;
   justify-content: center;
@@ -194,7 +226,7 @@ address {
 
 .tile-hero__title {
   font-family: 'Doto', 'Space Mono', monospace;
-  font-size: clamp(48px, 8vw, 96px);
+  font-size: clamp(48px, 6vw, 80px);
   font-weight: 700;
   line-height: 1.0;
   letter-spacing: -0.03em;
@@ -204,7 +236,7 @@ address {
 
 .tile-hero__subtitle {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: var(--heading);
+  font-size: var(--subheading);
   font-weight: 300;
   color: var(--text-primary);
   margin-bottom: var(--space-md);
@@ -215,27 +247,249 @@ address {
   font-size: var(--body-sm);
   line-height: 1.5;
   color: var(--text-secondary);
-  max-width: 40ch;
+  max-width: 36ch;
 }
 
-/* --- TILE: RESEARCH CLUSTER (shared) --- */
-.tile-game { grid-area: game; }
+/* ============================================================
+   TILE: PUBLISHED GAMES (featured — the "surprise" element)
+   ============================================================ */
+.tile-games-featured {
+  grid-area: games;
+}
+
+.games-showcase {
+  display: flex;
+  gap: var(--space-md);
+  flex: 1;
+  min-height: 0;
+}
+
+.game-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  text-decoration: none;
+  color: inherit;
+  min-width: 0;
+}
+
+.game-card__img-wrap {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 460 / 215;
+  flex-shrink: 0;
+}
+
+.game-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Paper shader: grayscale + high contrast + slight grain */
+  filter: grayscale(100%) contrast(1.3) brightness(0.85);
+  transition: filter 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.game-card:hover .game-card__img {
+  filter: grayscale(50%) contrast(1.15) brightness(0.95);
+}
+
+/* Crosshatch/paper texture overlay */
+.game-card__paper-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.06) 2px,
+      rgba(0, 0, 0, 0.06) 3px
+    );
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+[data-theme="light"] .game-card__paper-overlay {
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.08) 2px,
+      rgba(0, 0, 0, 0.08) 3px
+    );
+}
+
+.game-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.game-card__title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: var(--body-sm);
+  font-weight: 500;
+  color: var(--text-display);
+}
+
+.game-card__tags {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--text-disabled);
+  text-transform: uppercase;
+}
+
+.game-card__meta {
+  font-family: 'Space Mono', monospace;
+  font-size: var(--caption);
+  color: var(--text-secondary);
+}
+
+.game-card__available {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: auto;
+  flex-shrink: 0;
+}
+
+.accent-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* ============================================================
+   TILE: LAUNCH EVENT (red outline — urgency signal)
+   ============================================================ */
+.tile-event {
+  grid-area: event;
+  border-color: var(--accent);
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  justify-content: space-between;
+}
+
+.tile-event:hover {
+  border-color: var(--accent);
+  background: var(--accent-subtle);
+}
+
+.tile-event__date {
+  font-family: 'Doto', 'Space Mono', monospace;
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: var(--text-display);
+  margin: var(--space-sm) 0;
+}
+
+.tile-event__details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: var(--body-sm);
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.tile-event__sponsors {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--text-disabled);
+  text-transform: uppercase;
+  margin-top: auto;
+}
+
+.tile-event__cta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: 'Space Mono', monospace;
+  font-size: var(--label);
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-top: var(--space-sm);
+}
+
+.tile-event__arrow {
+  font-size: var(--subheading);
+  transition: transform 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.tile-event:hover .tile-event__arrow {
+  transform: translateX(4px);
+}
+
+/* Post-event commemorative state */
+.tile-event--past {
+  border-color: var(--border-visible);
+}
+.tile-event--past:hover {
+  background: var(--surface-raised);
+}
+.tile-event--past .tile-event__cta {
+  color: var(--text-secondary);
+}
+.tile-event--past .tile-label::after {
+  content: ' · RECAP';
+}
+
+/* ============================================================
+   TILE: RESEARCH CLUSTERS (shared styles)
+   ============================================================ */
+.tile-game { grid-area: gstu; }
 .tile-twin { grid-area: twin; }
 .tile-xr { grid-area: xr; }
+.tile-imed { grid-area: imed; }
 .tile-humanities { grid-area: huma; }
 
-.tile-cluster {
-  gap: var(--space-xs);
-}
+.tile-cluster { gap: var(--space-xs); }
 
 .tile-tagline {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: var(--body-sm);
+  font-size: var(--caption);
   font-weight: 300;
   font-style: italic;
   color: var(--text-secondary);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-xs);
   flex-shrink: 0;
+}
+
+/* Stat hero inside a cluster tile */
+.tile-stat-hero {
+  font-family: 'Doto', 'Space Mono', monospace;
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: var(--text-display);
+}
+
+.tile-stat-unit {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
 }
 
 .tile-projects {
@@ -254,10 +508,7 @@ address {
   padding: var(--space-xs) 0;
   border-top: 1px solid var(--border);
 }
-
-.project:first-child {
-  border-top: none;
-}
+.project:first-child { border-top: none; }
 
 .project-name {
   font-family: 'Space Grotesk', sans-serif;
@@ -268,12 +519,151 @@ address {
 
 .project-tags {
   font-family: 'Space Mono', monospace;
-  font-size: var(--caption);
+  font-size: 10px;
   letter-spacing: 0.02em;
   color: var(--text-disabled);
 }
 
-/* --- TILE: STATS --- */
+/* --- PROGRESS BARS --- */
+.progress-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: 3px;
+}
+
+.progress-bar__fill {
+  height: 3px;
+  background: var(--text-secondary);
+  border-radius: 2px;
+  position: relative;
+  flex-shrink: 0;
+  transition: width 400ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* Container for the bar track */
+.progress-bar::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+}
+
+/* Wrap progress-bar to contain the track */
+.progress-bar {
+  position: relative;
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+}
+
+.progress-bar__fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+}
+
+.progress-bar__fill--success { background: var(--success); }
+.progress-bar__fill--warning { background: var(--warning); }
+.progress-bar__fill--active { background: var(--interactive); }
+
+.progress-bar__label {
+  position: absolute;
+  right: 0;
+  top: -1px;
+  transform: translateY(-100%);
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  color: var(--text-disabled);
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding-bottom: 2px;
+}
+
+/* ============================================================
+   TILE: TRANSFORMER CONFERENCE (special accent tile)
+   ============================================================ */
+.tile-transformer {
+  grid-area: trans;
+  position: relative;
+  cursor: pointer;
+  border-color: var(--border-visible);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+}
+
+.tile-transformer:hover {
+  border-color: var(--text-secondary);
+  background: var(--surface-raised);
+}
+
+.tile-transformer__dot-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--text-disabled) 1px, transparent 1px);
+  background-size: 16px 16px;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+.tile-transformer__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.tile-transformer__name {
+  font-family: 'Doto', 'Space Mono', monospace;
+  font-size: clamp(20px, 2.5vw, 32px);
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: var(--text-display);
+  margin: var(--space-sm) 0 var(--space-xs);
+}
+
+.tile-transformer__sub {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: var(--caption);
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.tile-transformer__cta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: auto;
+  font-family: 'Space Mono', monospace;
+  font-size: var(--label);
+  letter-spacing: 0.06em;
+  color: var(--interactive);
+  text-transform: uppercase;
+}
+
+.tile-transformer__arrow {
+  font-size: var(--subheading);
+  transition: transform 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.tile-transformer:hover .tile-transformer__arrow {
+  transform: translateX(4px);
+}
+
+/* ============================================================
+   TILE: STATS
+   ============================================================ */
 .tile-stats {
   grid-area: stats;
 }
@@ -298,7 +688,7 @@ address {
 
 .stat-value {
   font-family: 'Doto', 'Space Mono', monospace;
-  font-size: clamp(20px, 2.5vw, 36px);
+  font-size: clamp(18px, 2vw, 28px);
   font-weight: 700;
   line-height: 1.0;
   letter-spacing: -0.02em;
@@ -307,32 +697,110 @@ address {
 
 .stat-label {
   font-family: 'Space Mono', monospace;
-  font-size: var(--label);
+  font-size: 9px;
   letter-spacing: 0.08em;
   color: var(--text-secondary);
   text-transform: uppercase;
 }
 
-/* --- TILE: CIM WORLD (accent tile — the ONE moment of surprise) --- */
+/* ============================================================
+   TILE: FACULTY NETWORK (clickable)
+   ============================================================ */
+.tile-faculty {
+  grid-area: facul;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  justify-content: space-between;
+}
+
+.tile-faculty:hover {
+  border-color: var(--text-secondary);
+}
+
+.tile-faculty__hero {
+  font-family: 'Doto', 'Space Mono', monospace;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.0;
+  color: var(--text-display);
+  margin: var(--space-xs) 0;
+}
+
+.tile-faculty__bar {
+  display: flex;
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
+  gap: 2px;
+  margin: var(--space-sm) 0 var(--space-xs);
+}
+
+.faculty-seg {
+  background: var(--text-primary);
+  border-radius: 2px;
+  min-width: 4px;
+}
+.faculty-seg--alt1 { background: var(--text-secondary); }
+.faculty-seg--alt2 { background: var(--text-disabled); }
+.faculty-seg--alt3 { background: var(--border-visible); }
+.faculty-seg--alt4 { background: var(--border-visible); opacity: 0.7; }
+.faculty-seg--alt5 { background: var(--border); }
+
+.tile-faculty__legend {
+  display: flex;
+  gap: var(--space-sm);
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.06em;
+  color: var(--text-disabled);
+  text-transform: uppercase;
+  flex-wrap: wrap;
+}
+
+.tile-faculty__cta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: 'Space Mono', monospace;
+  font-size: var(--label);
+  letter-spacing: 0.06em;
+  color: var(--interactive);
+  text-transform: uppercase;
+  margin-top: auto;
+}
+
+.tile-faculty__arrow {
+  font-size: var(--subheading);
+  transition: transform 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.tile-faculty:hover .tile-faculty__arrow {
+  transform: translateX(4px);
+}
+
+/* ============================================================
+   TILE: CIM WORLD
+   ============================================================ */
 .tile-world {
   grid-area: world;
   position: relative;
   cursor: pointer;
-  border-color: var(--accent);
+  border-color: var(--border-visible);
   overflow: hidden;
 }
 
 .tile-world:hover {
-  border-color: var(--accent);
-  background: var(--accent-subtle);
+  border-color: var(--text-secondary);
+  background: var(--surface-raised);
 }
 
 .tile-world__dot-grid {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, var(--accent) 1px, transparent 1px);
+  background-image: radial-gradient(circle, var(--text-disabled) 1px, transparent 1px);
   background-size: 16px 16px;
-  opacity: 0.08;
+  opacity: 0.06;
   pointer-events: none;
 }
 
@@ -354,7 +822,7 @@ address {
 
 .tile-world__title {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: var(--subheading);
+  font-size: var(--body-sm);
   font-weight: 500;
   color: var(--text-display);
 }
@@ -362,13 +830,11 @@ address {
 .tile-world__arrow {
   font-family: 'Space Mono', monospace;
   font-size: var(--heading);
-  color: var(--accent);
+  color: var(--interactive);
   transition: transform 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-.tile-world:hover .tile-world__arrow {
-  transform: translateX(4px);
-}
+.tile-world:hover .tile-world__arrow { transform: translateX(4px); }
 
 .tile-world__desc {
   font-family: 'Space Grotesk', sans-serif;
@@ -377,7 +843,9 @@ address {
   line-height: 1.4;
 }
 
-/* --- TILE: PARTNERS --- */
+/* ============================================================
+   TILE: PARTNERS
+   ============================================================ */
 .tile-partners {
   grid-area: part;
 }
@@ -393,7 +861,7 @@ address {
 
 .partners-list span {
   font-family: 'Space Mono', monospace;
-  font-size: var(--caption);
+  font-size: 10px;
   letter-spacing: 0.04em;
   color: var(--text-disabled);
   padding: var(--space-xs) var(--space-sm);
@@ -409,7 +877,9 @@ address {
   border-color: var(--text-secondary);
 }
 
-/* --- TILE: CONTACT --- */
+/* ============================================================
+   TILE: CONTACT
+   ============================================================ */
 .tile-contact {
   grid-area: cont;
   justify-content: space-between;
@@ -427,16 +897,17 @@ address {
   color: var(--interactive);
   transition: color 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
+.contact-email:hover { color: var(--text-display); }
 
-.contact-email:hover {
-  color: var(--text-display);
-}
-
-.contact-phone {
+.contact-social {
   font-family: 'Space Mono', monospace;
   font-size: var(--caption);
+  letter-spacing: 0.04em;
   color: var(--text-secondary);
+  text-transform: uppercase;
+  transition: color 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
+.contact-social:hover { color: var(--text-display); }
 
 .contact-address {
   font-family: 'Space Grotesk', sans-serif;
@@ -465,10 +936,7 @@ address {
   text-decoration: none;
   flex-shrink: 0;
 }
-
-.btn-primary:hover {
-  opacity: 0.85;
-}
+.btn-primary:hover { opacity: 0.85; }
 
 /* --- FOOTER --- */
 .site-footer {
@@ -501,13 +969,37 @@ address {
   color: var(--text-secondary);
   transition: color 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
+.footer-links a:hover { color: var(--text-display); }
 
-.footer-links a:hover {
-  color: var(--text-display);
+/* ============================================================
+   RESPONSIVE: TABLET
+   ============================================================ */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .bento-grid {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+      "hero   hero   hero   event  event  event"
+      "games  games  games  games  games  games"
+      "gstu   gstu   gstu   twin   twin   twin"
+      "xr     xr     xr     trans  trans  trans"
+      "imed   imed   imed   huma   huma   huma"
+      "stats  stats  stats  facul  facul  facul"
+      "world  world  world  cont   cont   cont"
+      "part   part   part   part   part   part";
+  }
+
+  body {
+    height: auto;
+    overflow: auto;
+  }
+
+  .tile-hero__title { font-size: 64px; }
+  .tile-event__date { font-size: 36px; }
 }
 
 /* ============================================================
-   RESPONSIVE: MOBILE (single column, scrollable)
+   RESPONSIVE: MOBILE
    ============================================================ */
 @media (max-width: 768px) {
   body {
@@ -532,28 +1024,26 @@ address {
     padding: var(--space-2xl) var(--space-md);
   }
 
-  .tile-hero__title {
-    font-size: 64px;
+  .tile-hero__title { font-size: 56px; }
+  .tile-event__date { font-size: 40px; }
+  .tile-transformer__name { font-size: 24px; }
+
+  .games-showcase {
+    flex-direction: column;
   }
 
-  .tile-projects {
-    overflow: visible;
-  }
+  .tile-projects { overflow: visible; }
 
   .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
     gap: var(--space-md);
     padding: var(--space-sm) 0;
   }
 
-  .stat-value {
-    font-size: 28px;
-  }
+  .stat-value { font-size: 24px; }
 
-  .partners-list {
-    overflow: visible;
-  }
+  .partners-list { overflow: visible; }
 
   .footer-inner {
     flex-direction: column;
@@ -568,33 +1058,10 @@ address {
   }
 }
 
-/* Tablet breakpoint */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .bento-grid {
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: auto;
-    grid-template-areas:
-      "hero  hero  hero  hero  hero  hero"
-      "game  game  game  twin  twin  twin"
-      "xr    xr    xr    huma  huma  huma"
-      "stats stats stats stats stats stats"
-      "world world world cont  cont  cont"
-      "part  part  part  part  part  part";
-  }
-
-  body {
-    height: auto;
-    overflow: auto;
-  }
-
-  .tile-hero__title {
-    font-size: 72px;
-  }
-}
-
-/* --- FOCUS STYLES (Accessibility) --- */
+/* --- FOCUS STYLES --- */
 .tile:focus-visible,
 a:focus-visible,
+button:focus-visible,
 .btn-primary:focus-visible {
   outline: 2px solid var(--interactive);
   outline-offset: 2px;

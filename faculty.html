@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faculty Network — CIM · Kennesaw State University</title>
+  <meta name="description" content="49 affiliated faculty across 7+ colleges driving interdisciplinary research in interactive media at Kennesaw State University.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@400;700&family=Space+Grotesk:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    [data-theme="dark"], :root {
+      --black: #000000; --surface: #111111; --surface-raised: #1A1A1A;
+      --border: #222222; --border-visible: #333333;
+      --text-disabled: #666666; --text-secondary: #999999;
+      --text-primary: #E8E8E8; --text-display: #FFFFFF;
+      --accent: #D71921; --accent-subtle: rgba(215,25,33,0.15);
+      --success: #4A9E5C; --warning: #D4A843; --interactive: #5B9BF6;
+      --space-xs: 4px; --space-sm: 8px; --space-md: 16px;
+      --space-lg: 24px; --space-xl: 32px; --space-2xl: 48px;
+      --space-3xl: 64px;
+      --label: 11px; --caption: 12px; --body-sm: 14px;
+      --body: 16px; --subheading: 18px; --heading: 24px;
+      --display-md: 36px; --display-lg: 48px; --display-xl: 72px;
+    }
+    [data-theme="light"] {
+      --black: #F5F5F5; --surface: #FFFFFF; --surface-raised: #F0F0F0;
+      --border: #E8E8E8; --border-visible: #CCCCCC;
+      --text-disabled: #999999; --text-secondary: #666666;
+      --text-primary: #1A1A1A; --text-display: #000000;
+      --interactive: #007AFF;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+
+    body {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      background: var(--black);
+      color: var(--text-primary);
+      min-height: 100vh;
+    }
+
+    /* Desktop: full viewport, side-by-side */
+    .faculty-page {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      grid-template-rows: 1fr;
+    }
+
+    /* Left sidebar */
+    .faculty-sidebar {
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      padding: var(--space-3xl) var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+    }
+
+    .faculty-sidebar__back {
+      position: absolute;
+      top: var(--space-lg);
+      left: var(--space-lg);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--surface-raised);
+      border: 1px solid var(--border-visible);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Mono', monospace;
+      font-size: var(--subheading);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: border-color 200ms, color 200ms;
+    }
+    .faculty-sidebar__back:hover {
+      border-color: var(--text-secondary);
+      color: var(--text-display);
+    }
+
+    .faculty-sidebar__label {
+      font-family: 'Space Mono', monospace;
+      font-size: var(--label);
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      margin-bottom: var(--space-lg);
+    }
+
+    .faculty-sidebar__hero {
+      font-family: 'Doto', 'Space Mono', monospace;
+      font-size: 80px;
+      font-weight: 700;
+      line-height: 1.0;
+      color: var(--text-display);
+      margin-bottom: var(--space-xs);
+    }
+
+    .faculty-sidebar__unit {
+      font-family: 'Space Mono', monospace;
+      font-size: var(--label);
+      letter-spacing: 0.1em;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      margin-bottom: var(--space-2xl);
+    }
+
+    /* College nav */
+    .college-nav {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+
+    .college-nav__item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-sm) 0;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: color 200ms;
+    }
+    .college-nav__item:hover { color: var(--text-display); }
+
+    .college-nav__name {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+    .college-nav__item:hover .college-nav__name { color: var(--text-display); }
+
+    .college-nav__count {
+      font-family: 'Space Mono', monospace;
+      font-size: var(--caption);
+      color: var(--text-disabled);
+    }
+
+    /* Right: faculty list */
+    .faculty-list {
+      padding: var(--space-2xl) var(--space-3xl);
+      overflow-y: auto;
+    }
+
+    .college-section {
+      margin-bottom: var(--space-2xl);
+    }
+
+    .college-section__title {
+      font-family: 'Space Mono', monospace;
+      font-size: var(--label);
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      margin-bottom: var(--space-md);
+      padding-bottom: var(--space-sm);
+      border-bottom: 1px solid var(--border-visible);
+      position: sticky;
+      top: 0;
+      background: var(--black);
+      z-index: 5;
+      padding-top: var(--space-sm);
+    }
+
+    .faculty-member {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: var(--space-md);
+      padding: var(--space-sm) 0;
+      border-bottom: 1px solid var(--border);
+      align-items: baseline;
+    }
+
+    .faculty-member__name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: var(--body-sm);
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .faculty-member__dept {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: var(--body-sm);
+      color: var(--text-secondary);
+    }
+
+    .faculty-member__interest {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.02em;
+      color: var(--text-disabled);
+      max-width: 300px;
+      text-align: right;
+    }
+
+    .faculty-member__email {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: var(--interactive);
+      transition: color 200ms;
+    }
+    .faculty-member__email:hover { color: var(--text-display); }
+
+    /* Mobile */
+    @media (max-width: 900px) {
+      .faculty-page {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .faculty-sidebar {
+        position: relative;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: var(--space-2xl) var(--space-lg);
+      }
+
+      .faculty-sidebar__hero { font-size: 56px; }
+
+      .faculty-list {
+        padding: var(--space-lg);
+      }
+
+      .faculty-member {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+
+      .faculty-member__interest {
+        text-align: left;
+        max-width: none;
+      }
+    }
+
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--interactive);
+      outline-offset: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="faculty-page">
+
+    <!-- Sidebar -->
+    <div class="faculty-sidebar">
+      <a href="index.html" class="faculty-sidebar__back" aria-label="Back to CIM home">&lt;</a>
+      <div class="faculty-sidebar__label">FACULTY NETWORK</div>
+      <div class="faculty-sidebar__hero">49</div>
+      <div class="faculty-sidebar__unit">AFFILIATED FACULTY</div>
+
+      <nav class="college-nav" aria-label="Jump to college">
+        <a href="#ccse" class="college-nav__item">
+          <span class="college-nav__name">CCSE</span>
+          <span class="college-nav__count">11</span>
+        </a>
+        <a href="#rchss" class="college-nav__item">
+          <span class="college-nav__name">RCHSS</span>
+          <span class="college-nav__count">12</span>
+        </a>
+        <a href="#gca" class="college-nav__item">
+          <span class="college-nav__name">GCA</span>
+          <span class="college-nav__count">5</span>
+        </a>
+        <a href="#wchhs" class="college-nav__item">
+          <span class="college-nav__name">WCHHS</span>
+          <span class="college-nav__count">4</span>
+        </a>
+        <a href="#bagwell" class="college-nav__item">
+          <span class="college-nav__name">BAGWELL</span>
+          <span class="college-nav__count">2</span>
+        </a>
+        <a href="#other" class="college-nav__item">
+          <span class="college-nav__name">OTHER</span>
+          <span class="college-nav__count">15</span>
+        </a>
+      </nav>
+    </div>
+
+    <!-- Faculty List -->
+    <div class="faculty-list">
+
+      <div class="college-section" id="ccse">
+        <div class="college-section__title">CCSE — College of Computing and Software Engineering</div>
+
+        <div class="faculty-member">
+          <span class="faculty-member__name">Joy Li</span>
+          <span class="faculty-member__dept">Software Engineering &amp; Game Development</span>
+          <span class="faculty-member__interest">XR, HCI, serious games</span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Lei Zhang</span>
+          <span class="faculty-member__dept">Software Engineering &amp; Game Development</span>
+          <span class="faculty-member__interest">VR</span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Sungchul Jung</span>
+          <span class="faculty-member__dept">Software Engineering &amp; Game Development</span>
+          <span class="faculty-member__interest">VR in education, affective computing</span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Brooke Zhao</span>
+          <span class="faculty-member__dept">Software Engineering &amp; Game Development</span>
+          <span class="faculty-member__interest">VR/AR, HCI, cognitive psychology</span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Chenyu Wang</span>
+          <span class="faculty-member__dept">Software Engineering &amp; Game Development</span>
+          <span class="faculty-member__interest">Digital Twin Modeling</span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Honghui Xu</span>
+          <span class="faculty-member__dept">Information Technology</span>
+          <span class="faculty-member__interest">Cyber Security</span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Amir Karami</span>
+          <span class="faculty-member__dept">School of Data Science &amp; Analytics</span>
+          <span class="faculty-member__interest">Computational linguistics, AI</span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Selena He</span>
+          <span class="faculty-member__dept">Computer Science</span>
+          <span class="faculty-member__interest">AI-Driven Healthcare, Computing Ed</span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">M. Rasel Mahmud</span>
+          <span class="faculty-member__dept">Computer Science</span>
+          <span class="faculty-member__interest">VR in healthcare, digital twin</span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Soo Il Shin</span>
+          <span class="faculty-member__dept">CCSE</span>
+          <span class="faculty-member__interest">AI &amp; entertainment</span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Maria Valero de Clemente</span>
+          <span class="faculty-member__dept">Information Technology</span>
+          <span class="faculty-member__interest"></span>
+        </div>
+      </div>
+
+      <div class="college-section" id="rchss">
+        <div class="college-section__title">RCHSS — Radow College of Humanities and Social Sciences</div>
+
+        <div class="faculty-member">
+          <span class="faculty-member__name">Laura Palmer</span>
+          <span class="faculty-member__dept">Technical Communication &amp; Interactive Design</span>
+          <span class="faculty-member__interest">UX research</span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Shadi Beshai</span>
+          <span class="faculty-member__dept">Psychology</span>
+          <span class="faculty-member__interest">Adult depression/anxiety, VR</span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Kanu Priya Singh</span>
+          <span class="faculty-member__dept">Technical Communication &amp; Interactive Design</span>
+          <span class="faculty-member__interest"></span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">David Bennett</span>
+          <span class="faculty-member__dept">History &amp; Philosophy</span>
+          <span class="faculty-member__interest"></span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Russel James</span>
+          <span class="faculty-member__dept">School of Communication &amp; Media</span>
+          <span class="faculty-member__interest"></span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Ian Dunham</span>
+          <span class="faculty-member__dept">Communication</span>
+          <span class="faculty-member__interest">Critical data studies</span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Lydia Ferguson</span>
+          <span class="faculty-member__dept">English</span>
+          <span class="faculty-member__interest"></span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Erin Bahl</span>
+          <span class="faculty-member__dept">English</span>
+          <span class="faculty-member__interest"></span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Elaine Venter</span>
+          <span class="faculty-member__dept">School of Communication &amp; Media</span>
+          <span class="faculty-member__interest"></span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Dominique McDaniel</span>
+          <span class="faculty-member__dept">English</span>
+          <span class="faculty-member__interest"></span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Nefertari Yancie</span>
+          <span class="faculty-member__dept">History</span>
+          <span class="faculty-member__interest">Immersive education</span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Tom Doleys</span>
+          <span class="faculty-member__dept">RCHSS</span>
+          <span class="faculty-member__interest"></span>
+        </div>
+      </div>
+
+      <div class="college-section" id="gca">
+        <div class="college-section__title">GCA — Georgia College of the Arts</div>
+
+        <div class="faculty-member">
+          <span class="faculty-member__name">Helena Shaskevich</span>
+          <span class="faculty-member__dept">School of Art &amp; Design</span>
+          <span class="faculty-member__interest">New media, AI in art, experimental film</span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Shuchita Mishra</span>
+          <span class="faculty-member__dept">School of Art &amp; Design</span>
+          <span class="faculty-member__interest">Immersive storytelling, comics, XR</span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Jeremy Speed-Schwartz</span>
+          <span class="faculty-member__dept">School of Art &amp; Design</span>
+          <span class="faculty-member__interest">Digital animation, motion tracking</span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Kyungeun Lim</span>
+          <span class="faculty-member__dept">School of Art &amp; Design</span>
+          <span class="faculty-member__interest"></span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Andrea Knowlton</span>
+          <span class="faculty-member__dept">Dance</span>
+          <span class="faculty-member__interest">Performance, embodiment, AI</span>
+        </div>
+      </div>
+
+      <div class="college-section" id="wchhs">
+        <div class="college-section__title">WCHHS — Wellstar College of Health and Human Services</div>
+
+        <div class="faculty-member">
+          <span class="faculty-member__name">Modupe Akintomide</span>
+          <span class="faculty-member__dept">WellStar School of Nursing</span>
+          <span class="faculty-member__interest">Dementia care, VR, gamification</span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Melissa Osborne</span>
+          <span class="faculty-member__dept">WellStar School of Nursing</span>
+          <span class="faculty-member__interest">Immersive VR, home safety</span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Kyu-soo Chung</span>
+          <span class="faculty-member__dept">Exercise Science &amp; Sport Management</span>
+          <span class="faculty-member__interest"></span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Kawther Hamash</span>
+          <span class="faculty-member__dept">WellStar School of Nursing</span>
+          <span class="faculty-member__interest">Oncology, AI in healthcare/education</span>
+        </div>
+      </div>
+
+      <div class="college-section" id="bagwell">
+        <div class="college-section__title">BAGWELL COLLEGE OF EDUCATION</div>
+
+        <div class="faculty-member">
+          <span class="faculty-member__name">Ivan Jorrin Abellan</span>
+          <span class="faculty-member__dept">Bagwell College of Education</span>
+          <span class="faculty-member__interest"></span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Christine Wusylko</span>
+          <span class="faculty-member__dept">School of Instructional Technology &amp; Innovation</span>
+          <span class="faculty-member__interest">AI literacy, STEM education</span>
+        </div>
+      </div>
+
+      <div class="college-section" id="other">
+        <div class="college-section__title">OTHER COLLEGES &amp; DEPARTMENTS</div>
+
+        <div class="faculty-member">
+          <span class="faculty-member__name">Mahyar Amirgholy</span>
+          <span class="faculty-member__dept">Digital Twin Cluster Lead</span>
+          <span class="faculty-member__interest">Traffic, supply chain simulation</span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Sergio Figueiredo</span>
+          <span class="faculty-member__dept">English</span>
+          <span class="faculty-member__interest">Metaverse education, rhetoric</span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Jeffrey Greene</span>
+          <span class="faculty-member__dept">English</span>
+          <span class="faculty-member__interest">Metaverse education</span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Max North</span>
+          <span class="faculty-member__dept">—</span>
+          <span class="faculty-member__interest">VR therapy, anxiety, sense of presence</span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Reza Vaezi</span>
+          <span class="faculty-member__dept">—</span>
+          <span class="faculty-member__interest">Brainwave, empathy</span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Harun Avci</span>
+          <span class="faculty-member__dept">Quantitative Analysis</span>
+          <span class="faculty-member__interest">Simulation optimization</span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Pegah Zamani</span>
+          <span class="faculty-member__dept">Architecture</span>
+          <span class="faculty-member__interest"></span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Hannah Mabry Wang</span>
+          <span class="faculty-member__dept">—</span>
+          <span class="faculty-member__interest"></span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Kamyar Raoufi</span>
+          <span class="faculty-member__dept">Industrial &amp; Systems Engineering (SPCEET)</span>
+          <span class="faculty-member__interest">Digital Twin</span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Aysu Ozel Avci</span>
+          <span class="faculty-member__dept">Quantitative Analysis (CCB)</span>
+          <span class="faculty-member__interest">Digital Twin</span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Victoria Lagrange</span>
+          <span class="faculty-member__dept">CIM Director</span>
+          <span class="faculty-member__interest">Game design, interactive narrative, AI</span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Nick Murphy</span>
+          <span class="faculty-member__dept">Game Studio</span>
+          <span class="faculty-member__interest">Game development</span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Robert Keyser</span>
+          <span class="faculty-member__dept">Industrial &amp; Systems Engineering (SPCEET)</span>
+          <span class="faculty-member__interest"></span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Lin Li</span>
+          <span class="faculty-member__dept">Industrial &amp; Systems Engineering (SPCEET)</span>
+          <span class="faculty-member__interest"></span>
+        </div>
+        <div class="faculty-member">
+          <span class="faculty-member__name">Kyusik Kim</span>
+          <span class="faculty-member__dept">Geographic Information Science</span>
+          <span class="faculty-member__interest">Digital Twin</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    (function() {
+      const saved = localStorage.getItem('cim-theme');
+      if (saved) document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
+
+</body>
+</html>
