@@ -411,98 +411,148 @@
       }
     })();
 
-    // In-grid Expand / Collapse — tiles grow within the grid itself
+    // Expand / Collapse — FLIP animation for bento tiles
     (function() {
-      var grid = document.querySelector('.bento-grid');
-      var isDesktop = function() { return window.innerWidth > 1200; };
+      const grid = document.querySelector('.bento-grid');
+      const isDesktop = () => window.innerWidth > 1200;
 
-      // Map tile CSS class → grid expand ID (matches CSS data-expand selectors)
-      var expandMap = {
-        'tile-hero': 'hero',
-        'tile-games-featured': 'games',
-        'tile-game': 'gstu',
-        'tile-twin': 'twin',
-        'tile-xr': 'xr',
-        'tile-imed': 'imed',
-        'tile-humanities': 'huma',
-        'tile-partners': 'part',
-        'tile-contact': 'cont'
-      };
-
-      var tiles = [];
-      Object.keys(expandMap).forEach(function(cls) {
-        var tile = grid.querySelector('.' + cls);
-        if (tile && tile.tagName === 'SECTION') {
-          tile.setAttribute('data-expandable', '');
-          tile.setAttribute('data-expand-id', expandMap[cls]);
-          tile.setAttribute('tabindex', '0');
-          tile.setAttribute('role', 'button');
-          tile.setAttribute('aria-expanded', 'false');
-          tiles.push(tile);
-        }
+      // Select expandable tiles: section.tile that aren't stats
+      const tiles = document.querySelectorAll('section.tile:not(.tile-stats)');
+      tiles.forEach(tile => {
+        tile.classList.add('expandable');
+        tile.setAttribute('tabindex', '0');
+        tile.setAttribute('role', 'button');
+        tile.setAttribute('aria-expanded', 'false');
       });
 
-      var currentExpand = null;
+      let expandedTile = null;
+      let savedRect = null;
 
       function expand(tile) {
         if (!isDesktop()) return;
-        var id = tile.getAttribute('data-expand-id');
+        if (expandedTile) collapse(expandedTile, true);
 
-        // Toggle: click same tile to collapse
-        if (currentExpand === tile) {
-          collapse();
+        // FIRST: capture current position
+        const first = tile.getBoundingClientRect();
+        savedRect = { top: first.top, left: first.left, width: first.width, height: first.height };
+
+        // LAST: apply expanded state (centered, fixed)
+        const maxW = Math.min(600, window.innerWidth * 0.9);
+        const expandedLeft = (window.innerWidth - maxW) / 2;
+        const expandedTop = window.innerHeight * 0.075;
+
+        tile.style.top = expandedTop + 'px';
+        tile.style.left = expandedLeft + 'px';
+        tile.style.width = maxW + 'px';
+        tile.classList.add('expanded');
+        grid.classList.add('has-expanded');
+        tile.setAttribute('aria-expanded', 'true');
+        expandedTile = tile;
+
+        // INVERT: calculate transform from final back to first
+        const dx = savedRect.left - expandedLeft;
+        const dy = savedRect.top - expandedTop;
+        const sw = savedRect.width / maxW;
+
+        tile.style.transform = 'translate(' + dx + 'px, ' + dy + 'px) scale(' + sw + ')';
+        tile.style.transformOrigin = 'top left';
+
+        // PLAY: animate to identity
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            tile.style.transition = 'transform 350ms cubic-bezier(0.25, 0.1, 0.25, 1)';
+            tile.style.transform = 'none';
+          });
+        });
+
+        // Stop clicks on links inside from propagating to collapse
+        tile.querySelectorAll('a').forEach(a => {
+          a.addEventListener('click', stopProp);
+        });
+      }
+
+      function collapse(tile, instant) {
+        if (!tile || !savedRect) return;
+
+        tile.querySelectorAll('a').forEach(a => {
+          a.removeEventListener('click', stopProp);
+        });
+
+        if (instant || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          resetTile(tile);
           return;
         }
 
-        // Switch: collapse previous, expand new
-        if (currentExpand) {
-          currentExpand.classList.remove('tile--expanded');
-          currentExpand.setAttribute('aria-expanded', 'false');
-        }
+        // FLIP reverse: animate back to original rect
+        const currentLeft = parseFloat(tile.style.left);
+        const currentTop = parseFloat(tile.style.top);
+        const currentWidth = parseFloat(tile.style.width);
+        const dx = savedRect.left - currentLeft;
+        const dy = savedRect.top - currentTop;
+        const sw = savedRect.width / currentWidth;
 
-        tile.classList.add('tile--expanded');
-        tile.setAttribute('aria-expanded', 'true');
-        grid.setAttribute('data-expand', id);
-        grid.classList.add('has-expanded');
-        currentExpand = tile;
+        tile.style.transition = 'transform 300ms cubic-bezier(0.25, 0.1, 0.25, 1)';
+        tile.style.transform = 'translate(' + dx + 'px, ' + dy + 'px) scale(' + sw + ')';
+
+        tile.addEventListener('transitionend', function handler() {
+          tile.removeEventListener('transitionend', handler);
+          resetTile(tile);
+        });
       }
 
-      function collapse() {
-        if (!currentExpand) return;
-        currentExpand.classList.remove('tile--expanded');
-        currentExpand.setAttribute('aria-expanded', 'false');
-        grid.removeAttribute('data-expand');
+      function resetTile(tile) {
+        tile.classList.remove('expanded');
         grid.classList.remove('has-expanded');
-        currentExpand = null;
+        tile.setAttribute('aria-expanded', 'false');
+        tile.style.top = '';
+        tile.style.left = '';
+        tile.style.width = '';
+        tile.style.transform = '';
+        tile.style.transformOrigin = '';
+        tile.style.transition = '';
+        expandedTile = null;
+        savedRect = null;
       }
 
-      // Click handlers on expandable tiles
-      tiles.forEach(function(tile) {
+      function stopProp(e) { e.stopPropagation(); }
+
+      // Click handler
+      tiles.forEach(tile => {
         tile.addEventListener('click', function(e) {
           if (!isDesktop()) return;
-          // Allow links inside expanded tile to navigate
-          if (tile.classList.contains('tile--expanded') && e.target.closest('a')) return;
-          expand(tile);
-        });
-
-        tile.addEventListener('keydown', function(e) {
-          if (!isDesktop()) return;
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
+          if (tile.classList.contains('expanded')) {
+            collapse(tile);
+          } else {
             expand(tile);
           }
         });
       });
 
-      // Escape to close
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && currentExpand) collapse();
+      // Keyboard: Enter/Space to expand, Escape to close
+      tiles.forEach(tile => {
+        tile.addEventListener('keydown', function(e) {
+          if (!isDesktop()) return;
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            if (tile.classList.contains('expanded')) {
+              collapse(tile);
+            } else {
+              expand(tile);
+            }
+          }
+        });
       });
 
-      // Click outside any expandable tile to close
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && expandedTile) {
+          collapse(expandedTile);
+        }
+      });
+
+      // Click outside to close
       document.addEventListener('click', function(e) {
-        if (currentExpand && !e.target.closest('.tile[data-expandable]')) {
-          collapse();
+        if (expandedTile && !expandedTile.contains(e.target)) {
+          collapse(expandedTile);
         }
       });
     })();

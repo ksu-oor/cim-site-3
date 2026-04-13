@@ -153,7 +153,7 @@ address { font-style: normal; }
 
 .theme-toggle__label {
   font-family: 'Space Mono', monospace;
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.1em;
   color: var(--text-disabled);
   text-transform: uppercase;
@@ -170,8 +170,6 @@ address { font-style: normal; }
   padding: var(--grid-padding);
   padding-bottom: 0;
   min-height: 0;
-  transition: grid-template-rows 400ms cubic-bezier(0.25, 0.1, 0.25, 1),
-              grid-template-columns 400ms cubic-bezier(0.25, 0.1, 0.25, 1);
   grid-template-areas:
     "hero  hero  hero  games games games games games event event event event"
     "hero  hero  hero  games games games games games event event event event"
@@ -350,7 +348,7 @@ address { font-style: normal; }
 
 .game-card__tags {
   font-family: 'Space Mono', monospace;
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.06em;
   color: var(--text-disabled);
   text-transform: uppercase;
@@ -364,7 +362,7 @@ address { font-style: normal; }
 
 .game-card__available {
   font-family: 'Space Mono', monospace;
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.08em;
   color: var(--text-secondary);
   text-transform: uppercase;
@@ -422,7 +420,7 @@ address { font-style: normal; }
 
 .tile-event__sponsors {
   font-family: 'Space Mono', monospace;
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.08em;
   color: var(--text-disabled);
   text-transform: uppercase;
@@ -497,7 +495,7 @@ address { font-style: normal; }
 
 .tile-stat-unit {
   font-family: 'Space Mono', monospace;
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.1em;
   color: var(--text-secondary);
   text-transform: uppercase;
@@ -537,7 +535,7 @@ address { font-style: normal; }
 
 .project-tags {
   font-family: 'Space Mono', monospace;
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.02em;
   color: var(--text-disabled);
   white-space: nowrap;
@@ -601,7 +599,7 @@ address { font-style: normal; }
   top: -1px;
   transform: translateY(-100%);
   font-family: 'Space Mono', monospace;
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.08em;
   color: var(--text-disabled);
   text-transform: uppercase;
@@ -718,7 +716,7 @@ address { font-style: normal; }
 
 .stat-label {
   font-family: 'Space Mono', monospace;
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.08em;
   color: var(--text-secondary);
   text-transform: uppercase;
@@ -772,7 +770,7 @@ address { font-style: normal; }
   display: flex;
   gap: var(--space-sm);
   font-family: 'Space Mono', monospace;
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.06em;
   color: var(--text-disabled);
   text-transform: uppercase;
@@ -882,7 +880,7 @@ address { font-style: normal; }
 
 .partners-list span {
   font-family: 'Space Mono', monospace;
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.04em;
   color: var(--text-disabled);
   padding: var(--space-xs) var(--space-sm);
@@ -980,7 +978,7 @@ address { font-style: normal; }
 .footer-copy,
 .footer-links a {
   font-family: 'Space Mono', monospace;
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.06em;
   color: var(--text-disabled);
   text-transform: uppercase;
@@ -993,9 +991,7 @@ address { font-style: normal; }
 .footer-links a:hover { color: var(--text-display); }
 
 /* ============================================================
-   IN-GRID EXPAND / COLLAPSE SYSTEM
-   Grid-native: tiles grow/shrink within the grid itself.
-   No modals. No fixed positioning. No overlays.
+   EXPAND / COLLAPSE SYSTEM
    ============================================================ */
 
 /* Hidden detail content (collapsed state) */
@@ -1003,13 +999,13 @@ address { font-style: normal; }
   display: none;
 }
 
-/* Expandable tile indicator */
-.tile[data-expandable] {
+/* Expandable indicator */
+.tile.expandable {
   cursor: pointer;
   position: relative;
 }
 
-.tile[data-expandable]::after {
+.tile.expandable::after {
   content: '+';
   position: absolute;
   top: var(--space-sm);
@@ -1022,26 +1018,23 @@ address { font-style: normal; }
   transition: color 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-.tile[data-expandable]:hover::after {
+.tile.expandable:hover::after {
   color: var(--text-secondary);
 }
 
-/* --- Expanded tile --- */
-.tile--expanded {
+/* Expanded state */
+.tile.expanded {
+  position: fixed;
+  z-index: 100;
   overflow-y: auto;
-  z-index: 2;
-  border-color: var(--border-visible) !important;
+  max-height: 85vh;
+  border-color: var(--border-visible);
+  transition: transform 350ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-.tile--expanded::after {
-  content: '×' !important;
-  color: var(--text-secondary) !important;
-  font-size: var(--subheading) !important;
-}
-
-.tile--expanded .tile-detail {
+.tile.expanded .tile-detail {
   display: block;
-  animation: fadeInDetail 200ms cubic-bezier(0.25, 0.1, 0.25, 1) 200ms both;
+  animation: fadeInDetail 200ms cubic-bezier(0.25, 0.1, 0.25, 1) 150ms both;
 }
 
 @keyframes fadeInDetail {
@@ -1049,223 +1042,26 @@ address { font-style: normal; }
   to   { opacity: 1; }
 }
 
-.tile--expanded .tile-projects {
+.tile.expanded::after {
+  content: '×';
+  color: var(--text-secondary);
+  font-size: var(--subheading);
+  z-index: 1;
+}
+
+/* Dim non-expanded tiles */
+.bento-grid.has-expanded .tile:not(.expanded) {
+  opacity: 0.3;
+  pointer-events: none;
+  transition: opacity 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* Remove mask gradient on expanded tiles so all content shows */
+.tile.expanded .tile-projects {
   -webkit-mask-image: none;
   mask-image: none;
   overflow: visible;
   flex: none;
-}
-
-/* --- Expanded typography: scale up to fill the space --- */
-.tile--expanded .tile-label {
-  font-size: var(--body-sm);
-  letter-spacing: 0.14em;
-  margin-bottom: var(--space-md);
-}
-
-.tile--expanded .tile-tagline {
-  font-size: var(--subheading);
-  margin-bottom: var(--space-sm);
-}
-
-.tile--expanded .project-name {
-  font-size: var(--subheading);
-}
-
-.tile--expanded .project-tags {
-  font-size: var(--body-sm);
-}
-
-.tile--expanded .progress-bar {
-  height: 5px;
-  margin-top: var(--space-sm);
-}
-
-.tile--expanded .progress-bar__label {
-  font-size: var(--caption);
-}
-
-.tile--expanded .project {
-  padding: var(--space-sm) 0;
-  gap: 2px;
-}
-
-/* Hero expanded */
-.tile--expanded.tile-hero .tile-hero__label {
-  font-size: var(--body-sm);
-}
-
-.tile--expanded.tile-hero .tile-hero__title {
-  font-size: clamp(72px, 10vw, 140px);
-}
-
-.tile--expanded.tile-hero .tile-hero__subtitle {
-  font-size: var(--heading);
-  margin-bottom: var(--space-md);
-}
-
-.tile--expanded.tile-hero .tile-hero__desc {
-  font-size: var(--subheading);
-  line-height: 1.6;
-  max-width: 50ch;
-  -webkit-line-clamp: unset;
-}
-
-/* Game Studio expanded */
-.tile--expanded.tile-game .tile-stat-hero {
-  font-size: clamp(48px, 7vw, 80px);
-}
-
-.tile--expanded.tile-game .tile-stat-unit {
-  font-size: var(--body-sm);
-  letter-spacing: 0.12em;
-}
-
-/* Games featured expanded */
-.tile--expanded .game-card__title {
-  font-size: var(--subheading);
-}
-
-.tile--expanded .game-card__tags {
-  font-size: var(--body-sm);
-}
-
-.tile--expanded .game-card__meta {
-  font-size: var(--body-sm);
-}
-
-.tile--expanded .game-card__available {
-  font-size: var(--body-sm);
-}
-
-/* Partners expanded */
-.tile--expanded .partners-list span {
-  font-size: var(--body-sm);
-  padding: var(--space-sm) var(--space-md);
-}
-
-/* Contact expanded */
-.tile--expanded .contact-email {
-  font-size: var(--subheading);
-}
-
-.tile--expanded .contact-social {
-  font-size: var(--body-sm);
-  letter-spacing: 0.06em;
-}
-
-.tile--expanded .contact-address {
-  font-size: var(--body);
-  line-height: 1.6;
-}
-
-.tile--expanded .btn-primary {
-  font-size: var(--body-sm);
-  padding: 14px 28px;
-}
-
-/* --- Compressed tiles (everything shrinks when one expands) --- */
-.bento-grid.has-expanded .tile:not(.tile--expanded) {
-  overflow: hidden;
-  padding: var(--space-xs) var(--space-sm);
-}
-
-/* Non-expandable tiles dim more */
-.bento-grid.has-expanded .tile:not(.tile--expanded):not([data-expandable]) {
-  opacity: 0.35;
-  transition: opacity 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
-/* Expandable compressed tiles are interactive */
-.bento-grid.has-expanded .tile[data-expandable]:not(.tile--expanded) {
-  opacity: 0.5;
-  transition: opacity 250ms cubic-bezier(0.25, 0.1, 0.25, 1),
-              border-color 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
-.bento-grid.has-expanded .tile[data-expandable]:not(.tile--expanded):hover {
-  opacity: 0.85;
-  border-color: var(--border-visible);
-}
-
-/* Hide secondary content in all compressed tiles */
-.bento-grid.has-expanded .tile:not(.tile--expanded) .tile-detail,
-.bento-grid.has-expanded .tile:not(.tile--expanded) .tile-tagline,
-.bento-grid.has-expanded .tile:not(.tile--expanded) .tile-hero__subtitle,
-.bento-grid.has-expanded .tile:not(.tile--expanded) .tile-hero__desc,
-.bento-grid.has-expanded .tile:not(.tile--expanded) .tile-event__details,
-.bento-grid.has-expanded .tile:not(.tile--expanded) .tile-event__sponsors,
-.bento-grid.has-expanded .tile:not(.tile--expanded) .tile-event__cta,
-.bento-grid.has-expanded .tile:not(.tile--expanded) .tile-transformer__sub,
-.bento-grid.has-expanded .tile:not(.tile--expanded) .tile-transformer__cta,
-.bento-grid.has-expanded .tile:not(.tile--expanded) .tile-faculty__bar,
-.bento-grid.has-expanded .tile:not(.tile--expanded) .tile-faculty__legend,
-.bento-grid.has-expanded .tile:not(.tile--expanded) .tile-faculty__cta,
-.bento-grid.has-expanded .tile:not(.tile--expanded) .tile-world__cta,
-.bento-grid.has-expanded .tile:not(.tile--expanded) .tile-world__desc,
-.bento-grid.has-expanded .tile:not(.tile--expanded) .stats-grid,
-.bento-grid.has-expanded .tile:not(.tile--expanded) .game-card__available {
-  display: none;
-}
-
-/* ---- GRID TEMPLATES: per-tile expansion ----
-   Each rule redistributes rows & columns so the
-   expanded tile dominates while others compress.
-   Row pairs: A(1-2) B(3-4) C(5-6) D(7-8)
-   -------------------------------------------- */
-
-/* HERO: rows 1-2, cols 1-3 */
-.bento-grid[data-expand="hero"] {
-  grid-template-rows: 4fr 4fr 0.5fr 0.5fr 0.5fr 0.5fr 0.4fr 0.4fr;
-  grid-template-columns: 3fr 3fr 3fr 0.35fr 0.35fr 0.35fr 0.35fr 0.35fr 0.35fr 0.35fr 0.35fr 0.35fr;
-}
-
-/* GAMES: rows 1-2, cols 4-8 */
-.bento-grid[data-expand="games"] {
-  grid-template-rows: 4fr 4fr 0.5fr 0.5fr 0.5fr 0.5fr 0.4fr 0.4fr;
-  grid-template-columns: 0.35fr 0.35fr 0.35fr 2.5fr 2.5fr 2.5fr 2.5fr 2.5fr 0.35fr 0.35fr 0.35fr 0.35fr;
-}
-
-/* GSTU (Game Studio): rows 3-4, cols 1-3 */
-.bento-grid[data-expand="gstu"] {
-  grid-template-rows: 0.5fr 0.5fr 4fr 4fr 0.5fr 0.5fr 0.4fr 0.4fr;
-  grid-template-columns: 3fr 3fr 3fr 0.35fr 0.35fr 0.35fr 0.35fr 0.35fr 0.35fr 0.35fr 0.35fr 0.35fr;
-}
-
-/* TWIN (Digital Twin): rows 3-4, cols 4-6 */
-.bento-grid[data-expand="twin"] {
-  grid-template-rows: 0.5fr 0.5fr 4fr 4fr 0.5fr 0.5fr 0.4fr 0.4fr;
-  grid-template-columns: 0.35fr 0.35fr 0.35fr 3fr 3fr 3fr 0.35fr 0.35fr 0.35fr 0.35fr 0.35fr 0.35fr;
-}
-
-/* XR: rows 3-4, cols 7-9 */
-.bento-grid[data-expand="xr"] {
-  grid-template-rows: 0.5fr 0.5fr 4fr 4fr 0.5fr 0.5fr 0.4fr 0.4fr;
-  grid-template-columns: 0.35fr 0.35fr 0.35fr 0.35fr 0.35fr 0.35fr 3fr 3fr 3fr 0.35fr 0.35fr 0.35fr;
-}
-
-/* IMED (Immersive Ed): rows 5-6, cols 1-3 */
-.bento-grid[data-expand="imed"] {
-  grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr 4fr 4fr 0.4fr 0.4fr;
-  grid-template-columns: 3fr 3fr 3fr 0.35fr 0.35fr 0.35fr 0.35fr 0.35fr 0.35fr 0.35fr 0.35fr 0.35fr;
-}
-
-/* HUMA (Digital Humanities): rows 5-6, cols 4-6 */
-.bento-grid[data-expand="huma"] {
-  grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr 4fr 4fr 0.4fr 0.4fr;
-  grid-template-columns: 0.35fr 0.35fr 0.35fr 3fr 3fr 3fr 0.35fr 0.35fr 0.35fr 0.35fr 0.35fr 0.35fr;
-}
-
-/* PARTNERS: rows 7-8, cols 1-4 */
-.bento-grid[data-expand="part"] {
-  grid-template-rows: 0.4fr 0.4fr 0.5fr 0.5fr 0.5fr 0.5fr 4fr 4fr;
-  grid-template-columns: 3fr 3fr 3fr 3fr 0.35fr 0.35fr 0.35fr 0.35fr 0.35fr 0.35fr 0.35fr 0.35fr;
-}
-
-/* CONTACT: rows 7-8, cols 9-12 */
-.bento-grid[data-expand="cont"] {
-  grid-template-rows: 0.4fr 0.4fr 0.5fr 0.5fr 0.5fr 0.5fr 4fr 4fr;
-  grid-template-columns: 0.35fr 0.35fr 0.35fr 0.35fr 0.35fr 0.35fr 0.35fr 0.35fr 3fr 3fr 3fr 3fr;
 }
 
 /* ============================================================
@@ -1306,9 +1102,8 @@ address { font-style: normal; }
 
   /* Expansion system disabled on tablet — content always visible */
   .tile-detail { display: block; }
-  .tile[data-expandable] { cursor: default; }
-  .tile[data-expandable]::after { display: none; }
-  .bento-grid { transition: none; }
+  .tile.expandable { cursor: default; }
+  .tile.expandable::after { display: none; }
 }
 
 /* ============================================================
@@ -1368,9 +1163,8 @@ address { font-style: normal; }
 
   /* Expansion system disabled on mobile — content always visible */
   .tile-detail { display: block; }
-  .tile[data-expandable] { cursor: default; }
-  .tile[data-expandable]::after { display: none; }
-  .bento-grid { transition: none; }
+  .tile.expandable { cursor: default; }
+  .tile.expandable::after { display: none; }
 
   .footer-inner {
     flex-direction: column;
