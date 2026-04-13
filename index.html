@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-theme="dark">
+<html lang="en" dir="ltr" data-theme="dark" data-zoom="medium">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,24 +13,36 @@
 
   <link rel="stylesheet" href="styles.css">
   <script>
-    // Prevent FOUC: apply saved theme before first paint
-    (function(){var t=localStorage.getItem('cim-theme');if(t)document.documentElement.setAttribute('data-theme',t)})();
+    // Prevent FOUC: apply saved theme + zoom before first paint
+    (function(){
+      var t=localStorage.getItem('cim-theme');if(t)document.documentElement.setAttribute('data-theme',t);
+      var z=localStorage.getItem('cim-zoom')||'medium';document.documentElement.setAttribute('data-zoom',z);
+    })();
   </script>
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
+  <!-- Page-level toolbar: zoom + theme -->
+  <div class="page-toolbar" role="toolbar" aria-label="Display settings">
+    <div class="zoom-control" role="radiogroup" aria-label="Zoom level">
+      <button class="zoom-btn" data-zoom="small" role="radio" aria-checked="false" aria-label="Small zoom">S</button>
+      <button class="zoom-btn zoom-btn--active" data-zoom="medium" role="radio" aria-checked="true" aria-label="Medium zoom">M</button>
+      <button class="zoom-btn" data-zoom="large" role="radio" aria-checked="false" aria-label="Large zoom">L</button>
+    </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark and light mode" title="Toggle theme">
+      <span class="theme-toggle__track">
+        <span class="theme-toggle__knob"></span>
+      </span>
+      <span class="theme-toggle__label" aria-hidden="true">DARK</span>
+    </button>
+  </div>
+
   <main id="main-content" class="bento-grid">
 
     <!-- TILE 1: Hero / CIM Branding -->
     <section class="tile tile-hero" aria-label="CIM Hero">
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark and light mode" title="Toggle theme">
-        <span class="theme-toggle__track">
-          <span class="theme-toggle__knob"></span>
-        </span>
-        <span class="theme-toggle__label" aria-hidden="true">DARK</span>
-      </button>
       <div class="tile-hero__label">KENNESAW STATE UNIVERSITY · OFFICE OF RESEARCH</div>
       <h1 class="tile-hero__title">CIM</h1>
       <p class="tile-hero__subtitle">Center for Interactive Media</p>
@@ -366,7 +378,6 @@
       const html = document.documentElement;
       const label = toggle.querySelector('.theme-toggle__label');
 
-      // Check for saved preference, default to dark
       const saved = localStorage.getItem('cim-theme');
       if (saved === 'light') {
         html.setAttribute('data-theme', 'light');
@@ -381,11 +392,34 @@
         localStorage.setItem('cim-theme', next);
       });
 
+      // Zoom control — medium default
+      const zoomBtns = document.querySelectorAll('.zoom-btn');
+      const savedZoom = localStorage.getItem('cim-zoom') || 'medium';
+      html.setAttribute('data-zoom', savedZoom);
+      zoomBtns.forEach(function(btn) {
+        var isActive = btn.getAttribute('data-zoom') === savedZoom;
+        btn.classList.toggle('zoom-btn--active', isActive);
+        btn.setAttribute('aria-checked', isActive ? 'true' : 'false');
+      });
+
+      zoomBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var level = this.getAttribute('data-zoom');
+          html.setAttribute('data-zoom', level);
+          localStorage.setItem('cim-zoom', level);
+          zoomBtns.forEach(function(b) {
+            var active = b.getAttribute('data-zoom') === level;
+            b.classList.toggle('zoom-btn--active', active);
+            b.setAttribute('aria-checked', active ? 'true' : 'false');
+          });
+        });
+      });
+
       // Launch event: check if past April 27, 2026
-      const eventTile = document.querySelector('.tile-event');
+      var eventTile = document.querySelector('.tile-event');
       if (eventTile) {
-        const now = new Date();
-        const eventDate = new Date('2026-04-27T23:59:59');
+        var now = new Date();
+        var eventDate = new Date('2026-04-27T23:59:59');
         if (now > eventDate) {
           eventTile.classList.add('tile-event--past');
         }

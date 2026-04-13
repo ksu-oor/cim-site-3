@@ -64,6 +64,45 @@
   --interactive: #007AFF;
 }
 
+/* --- ZOOM LEVELS --- */
+/* Small: compact view — tighter spacing, smaller type */
+[data-zoom="small"] {
+  --tile-gap: 6px;
+  --grid-padding: 6px;
+  --display-xl: 56px;
+  --display-lg: 38px;
+  --display-md: 28px;
+  --heading: 20px;
+  --subheading: 15px;
+  --body: 13px;
+  --body-sm: 12px;
+  --caption: 10px;
+  --label: 9px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+}
+
+/* Medium: default — no overrides needed, uses root values */
+
+/* Large: expanded view — roomier spacing, bigger type */
+[data-zoom="large"] {
+  --tile-gap: 10px;
+  --grid-padding: 10px;
+  --display-xl: 88px;
+  --display-lg: 60px;
+  --display-md: 44px;
+  --heading: 28px;
+  --subheading: 21px;
+  --body: 18px;
+  --body-sm: 16px;
+  --caption: 13px;
+  --label: 12px;
+  --space-lg: 28px;
+  --space-xl: 40px;
+  --space-2xl: 56px;
+}
+
 /* --- RESET --- */
 *, *::before, *::after {
   margin: 0;
@@ -109,18 +148,64 @@ address { font-style: normal; }
 }
 .skip-link:focus { top: var(--grid-padding); }
 
+/* --- PAGE TOOLBAR (top-right: zoom + theme) --- */
+.page-toolbar {
+  position: fixed;
+  top: var(--grid-padding);
+  right: var(--grid-padding);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xs);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+/* --- ZOOM CONTROL (segmented, instrument-panel) --- */
+.zoom-control {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  background: var(--border);
+  border-radius: 999px;
+  padding: 1px;
+}
+
+.zoom-btn {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--text-disabled);
+  background: var(--surface);
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 999px;
+  line-height: 1;
+  transition: color 150ms cubic-bezier(0.25, 0.1, 0.25, 1),
+              background 150ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.zoom-btn:hover {
+  color: var(--text-primary);
+}
+
+.zoom-btn--active {
+  background: var(--text-display);
+  color: var(--black);
+}
+
 /* --- THEME TOGGLE (mechanical switch) --- */
 .theme-toggle {
-  position: absolute;
-  top: var(--space-md);
-  right: var(--space-md);
   display: flex;
   align-items: center;
   gap: var(--space-sm);
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 10;
   padding: var(--space-xs);
 }
 
@@ -213,7 +298,6 @@ address { font-style: normal; }
 .tile-hero {
   grid-area: hero;
   justify-content: center;
-  position: relative;
 }
 
 .tile-hero__label {
@@ -230,7 +314,7 @@ address { font-style: normal; }
 
 .tile-hero__title {
   font-family: 'Doto', 'Space Mono', monospace;
-  font-size: clamp(48px, 5.5vw, 80px);
+  font-size: var(--display-xl);
   font-weight: 700;
   line-height: 0.95;
   letter-spacing: -0.04em;
@@ -400,7 +484,7 @@ address { font-style: normal; }
 
 .tile-event__date {
   font-family: 'Doto', 'Space Mono', monospace;
-  font-size: clamp(28px, 3.5vw, 48px);
+  font-size: var(--display-lg);
   font-weight: 700;
   line-height: 0.95;
   letter-spacing: -0.03em;
@@ -486,7 +570,7 @@ address { font-style: normal; }
 /* Stat hero inside a cluster tile */
 .tile-stat-hero {
   font-family: 'Doto', 'Space Mono', monospace;
-  font-size: clamp(28px, 3vw, 40px);
+  font-size: var(--display-md);
   font-weight: 700;
   line-height: 1.0;
   letter-spacing: -0.03em;
@@ -644,7 +728,7 @@ address { font-style: normal; }
 
 .tile-transformer__name {
   font-family: 'Doto', 'Space Mono', monospace;
-  font-size: clamp(24px, 3vw, 40px);
+  font-size: var(--display-md);
   font-weight: 700;
   line-height: 1.0;
   letter-spacing: -0.03em;
@@ -707,7 +791,7 @@ address { font-style: normal; }
 
 .stat-value {
   font-family: 'Doto', 'Space Mono', monospace;
-  font-size: clamp(22px, 2.5vw, 36px);
+  font-size: var(--heading);
   font-weight: 700;
   line-height: 1.0;
   letter-spacing: -0.03em;
@@ -739,7 +823,7 @@ address { font-style: normal; }
 
 .tile-faculty__hero {
   font-family: 'Doto', 'Space Mono', monospace;
-  font-size: clamp(40px, 5vw, 64px);
+  font-size: var(--display-lg);
   font-weight: 700;
   line-height: 1.0;
   color: var(--text-display);
@@ -1014,12 +1098,6 @@ address { font-style: normal; }
   }
 
   .tile { padding: var(--space-lg); }
-  .tile-hero__title { font-size: 56px; }
-  .tile-event__date { font-size: 36px; }
-  .tile-stat-hero { font-size: 32px; }
-  .stat-value { font-size: 22px; }
-  .tile-faculty__hero { font-size: 48px; }
-  .tile-transformer__name { font-size: 28px; }
 
   .tile-projects {
     -webkit-mask-image: none;
@@ -1053,11 +1131,6 @@ address { font-style: normal; }
     padding: var(--space-2xl) var(--space-md);
   }
 
-  .tile-hero__title { font-size: 56px; }
-  .tile-event__date { font-size: 40px; }
-  .tile-transformer__name { font-size: 28px; }
-  .tile-stat-hero { font-size: 32px; }
-  .tile-faculty__hero { font-size: 48px; }
 
   .tile-projects {
     -webkit-mask-image: none;
@@ -1077,8 +1150,6 @@ address { font-style: normal; }
     gap: var(--space-md);
     padding: var(--space-sm) 0;
   }
-
-  .stat-value { font-size: 28px; }
 
   .partners-list { overflow: visible; }
 
