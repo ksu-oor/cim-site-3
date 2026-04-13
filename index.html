@@ -382,14 +382,14 @@
       const saved = localStorage.getItem('cim-theme');
       if (saved === 'light') {
         html.setAttribute('data-theme', 'light');
-        label.textContent = 'LIGHT';
+        label.textContent = 'BLUEPRINT';
       }
 
       toggle.addEventListener('click', function() {
         const current = html.getAttribute('data-theme');
         const next = current === 'dark' ? 'light' : 'dark';
         html.setAttribute('data-theme', next);
-        label.textContent = next.toUpperCase();
+        label.textContent = next === 'light' ? 'BLUEPRINT' : 'DARK';
         localStorage.setItem('cim-theme', next);
       });
 
