@@ -891,13 +891,13 @@ address { font-style: normal; }
   grid-area: world;
   position: relative;
   cursor: pointer;
-  border-color: var(--border-visible);
+  border-color: var(--accent);
   overflow: hidden;
 }
 
 .tile-world:hover {
-  border-color: var(--text-secondary);
-  background: var(--surface-raised);
+  border-color: var(--accent);
+  background: var(--accent-subtle);
 }
 
 .tile-world__dot-grid {
@@ -942,7 +942,7 @@ address { font-style: normal; }
   font-family: 'Space Mono', monospace;
   font-size: var(--label);
   letter-spacing: 0.06em;
-  color: var(--interactive);
+  color: var(--accent);
   text-transform: uppercase;
 }
 
