@@ -831,36 +831,41 @@ address { font-style: normal; }
   height: 100%;
 }
 
-.tile-world__cta {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  margin-top: auto;
-  margin-bottom: var(--space-xs);
-}
-
-.tile-world__title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: var(--body-sm);
-  font-weight: 500;
+.tile-world__name {
+  font-family: 'Doto', 'Space Mono', monospace;
+  font-size: clamp(24px, 3vw, 40px);
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
   color: var(--text-display);
+  margin: var(--space-sm) 0 var(--space-xs);
 }
 
-.tile-world__arrow {
-  font-family: 'Space Mono', monospace;
-  font-size: var(--heading);
-  color: var(--interactive);
-  transition: transform 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
-.tile-world:hover .tile-world__arrow { transform: translateX(4px); }
-
-.tile-world__desc {
+.tile-world__sub {
   font-family: 'Space Grotesk', sans-serif;
   font-size: var(--caption);
   color: var(--text-secondary);
   line-height: 1.4;
 }
+
+.tile-world__cta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: auto;
+  font-family: 'Space Mono', monospace;
+  font-size: var(--label);
+  letter-spacing: 0.06em;
+  color: var(--interactive);
+  text-transform: uppercase;
+}
+
+.tile-world__arrow {
+  font-size: var(--subheading);
+  transition: transform 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.tile-world:hover .tile-world__arrow { transform: translateX(4px); }
 
 /* ============================================================
    TILE: PARTNERS
