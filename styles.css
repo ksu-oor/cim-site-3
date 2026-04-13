@@ -341,11 +341,7 @@ address { font-style: normal; }
   font-size: var(--body-sm);
   line-height: 1.5;
   color: var(--text-secondary);
-  max-width: 36ch;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  max-width: 42ch;
 }
 
 /* ============================================================
