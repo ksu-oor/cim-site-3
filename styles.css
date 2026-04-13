@@ -50,18 +50,24 @@
   --footer-height: 32px;
 }
 
-/* --- LIGHT MODE --- */
+/* --- BLUEPRINT MODE --- */
 [data-theme="light"] {
-  --black: #F5F5F5;
-  --surface: #FFFFFF;
-  --surface-raised: #F0F0F0;
-  --border: #E8E8E8;
-  --border-visible: #CCCCCC;
-  --text-disabled: #999999;
-  --text-secondary: #666666;
-  --text-primary: #1A1A1A;
-  --text-display: #000000;
-  --interactive: #007AFF;
+  --black: #F7F5F0;
+  --surface: #FFFDF8;
+  --surface-raised: #F0EDE6;
+  --border: #D4CFC4;
+  --border-visible: #B8B2A6;
+  --text-disabled: #A39D94;
+  --text-secondary: #7A7468;
+  --text-primary: #2C2824;
+  --text-display: #1A1714;
+  --interactive: #2B5EA7;
+}
+
+[data-theme="light"] body {
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(180, 170, 155, 0.03) 31px, rgba(180, 170, 155, 0.03) 32px),
+    repeating-linear-gradient(90deg, transparent, transparent 31px, rgba(180, 170, 155, 0.03) 31px, rgba(180, 170, 155, 0.03) 32px);
 }
 
 /* --- ZOOM LEVELS --- */
