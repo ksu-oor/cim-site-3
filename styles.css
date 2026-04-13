@@ -285,6 +285,11 @@ address { font-style: normal; }
   transition: border-color 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 .tile:hover { border-color: var(--border-visible); }
+a.tile:active,
+.tile[onclick]:active {
+  transform: scale(0.995);
+  transition: transform 100ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
 
 /* --- TILE LABEL --- */
 .tile-label {
@@ -863,6 +868,27 @@ address { font-style: normal; }
   flex-wrap: wrap;
 }
 
+.tile-faculty__legend span {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.tile-faculty__legend span::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.tile-faculty__legend span:nth-child(1)::before { background: var(--text-primary); }
+.tile-faculty__legend span:nth-child(2)::before { background: var(--text-secondary); }
+.tile-faculty__legend span:nth-child(3)::before { background: var(--text-disabled); }
+.tile-faculty__legend span:nth-child(4)::before { background: var(--border-visible); }
+.tile-faculty__legend span:nth-child(5)::before { background: var(--border); }
+
 .tile-faculty__cta {
   display: flex;
   align-items: center;
@@ -978,13 +1004,6 @@ address { font-style: normal; }
   border: 1px solid var(--border-visible);
   border-radius: 999px;
   white-space: nowrap;
-  transition: color 200ms cubic-bezier(0.25, 0.1, 0.25, 1),
-              border-color 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
-.partners-list span:hover {
-  color: var(--text-primary);
-  border-color: var(--text-secondary);
 }
 
 /* ============================================================
