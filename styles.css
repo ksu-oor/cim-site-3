@@ -1,6 +1,6 @@
 /* ============================================================
    CIM — Center for Interactive Media
-   Nothing Design System · Bento Viewport Layout
+   Nothing Design System · Living Billboard (5-cell carousel)
    Dark mode default via data-theme. Manual toggle.
    ============================================================ */
 
@@ -32,25 +32,29 @@
   --space-3xl: 64px;
   --space-4xl: 96px;
 
-  /* Type Scale */
-  --display-xl: 72px;
-  --display-lg: 48px;
-  --display-md: 36px;
-  --heading: 24px;
-  --subheading: 18px;
-  --body: 16px;
-  --body-sm: 14px;
-  --caption: 12px;
-  --label: 11px;
+  /* Type Scale — tuned for across-the-room billboard legibility */
+  --display-xl: 88px;
+  --display-lg: 60px;
+  --display-md: 44px;
+  --heading: 28px;
+  --subheading: 22px;
+  --body: 18px;
+  --body-sm: 16px;
+  --caption: 15px;
+  --label: 13px;
 
   /* Grid */
   --tile-radius: 12px;
   --tile-gap: 8px;
   --grid-padding: 8px;
-  --footer-height: 32px;
+  --footer-height: 44px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --slide-fade: 220ms;
 }
 
-/* --- BLUEPRINT MODE --- */
+/* --- LIGHT MODE --- */
 [data-theme="light"] {
   --black: #F7F5F0;
   --surface: #FFFDF8;
@@ -68,45 +72,6 @@
   background-image:
     repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(180, 170, 155, 0.03) 31px, rgba(180, 170, 155, 0.03) 32px),
     repeating-linear-gradient(90deg, transparent, transparent 31px, rgba(180, 170, 155, 0.03) 31px, rgba(180, 170, 155, 0.03) 32px);
-}
-
-/* --- ZOOM LEVELS --- */
-/* Small: compact view — tighter spacing, smaller type */
-[data-zoom="small"] {
-  --tile-gap: 6px;
-  --grid-padding: 6px;
-  --display-xl: 56px;
-  --display-lg: 38px;
-  --display-md: 28px;
-  --heading: 20px;
-  --subheading: 15px;
-  --body: 13px;
-  --body-sm: 12px;
-  --caption: 10px;
-  --label: 9px;
-  --space-lg: 16px;
-  --space-xl: 24px;
-  --space-2xl: 32px;
-}
-
-/* Medium: default — no overrides needed, uses root values */
-
-/* Large: expanded view — roomier spacing, bigger type */
-[data-zoom="large"] {
-  --tile-gap: 10px;
-  --grid-padding: 10px;
-  --display-xl: 88px;
-  --display-lg: 60px;
-  --display-md: 44px;
-  --heading: 28px;
-  --subheading: 21px;
-  --body: 18px;
-  --body-sm: 16px;
-  --caption: 13px;
-  --label: 12px;
-  --space-lg: 28px;
-  --space-xl: 40px;
-  --space-2xl: 56px;
 }
 
 /* --- RESET --- */
@@ -150,11 +115,11 @@ address { font-style: normal; }
   padding: var(--space-sm) var(--space-md);
   border-radius: 999px;
   text-decoration: none;
-  transition: top 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition: top 200ms var(--ease);
 }
 .skip-link:focus { top: var(--grid-padding); }
 
-/* --- PAGE TOOLBAR (top-right: zoom + theme) --- */
+/* --- PAGE TOOLBAR (top-right: theme) --- */
 .page-toolbar {
   position: fixed;
   top: var(--grid-padding);
@@ -169,42 +134,7 @@ address { font-style: normal; }
   border-radius: 999px;
 }
 
-/* --- ZOOM CONTROL (segmented, instrument-panel) --- */
-.zoom-control {
-  display: flex;
-  align-items: center;
-  gap: 1px;
-  background: var(--border);
-  border-radius: 999px;
-  padding: 1px;
-}
-
-.zoom-btn {
-  font-family: 'Space Mono', monospace;
-  font-size: 9px;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  color: var(--text-disabled);
-  background: var(--surface);
-  border: none;
-  cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 999px;
-  line-height: 1;
-  transition: color 150ms cubic-bezier(0.25, 0.1, 0.25, 1),
-              background 150ms cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
-.zoom-btn:hover {
-  color: var(--text-primary);
-}
-
-.zoom-btn--active {
-  background: var(--text-display);
-  color: var(--black);
-}
-
-/* --- THEME TOGGLE (mechanical switch) --- */
+/* --- THEME TOGGLE --- */
 .theme-toggle {
   display: flex;
   align-items: center;
@@ -223,7 +153,7 @@ address { font-style: normal; }
   border: 1px solid var(--border-visible);
   border-radius: 999px;
   position: relative;
-  transition: background 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition: background 200ms var(--ease);
 }
 
 .theme-toggle__knob {
@@ -235,42 +165,38 @@ address { font-style: normal; }
   position: absolute;
   top: 2px;
   left: 2px;
-  transition: transform 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition: transform 200ms var(--ease);
 }
 
-[data-theme="light"] .theme-toggle__knob {
-  transform: translateX(18px);
-}
+[data-theme="light"] .theme-toggle__knob { transform: translateX(18px); }
 
 .theme-toggle__label {
   font-family: 'Space Mono', monospace;
-  font-size: 9px;
+  font-size: var(--label);
   letter-spacing: 0.1em;
   color: var(--text-disabled);
   text-transform: uppercase;
 }
 
-/* --- BENTO GRID (14 tiles, weighted rows) --- */
+/* ============================================================
+   5-CELL BILLBOARD GRID
+   Desktop: Hero + Research (row 1) · Event + Showcase + Touchpoint (row 2)
+   ============================================================ */
 .bento-grid {
   flex: 1;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  /* Weighted rows: hero row slightly taller, bottom row slightly compact */
-  grid-template-rows: 1.1fr 1.1fr 1fr 1fr 1fr 1fr 0.9fr 0.9fr;
+  grid-template-rows: repeat(2, 1fr);
   gap: var(--tile-gap);
   padding: var(--grid-padding);
   padding-bottom: 0;
   min-height: 0;
   grid-template-areas:
-    "hero  hero  hero  games games games games games event event event event"
-    "hero  hero  hero  games games games games games event event event event"
-    "gstu  gstu  gstu  twin  twin  twin  xr    xr    xr    trans trans trans"
-    "gstu  gstu  gstu  twin  twin  twin  xr    xr    xr    trans trans trans"
-    "imed  imed  imed  huma  huma  huma  stats stats stats facul facul facul"
-    "imed  imed  imed  huma  huma  huma  stats stats stats facul facul facul"
-    "part  part  part  part  world world world world cont  cont  cont  cont"
-    "part  part  part  part  world world world world cont  cont  cont  cont";
+    "hero  hero  hero  hero  hero  hero  spotA spotA spotA spotA spotA spotA"
+    "event event event spotB spotB spotB spotB spotB spotB touch touch touch";
 }
+
+.bento-grid > * { min-width: 0; min-height: 0; }
 
 /* --- BASE TILE --- */
 .tile {
@@ -282,19 +208,15 @@ address { font-style: normal; }
   display: flex;
   flex-direction: column;
   min-height: 0;
-  transition: border-color 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition: border-color 200ms var(--ease);
 }
 .tile:hover { border-color: var(--border-visible); }
-a.tile:active,
-.tile[onclick]:active {
-  transform: scale(0.995);
-  transition: transform 100ms cubic-bezier(0.25, 0.1, 0.25, 1);
-}
+a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease); }
 
-/* --- TILE LABEL --- */
+/* --- TILE LABEL (shared) --- */
 .tile-label {
   font-family: 'Space Mono', monospace;
-  font-size: 10px;
+  font-size: var(--label);
   font-weight: 400;
   letter-spacing: 0.12em;
   color: var(--text-disabled);
@@ -304,11 +226,12 @@ a.tile:active,
 }
 
 /* ============================================================
-   TILE: HERO
+   TILE: HERO (fixed)
    ============================================================ */
 .tile-hero {
   grid-area: hero;
   justify-content: center;
+  padding: var(--space-xl);
 }
 
 .tile-hero__label {
@@ -317,7 +240,7 @@ a.tile:active,
   letter-spacing: 0.08em;
   color: var(--text-secondary);
   text-transform: uppercase;
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-md);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -325,18 +248,18 @@ a.tile:active,
 
 .tile-hero__title {
   font-family: 'Doto', 'Space Mono', monospace;
-  font-size: var(--display-xl);
+  font-size: clamp(56px, 8vw, var(--display-xl));
   font-weight: 700;
   line-height: 0.95;
   letter-spacing: -0.04em;
   color: var(--text-display);
-  margin-bottom: var(--space-xs);
+  margin-bottom: var(--space-sm);
 }
 
 .tile-hero__subtitle {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: var(--subheading);
-  font-weight: 300;
+  font-size: var(--heading);
+  font-weight: 500;
   color: var(--text-primary);
   margin-bottom: var(--space-sm);
 }
@@ -346,14 +269,448 @@ a.tile:active,
   font-size: var(--body-sm);
   line-height: 1.5;
   color: var(--text-secondary);
-  max-width: 42ch;
+  max-width: 48ch;
+  margin-bottom: var(--space-lg);
+}
+
+.tile-hero__cta {
+  align-self: flex-start;
 }
 
 /* ============================================================
-   TILE: PUBLISHED GAMES (featured — the "surprise" element)
+   TILE: LAUNCH EVENT (fixed, accent border)
    ============================================================ */
-.tile-games-featured {
-  grid-area: games;
+.tile-event {
+  grid-area: event;
+  border-color: var(--accent);
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  justify-content: space-between;
+}
+
+.tile-event:hover {
+  border-color: var(--accent);
+  background: var(--accent-subtle);
+}
+
+.tile-event__date {
+  font-family: 'Doto', 'Space Mono', monospace;
+  font-size: clamp(36px, 5vw, var(--display-lg));
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--text-display);
+  margin: var(--space-xs) 0;
+}
+
+.tile-event__details {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: var(--caption);
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.tile-event__sponsors {
+  font-family: 'Space Mono', monospace;
+  font-size: var(--label);
+  letter-spacing: 0.08em;
+  color: var(--text-disabled);
+  text-transform: uppercase;
+  margin-top: auto;
+}
+
+.tile-event__cta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: 'Space Mono', monospace;
+  font-size: var(--label);
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-top: var(--space-sm);
+}
+
+.tile-event__arrow {
+  font-size: var(--subheading);
+  transition: transform 200ms var(--ease);
+}
+.tile-event:hover .tile-event__arrow { transform: translateX(4px); }
+
+.tile-event--past { border-color: var(--border-visible); }
+.tile-event--past:hover { background: var(--surface-raised); }
+.tile-event--past .tile-event__cta { color: var(--text-secondary); }
+.tile-event--past .tile-label::after { content: ' · RECAP'; }
+
+/* ============================================================
+   SPOTLIGHT (rotating carousel cell)
+   ============================================================ */
+.spotlight {
+  position: relative;
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.spotlight--research { grid-area: spotA; }
+.spotlight--showcase { grid-area: spotB; }
+.spotlight--touchpoint { grid-area: touch; }
+
+.spotlight__stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+}
+
+/* --- SLIDE (absolutely-stacked; active slide sits on top with opaque
+   background so the incoming slide masks the outgoing during fade) --- */
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  opacity: 0;
+  pointer-events: none;
+  background: var(--surface);
+  z-index: 0;
+  transition: opacity var(--slide-fade) var(--ease);
+  min-height: 0;
+  min-width: 0;
+}
+
+.slide[data-active] {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+.slide__label {
+  margin-bottom: var(--space-sm);
+  flex-shrink: 0;
+}
+
+.slide__body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.slide__tagline {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: var(--caption);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.slide__hero-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-shrink: 0;
+}
+
+/* --- FEATURE SLIDES (Transformer · CIM World): dot-grid + accent CTA --- */
+.slide--feature { position: absolute; inset: 0; }
+
+.slide__dot-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--text-disabled) 1px, transparent 1px);
+  background-size: 16px 16px;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+.slide__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: var(--space-sm);
+}
+
+.slide__feature-name {
+  font-family: 'Doto', 'Space Mono', monospace;
+  font-size: clamp(32px, 4.5vw, var(--display-md));
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: var(--text-display);
+  margin: var(--space-sm) 0 var(--space-xs);
+}
+
+.slide__feature-sub {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: var(--caption);
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.slide--world { /* red accent border on this cell when active */ }
+.spotlight--showcase:has(.slide--world[data-active]) {
+  border-color: var(--accent);
+  transition: border-color 500ms var(--ease);
+}
+
+/* --- Generic slide CTA (link-styled) --- */
+.slide__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: 'Space Mono', monospace;
+  font-size: var(--label);
+  letter-spacing: 0.06em;
+  color: var(--interactive);
+  text-transform: uppercase;
+  margin-top: auto;
+  align-self: flex-start;
+  transition: color 200ms var(--ease);
+}
+.slide__cta--accent { color: var(--accent); }
+.slide__cta:hover { color: var(--text-display); }
+
+.slide__cta-arrow {
+  font-size: var(--subheading);
+  transition: transform 200ms var(--ease);
+}
+.slide__cta:hover .slide__cta-arrow { transform: translateX(4px); }
+
+/* --- Faculty slide --- */
+.slide__body--faculty { gap: var(--space-sm); }
+
+.tile-faculty__hero {
+  font-family: 'Doto', 'Space Mono', monospace;
+  font-size: clamp(36px, 5vw, var(--display-lg));
+  font-weight: 700;
+  line-height: 1.0;
+  color: var(--text-display);
+  margin: 0 0 var(--space-xs);
+}
+
+.tile-faculty__bar {
+  display: flex;
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
+  gap: 2px;
+  margin: var(--space-sm) 0 var(--space-xs);
+}
+
+.faculty-seg {
+  background: var(--text-primary);
+  border-radius: 2px;
+  min-width: 4px;
+}
+.faculty-seg--alt1 { background: var(--text-secondary); }
+.faculty-seg--alt2 { background: var(--text-disabled); }
+.faculty-seg--alt3 { background: var(--border-visible); }
+.faculty-seg--alt4 { background: var(--border-visible); opacity: 0.7; }
+.faculty-seg--alt5 { background: var(--border); }
+
+.tile-faculty__legend {
+  display: flex;
+  gap: var(--space-sm);
+  font-family: 'Space Mono', monospace;
+  font-size: var(--label);
+  letter-spacing: 0.06em;
+  color: var(--text-disabled);
+  text-transform: uppercase;
+  flex-wrap: wrap;
+}
+.tile-faculty__legend span {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.tile-faculty__legend span::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.tile-faculty__legend span:nth-child(1)::before { background: var(--text-primary); }
+.tile-faculty__legend span:nth-child(2)::before { background: var(--text-secondary); }
+.tile-faculty__legend span:nth-child(3)::before { background: var(--text-disabled); }
+.tile-faculty__legend span:nth-child(4)::before { background: var(--border-visible); }
+.tile-faculty__legend span:nth-child(5)::before { background: var(--border); }
+
+/* --- Stats grid (At-a-Glance slide) --- */
+.stats-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 1fr;
+  gap: var(--space-md);
+  min-height: 0;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-xs);
+}
+
+.stat-value {
+  font-family: 'Doto', 'Space Mono', monospace;
+  font-size: clamp(24px, 3.5vw, var(--display-md));
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: var(--text-display);
+}
+
+.stat-label {
+  font-family: 'Space Mono', monospace;
+  font-size: var(--label);
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+/* --- Stat hero inside a research slide --- */
+.tile-stat-hero {
+  font-family: 'Doto', 'Space Mono', monospace;
+  font-size: clamp(32px, 4.5vw, var(--display-md));
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: var(--text-display);
+}
+
+.tile-stat-unit {
+  font-family: 'Space Mono', monospace;
+  font-size: var(--label);
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+/* --- Projects list (research slides) --- */
+.tile-projects {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-xs) 0;
+  border-top: 1px solid var(--border);
+}
+.project:first-child { border-top: none; }
+
+.project-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: var(--subheading);
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.project-tags {
+  font-family: 'Space Mono', monospace;
+  font-size: var(--label);
+  letter-spacing: 0.02em;
+  color: var(--text-disabled);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* --- Progress bar --- */
+.progress-bar {
+  position: relative;
+  height: 6px;
+  background: var(--border);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: var(--space-sm);
+  overflow: visible;
+}
+
+.progress-bar__fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: var(--text-secondary);
+  border-radius: 2px;
+  transition: width 400ms var(--ease);
+}
+.progress-bar__fill--success { background: var(--success); }
+.progress-bar__fill--warning { background: var(--warning); }
+.progress-bar__fill--active { background: var(--interactive); }
+
+.progress-bar__label {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  padding: 2px var(--space-sm);
+  background: var(--surface-raised);
+  border: 1px solid var(--border-visible);
+  border-radius: 999px;
+  font-family: 'Space Mono', monospace;
+  font-size: var(--label);
+  letter-spacing: 0.08em;
+  color: var(--text-disabled);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* --- Partners slide --- */
+.partners-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-content: start;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.partners-list span {
+  font-family: 'Space Mono', monospace;
+  font-size: var(--caption);
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  padding: var(--space-xs) var(--space-md);
+  border: 1px solid var(--border-visible);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* --- Published games slide --- */
+.slide__body--games {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
 }
 
 .games-showcase {
@@ -386,81 +743,52 @@ a.tile:active,
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Paper shader: grayscale + high contrast + slight grain */
   filter: grayscale(100%) contrast(1.3) brightness(0.85);
-  transition: filter 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition: filter 300ms var(--ease);
 }
 
 .game-card:hover .game-card__img {
   filter: grayscale(50%) contrast(1.15) brightness(0.95);
 }
 
-/* Crosshatch/paper texture overlay */
 .game-card__paper-overlay {
   position: absolute;
   inset: 0;
   background-image:
-    repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 2px,
-      rgba(0, 0, 0, 0.06) 2px,
-      rgba(0, 0, 0, 0.06) 3px
-    );
+    repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0,0,0,0.06) 2px, rgba(0,0,0,0.06) 3px);
   mix-blend-mode: multiply;
   pointer-events: none;
   opacity: 0.7;
 }
-
 [data-theme="light"] .game-card__paper-overlay {
-  background-image:
-    repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 2px,
-      rgba(0, 0, 0, 0.08) 2px,
-      rgba(0, 0, 0, 0.08) 3px
-    );
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 3px);
 }
 
-.game-card__info {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  flex-shrink: 0;
-}
-
+.game-card__info { display: flex; flex-direction: column; gap: 1px; flex-shrink: 0; }
 .game-card__title {
   font-family: 'Space Grotesk', sans-serif;
   font-size: var(--body-sm);
   font-weight: 500;
   color: var(--text-display);
 }
-
 .game-card__tags {
   font-family: 'Space Mono', monospace;
-  font-size: 10px;
+  font-size: var(--label);
   letter-spacing: 0.06em;
   color: var(--text-disabled);
   text-transform: uppercase;
 }
-
-.game-card__meta {
-  font-family: 'Space Mono', monospace;
-  font-size: var(--caption);
-  color: var(--text-secondary);
-}
+.game-card__meta { font-family: 'Space Mono', monospace; font-size: var(--caption); color: var(--text-secondary); }
 
 .game-card__available {
   font-family: 'Space Mono', monospace;
-  font-size: 10px;
+  font-size: var(--label);
   letter-spacing: 0.08em;
   color: var(--text-secondary);
   text-transform: uppercase;
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  margin-top: auto;
   flex-shrink: 0;
 }
 
@@ -472,586 +800,128 @@ a.tile:active,
   display: inline-block;
 }
 
-/* ============================================================
-   TILE: LAUNCH EVENT (red outline — urgency signal)
-   ============================================================ */
-.tile-event {
-  grid-area: event;
-  border-color: var(--accent);
-  cursor: pointer;
-  text-decoration: none;
-  color: inherit;
-  justify-content: space-between;
-}
+/* --- Touchpoint slides --- */
+.slide--touch { justify-content: flex-start; align-items: stretch; text-align: left; }
 
-.tile-event:hover {
-  border-color: var(--accent);
-  background: var(--accent-subtle);
-}
-
-.tile-event__date {
-  font-family: 'Doto', 'Space Mono', monospace;
-  font-size: var(--display-lg);
-  font-weight: 700;
-  line-height: 0.95;
-  letter-spacing: -0.03em;
-  color: var(--text-display);
-  margin: var(--space-xs) 0;
-}
-
-.tile-event__details {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: var(--caption);
-  color: var(--text-secondary);
-  line-height: 1.4;
-}
-
-.tile-event__sponsors {
-  font-family: 'Space Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  color: var(--text-disabled);
-  text-transform: uppercase;
-  margin-top: auto;
-}
-
-.tile-event__cta {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  font-family: 'Space Mono', monospace;
-  font-size: var(--label);
-  letter-spacing: 0.06em;
-  color: var(--accent);
-  text-transform: uppercase;
-  margin-top: var(--space-sm);
-}
-
-.tile-event__arrow {
-  font-size: var(--subheading);
-  transition: transform 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
-.tile-event:hover .tile-event__arrow {
-  transform: translateX(4px);
-}
-
-/* Post-event commemorative state */
-.tile-event--past {
-  border-color: var(--border-visible);
-}
-.tile-event--past:hover {
-  background: var(--surface-raised);
-}
-.tile-event--past .tile-event__cta {
-  color: var(--text-secondary);
-}
-.tile-event--past .tile-label::after {
-  content: ' · RECAP';
-}
-
-/* ============================================================
-   TILE: RESEARCH CLUSTERS (shared styles)
-   ============================================================ */
-.tile-game { grid-area: gstu; }
-.tile-twin { grid-area: twin; }
-.tile-xr { grid-area: xr; }
-.tile-imed { grid-area: imed; }
-.tile-humanities { grid-area: huma; }
-
-.tile-cluster { gap: var(--space-xs); }
-
-.tile-tagline {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: var(--caption);
-  font-weight: 300;
-  font-style: italic;
-  color: var(--text-secondary);
-  margin-bottom: 2px;
-  flex-shrink: 0;
-}
-
-/* Stat hero inside a cluster tile */
-.tile-stat-hero {
-  font-family: 'Doto', 'Space Mono', monospace;
-  font-size: var(--display-md);
-  font-weight: 700;
-  line-height: 1.0;
-  letter-spacing: -0.03em;
-  color: var(--text-display);
-}
-
-.tile-stat-unit {
-  font-family: 'Space Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 0.1em;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  margin-bottom: var(--space-xs);
-}
-
-.tile-projects {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  overflow: hidden;
+.slide__body--touch {
   flex: 1;
-  min-height: 0;
-  /* Graceful fade instead of hard clip */
-  -webkit-mask-image: linear-gradient(to bottom, #000 85%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 85%, transparent 100%);
-}
-
-.project {
   display: flex;
   flex-direction: column;
-  gap: 1px;
-  padding: 3px 0;
-  border-top: 1px solid var(--border);
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  text-align: left;
 }
-.project:first-child { border-top: none; }
 
-.project-name {
+.touch-primary {
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(16px, 2vw, var(--subheading));
+  color: var(--interactive);
+  word-break: break-all;
+  transition: color 200ms var(--ease);
+}
+.touch-primary:hover { color: var(--text-display); }
+
+.touch-handle {
+  font-family: 'Doto', 'Space Mono', monospace;
+  font-size: clamp(24px, 3vw, var(--display-md));
+  color: var(--text-display);
+  letter-spacing: -0.02em;
+}
+
+.touch-venue {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: var(--body-sm);
+  font-size: var(--display-md);
   font-weight: 500;
-  color: var(--text-primary);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.project-tags {
-  font-family: 'Space Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.02em;
-  color: var(--text-disabled);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* --- PROGRESS BARS --- */
-.progress-bar {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  margin-top: 3px;
-}
-
-.progress-bar__fill {
-  height: 3px;
-  background: var(--text-secondary);
-  border-radius: 2px;
-  position: relative;
-  flex-shrink: 0;
-  transition: width 400ms cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
-/* Container for the bar track */
-.progress-bar::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: var(--border);
-  border-radius: 2px;
-}
-
-/* Wrap progress-bar to contain the track */
-.progress-bar {
-  position: relative;
-  height: 3px;
-  background: var(--border);
-  border-radius: 2px;
-  overflow: visible;
-  display: flex;
-  align-items: center;
-}
-
-.progress-bar__fill {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-}
-
-.progress-bar__fill--success { background: var(--success); }
-.progress-bar__fill--warning { background: var(--warning); }
-.progress-bar__fill--active { background: var(--interactive); }
-
-.progress-bar__label {
-  position: absolute;
-  right: 0;
-  top: -1px;
-  transform: translateY(-100%);
-  font-family: 'Space Mono', monospace;
-  font-size: 8px;
-  letter-spacing: 0.08em;
-  color: var(--text-disabled);
-  text-transform: uppercase;
-  white-space: nowrap;
-  padding-bottom: 2px;
-}
-
-/* ============================================================
-   TILE: TRANSFORMER CONFERENCE (special accent tile)
-   ============================================================ */
-.tile-transformer {
-  grid-area: trans;
-  position: relative;
-  cursor: pointer;
-  border-color: var(--border-visible);
-  overflow: hidden;
-  text-decoration: none;
-  color: inherit;
-}
-
-.tile-transformer:hover {
-  border-color: var(--text-secondary);
-  background: var(--surface-raised);
-}
-
-.tile-transformer__dot-grid {
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, var(--text-disabled) 1px, transparent 1px);
-  background-size: 16px 16px;
-  opacity: 0.06;
-  pointer-events: none;
-}
-
-.tile-transformer__content {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.tile-transformer__name {
-  font-family: 'Doto', 'Space Mono', monospace;
-  font-size: var(--display-md);
-  font-weight: 700;
-  line-height: 1.0;
-  letter-spacing: -0.03em;
-  color: var(--text-display);
-  margin: var(--space-sm) 0 var(--space-xs);
-}
-
-.tile-transformer__sub {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: var(--caption);
-  color: var(--text-secondary);
-  line-height: 1.4;
-}
-
-.tile-transformer__cta {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  margin-top: auto;
-  font-family: 'Space Mono', monospace;
-  font-size: var(--label);
-  letter-spacing: 0.06em;
-  color: var(--interactive);
-  text-transform: uppercase;
-}
-
-.tile-transformer__arrow {
-  font-size: var(--subheading);
-  transition: transform 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
-.tile-transformer:hover .tile-transformer__arrow {
-  transform: translateX(4px);
-}
-
-/* ============================================================
-   TILE: STATS
-   ============================================================ */
-.tile-stats {
-  grid-area: stats;
-}
-
-.stats-grid {
-  flex: 1;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr 1fr;
-  gap: var(--space-sm);
-  min-height: 0;
-}
-
-.stat {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  gap: var(--space-xs);
-}
-
-.stat-value {
-  font-family: 'Doto', 'Space Mono', monospace;
-  font-size: var(--heading);
-  font-weight: 700;
-  line-height: 1.0;
-  letter-spacing: -0.03em;
+  line-height: 1.05;
   color: var(--text-display);
 }
 
-.stat-label {
+.touch-address {
   font-family: 'Space Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 0.08em;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-}
-
-/* ============================================================
-   TILE: FACULTY NETWORK (clickable)
-   ============================================================ */
-.tile-faculty {
-  grid-area: facul;
-  cursor: pointer;
-  text-decoration: none;
-  color: inherit;
-  justify-content: space-between;
-}
-
-.tile-faculty:hover {
-  border-color: var(--text-secondary);
-}
-
-.tile-faculty__hero {
-  font-family: 'Doto', 'Space Mono', monospace;
-  font-size: var(--display-lg);
-  font-weight: 700;
-  line-height: 1.0;
-  color: var(--text-display);
-  margin: var(--space-xs) 0;
-}
-
-.tile-faculty__bar {
-  display: flex;
-  height: 6px;
-  border-radius: 3px;
-  overflow: hidden;
-  gap: 2px;
-  margin: var(--space-sm) 0 var(--space-xs);
-}
-
-.faculty-seg {
-  background: var(--text-primary);
-  border-radius: 2px;
-  min-width: 4px;
-}
-.faculty-seg--alt1 { background: var(--text-secondary); }
-.faculty-seg--alt2 { background: var(--text-disabled); }
-.faculty-seg--alt3 { background: var(--border-visible); }
-.faculty-seg--alt4 { background: var(--border-visible); opacity: 0.7; }
-.faculty-seg--alt5 { background: var(--border); }
-
-.tile-faculty__legend {
-  display: flex;
-  gap: var(--space-sm);
-  font-family: 'Space Mono', monospace;
-  font-size: 8px;
-  letter-spacing: 0.06em;
-  color: var(--text-disabled);
-  text-transform: uppercase;
-  flex-wrap: wrap;
-}
-
-.tile-faculty__legend span {
-  display: flex;
-  align-items: center;
-  gap: 3px;
-}
-
-.tile-faculty__legend span::before {
-  content: '';
-  display: inline-block;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.tile-faculty__legend span:nth-child(1)::before { background: var(--text-primary); }
-.tile-faculty__legend span:nth-child(2)::before { background: var(--text-secondary); }
-.tile-faculty__legend span:nth-child(3)::before { background: var(--text-disabled); }
-.tile-faculty__legend span:nth-child(4)::before { background: var(--border-visible); }
-.tile-faculty__legend span:nth-child(5)::before { background: var(--border); }
-
-.tile-faculty__cta {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  font-family: 'Space Mono', monospace;
-  font-size: var(--label);
-  letter-spacing: 0.06em;
-  color: var(--interactive);
-  text-transform: uppercase;
-  margin-top: auto;
-}
-
-.tile-faculty__arrow {
-  font-size: var(--subheading);
-  transition: transform 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
-.tile-faculty:hover .tile-faculty__arrow {
-  transform: translateX(4px);
-}
-
-/* ============================================================
-   TILE: CIM WORLD
-   ============================================================ */
-.tile-world {
-  grid-area: world;
-  position: relative;
-  cursor: pointer;
-  border-color: var(--accent);
-  overflow: hidden;
-}
-
-.tile-world:hover {
-  border-color: var(--accent);
-  background: var(--accent-subtle);
-}
-
-.tile-world__dot-grid {
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, var(--text-disabled) 1px, transparent 1px);
-  background-size: 16px 16px;
-  opacity: 0.06;
-  pointer-events: none;
-}
-
-.tile-world__content {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.tile-world__name {
-  font-family: 'Doto', 'Space Mono', monospace;
-  font-size: clamp(24px, 3vw, 40px);
-  font-weight: 700;
-  line-height: 1.0;
-  letter-spacing: -0.03em;
-  color: var(--text-display);
-  margin: var(--space-sm) 0 var(--space-xs);
-}
-
-.tile-world__sub {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: var(--caption);
-  color: var(--text-secondary);
-  line-height: 1.4;
-}
-
-.tile-world__cta {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  margin-top: auto;
-  font-family: 'Space Mono', monospace;
-  font-size: var(--label);
-  letter-spacing: 0.06em;
-  color: var(--accent);
-  text-transform: uppercase;
-}
-
-.tile-world__arrow {
-  font-size: var(--subheading);
-  transition: transform 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
-.tile-world:hover .tile-world__arrow { transform: translateX(4px); }
-
-/* ============================================================
-   TILE: PARTNERS
-   ============================================================ */
-.tile-partners {
-  grid-area: part;
-}
-
-.partners-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-sm);
-  align-content: start;
-  flex: 1;
-  min-height: 0;
-}
-
-.partners-list span {
-  font-family: 'Space Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.04em;
-  color: var(--text-disabled);
-  padding: var(--space-xs) var(--space-sm);
-  border: 1px solid var(--border-visible);
-  border-radius: 999px;
-  white-space: nowrap;
-}
-
-/* ============================================================
-   TILE: CONTACT
-   ============================================================ */
-.tile-contact {
-  grid-area: cont;
-  justify-content: space-between;
-}
-
-.contact-info {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
-}
-
-.contact-email {
-  font-family: 'Space Mono', monospace;
-  font-size: var(--body-sm);
-  color: var(--interactive);
-  transition: color 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-.contact-email:hover { color: var(--text-display); }
-
-.contact-social {
-  font-family: 'Space Mono', monospace;
-  font-size: var(--caption);
-  letter-spacing: 0.04em;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  transition: color 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-.contact-social:hover { color: var(--text-display); }
-
-.contact-address {
-  font-family: 'Space Grotesk', sans-serif;
   font-size: var(--caption);
   line-height: 1.5;
-  color: var(--text-disabled);
-  margin-top: var(--space-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
 }
 
-/* Button: Primary (pill, inverted) */
+.touch-cta { margin-top: var(--space-sm); }
+
+/* ============================================================
+   SPOTLIGHT CONTROLS (segmented pill)
+   ============================================================ */
+.spotlight__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: 4px;
+  background: var(--border);
+  border-radius: 999px;
+  align-self: center;
+  flex-shrink: 0;
+}
+
+.spot-btn {
+  font-family: 'Space Mono', monospace;
+  font-size: var(--body-sm);
+  line-height: 1;
+  color: var(--text-disabled);
+  background: var(--surface);
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 999px;
+  transition: color 150ms var(--ease), background 150ms var(--ease);
+  min-width: 24px;
+}
+.spot-btn:hover { color: var(--text-primary); }
+.spot-btn:active { background: var(--surface-raised); }
+
+.spot-btn--play { font-size: var(--label); letter-spacing: 0.1em; }
+.spot-btn__play-icon { font-size: var(--label); line-height: 1; }
+
+.spot-dots {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 0 var(--space-xs);
+}
+
+.spot-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-disabled);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 200ms var(--ease), transform 200ms var(--ease);
+}
+.spot-dot:hover { background: var(--text-secondary); }
+.spot-dot[aria-selected="true"] {
+  background: var(--text-display);
+  transform: scale(1.3);
+}
+
+/* ============================================================
+   FLIP-CHAR (character-roll transition on slide labels)
+   ============================================================ */
+.flip-char {
+  display: inline-block;
+  min-width: 0.5em;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============================================================
+   BUTTONS (shared)
+   ============================================================ */
 .btn-primary {
   display: inline-block;
   font-family: 'Space Mono', monospace;
-  font-size: 11px;
-  font-weight: 400;
+  font-size: var(--label);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   text-align: center;
@@ -1061,13 +931,15 @@ a.tile:active,
   border-radius: 999px;
   padding: 10px 20px;
   cursor: pointer;
-  transition: opacity 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition: opacity 200ms var(--ease);
   text-decoration: none;
   flex-shrink: 0;
 }
 .btn-primary:hover { opacity: 0.85; }
 
-/* --- FOOTER --- */
+/* ============================================================
+   FOOTER
+   ============================================================ */
 .site-footer {
   height: var(--footer-height);
   flex-shrink: 0;
@@ -1084,11 +956,9 @@ a.tile:active,
   gap: var(--space-md);
 }
 
-.footer-clusters,
-.footer-copy,
-.footer-links a {
+.footer-clusters, .footer-copy, .footer-links a {
   font-family: 'Space Mono', monospace;
-  font-size: 10px;
+  font-size: var(--caption);
   letter-spacing: 0.06em;
   color: var(--text-disabled);
   text-transform: uppercase;
@@ -1096,48 +966,47 @@ a.tile:active,
 
 .footer-links a {
   color: var(--text-secondary);
-  transition: color 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition: color 200ms var(--ease);
 }
 .footer-links a:hover { color: var(--text-display); }
 
 /* ============================================================
-   RESPONSIVE: TABLET
+   RESPONSIVE: TABLET (769-1200px)
+   Stacks to 2 columns. Rotations still run.
    ============================================================ */
 @media (min-width: 769px) and (max-width: 1200px) {
+  body {
+    height: auto;
+    overflow-y: auto;
+  }
+
   .bento-grid {
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: auto;
     grid-template-areas:
-      "hero   hero   hero   event  event  event"
-      "games  games  games  games  games  games"
-      "gstu   gstu   gstu   twin   twin   twin"
-      "xr     xr     xr     trans  trans  trans"
-      "stats  stats  stats  facul  facul  facul"
-      "imed   imed   imed   huma   huma   huma"
-      "world  world  world  cont   cont   cont"
-      "part   part   part   part   part   part";
+      "hero  hero  hero  spotA spotA spotA"
+      "hero  hero  hero  spotA spotA spotA"
+      "event event event touch touch touch"
+      "spotB spotB spotB spotB spotB spotB";
+    padding-bottom: var(--grid-padding);
   }
 
-  body {
-    height: auto;
-    overflow: auto;
+  .spotlight, .tile-hero, .tile-event {
+    min-height: 320px;
   }
 
-  .tile { padding: var(--space-lg); }
-
-  .tile-projects {
-    -webkit-mask-image: none;
-    mask-image: none;
-  }
+  .spotlight--showcase { min-height: 420px; }
 }
 
 /* ============================================================
-   RESPONSIVE: MOBILE
+   RESPONSIVE: MOBILE (≤768px)
+   Single column stack. Carousels keep their structure but
+   auto-advance is disabled in JS — manual controls only.
    ============================================================ */
 @media (max-width: 768px) {
   body {
     height: auto;
-    overflow: auto;
+    overflow-y: auto;
   }
 
   .bento-grid {
@@ -1148,33 +1017,21 @@ a.tile:active,
     padding-bottom: var(--tile-gap);
   }
 
-  .tile {
-    min-height: auto;
+  .tile { min-height: auto; padding: var(--space-md); }
+
+  .tile-hero { padding: var(--space-2xl) var(--space-md); }
+
+  .spotlight {
+    min-height: 360px;
     padding: var(--space-md);
   }
 
-  .tile-hero {
-    padding: var(--space-2xl) var(--space-md);
-  }
-
-
-  .tile-projects {
-    -webkit-mask-image: none;
-    mask-image: none;
-    overflow: visible;
-  }
-
-  .games-showcase {
-    flex-direction: column;
-  }
-
-  .tile-projects { overflow: visible; }
+  .games-showcase { flex-direction: column; }
 
   .stats-grid {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
     gap: var(--space-md);
-    padding: var(--space-sm) 0;
   }
 
   .partners-list { overflow: visible; }
@@ -1196,15 +1053,26 @@ a.tile:active,
 .tile:focus-visible,
 a:focus-visible,
 button:focus-visible,
-.btn-primary:focus-visible {
+.btn-primary:focus-visible,
+.spot-dot:focus-visible,
+.spot-btn:focus-visible {
   outline: 2px solid var(--interactive);
   outline-offset: 2px;
 }
 
-/* --- REDUCED MOTION --- */
+.spotlight:focus-within {
+  border-color: var(--border-visible);
+}
+
+/* ============================================================
+   REDUCED MOTION
+   Disables character-roll, slide fade → instant swap, no scale
+   ============================================================ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     transition-duration: 0ms !important;
     animation-duration: 0ms !important;
   }
+  .slide { transition: none !important; }
+  .flip-char { min-width: 0; }
 }
