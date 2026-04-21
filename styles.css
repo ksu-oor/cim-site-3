@@ -885,6 +885,17 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
   margin-top: auto;
 }
 
+/* Lift slide CTAs down into the controls row so the arrow/dot pills
+   and the action pill share a single bottom band. */
+.slide .arrow-pill,
+.slide .btn-primary {
+  transform: translateY(calc(var(--space-md) + 40px));
+}
+
+/* Touchpoint is the narrow column — drop the dots so controls + CTA
+   fit on one line without overlapping. */
+.spotlight--touchpoint .spot-dots { display: none; }
+
 /* .spot-btn--prev / --next inherit .arrow-chip styling */
 .spot-btn {
   width: 40px;
