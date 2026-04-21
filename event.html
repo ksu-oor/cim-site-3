@@ -36,9 +36,15 @@
       --space-xs: 4px; --space-sm: 8px; --space-md: 16px;
       --space-lg: 24px; --space-xl: 32px; --space-2xl: 48px;
       --space-3xl: 64px; --space-4xl: 96px;
-      --label: 13px; --caption: 15px; --body-sm: 16px;
-      --body: 18px; --subheading: 22px; --heading: 28px;
-      --display-md: 44px; --display-lg: 60px; --display-xl: 88px;
+      --display-xl: clamp(56px, min(7vw, 12vh), 132px);
+      --display-lg: clamp(40px, min(4.8vw, 8vh),  92px);
+      --display-md: clamp(32px, min(3.4vw, 5.8vh), 64px);
+      --heading:    clamp(22px, min(2.1vw, 3.5vh), 40px);
+      --subheading: clamp(18px, min(1.6vw, 2.7vh), 30px);
+      --body:       clamp(15px, min(1.15vw, 1.9vh), 22px);
+      --body-sm:    clamp(14px, min(1vw,    1.7vh), 19px);
+      --caption:    clamp(13px, min(0.85vw, 1.4vh), 17px);
+      --label:      clamp(12px, min(0.75vw, 1.25vh), 15px);
     }
 
     [data-theme="light"] {
@@ -84,24 +90,7 @@
       position: absolute;
       top: var(--space-lg);
       left: var(--space-lg);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: var(--surface-raised);
-      border: 1px solid var(--border-visible);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Space Mono', monospace;
-      font-size: var(--subheading);
-      color: var(--text-secondary);
-      cursor: pointer;
-      transition: border-color 200ms cubic-bezier(0.25, 0.1, 0.25, 1),
-                  color 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
-    }
-    .event-hero__back:hover {
-      border-color: var(--text-secondary);
-      color: var(--text-display);
+      z-index: 50;
     }
 
     .event-hero__label {
@@ -159,26 +148,7 @@
       color: var(--text-primary);
     }
 
-    .event-hero__cta {
-      margin-top: var(--space-2xl);
-      display: inline-block;
-      font-family: 'Space Mono', monospace;
-      font-size: var(--label);
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      text-align: center;
-      color: var(--black);
-      background: var(--text-display);
-      border: none;
-      border-radius: 999px;
-      padding: 14px 32px;
-      cursor: pointer;
-      transition: opacity 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
-      text-decoration: none;
-      align-self: flex-start;
-    }
-    .event-hero__cta:hover { opacity: 0.85; }
+    .event-hero__cta { margin-top: var(--space-2xl); align-self: flex-start; }
 
     /* Right panel: program */
     .event-program {
@@ -314,8 +284,15 @@
       .event-hero {
         border-right: none;
         border-bottom: 1px solid var(--border);
-        padding: var(--space-2xl) var(--space-lg);
+        padding: calc(var(--space-2xl) + 44px) var(--space-lg) var(--space-2xl);
         min-height: 60vh;
+      }
+
+      .event-hero__back {
+        position: fixed;
+        top: max(var(--space-md), env(safe-area-inset-top));
+        left: var(--space-md);
+        z-index: 100;
       }
 
       .event-hero__date { font-size: 80px; }
@@ -362,6 +339,56 @@
       letter-spacing: 0.1em; color: var(--text-disabled); text-transform: uppercase;
     }
 
+    /* Arrow chip & pill — shared with main site */
+    .arrow-chip {
+      width: 40px; height: 40px; border-radius: 50%;
+      border: 1px solid var(--border-visible);
+      background: var(--surface-raised);
+      color: var(--text-display);
+      font-family: 'Space Mono', monospace;
+      font-size: var(--subheading); line-height: 1;
+      display: inline-flex; align-items: center; justify-content: center;
+      cursor: pointer; text-decoration: none; padding: 0;
+      transition: background 180ms cubic-bezier(0.25,0.1,0.25,1),
+                  color 180ms cubic-bezier(0.25,0.1,0.25,1),
+                  border-color 180ms cubic-bezier(0.25,0.1,0.25,1);
+    }
+    .arrow-chip:hover {
+      background: var(--text-display); color: var(--black);
+      border-color: var(--text-display);
+    }
+    .arrow-pill {
+      display: inline-flex; align-items: center; gap: var(--space-sm);
+      padding: var(--space-sm) var(--space-md);
+      border: 1px solid var(--border-visible); border-radius: 999px;
+      background: var(--surface-raised); color: var(--text-display);
+      font-family: 'Space Mono', monospace;
+      font-size: var(--body-sm); letter-spacing: 0.06em;
+      text-transform: uppercase; text-decoration: none; cursor: pointer;
+      transition: background 180ms cubic-bezier(0.25,0.1,0.25,1),
+                  color 180ms cubic-bezier(0.25,0.1,0.25,1),
+                  border-color 180ms cubic-bezier(0.25,0.1,0.25,1);
+    }
+    .arrow-pill:hover {
+      background: var(--text-display); color: var(--black);
+      border-color: var(--text-display);
+    }
+    .arrow-pill--accent { color: var(--accent); border-color: var(--accent); }
+    .arrow-pill--accent:hover { background: var(--accent); color: var(--black); border-color: var(--accent); }
+    .arrow-pill__arrow {
+      font-size: var(--subheading); line-height: 1;
+      transition: transform 200ms cubic-bezier(0.25,0.1,0.25,1);
+    }
+    .arrow-pill:hover .arrow-pill__arrow { transform: translateX(4px); }
+    .arrow-chip:focus-visible,
+    .arrow-pill:focus-visible { outline: 2px solid var(--interactive); outline-offset: 2px; }
+
+    /* Mobile: bigger tap targets + safe-area */
+    @media (max-width: 768px) {
+      .arrow-chip { width: 44px; height: 44px; }
+      .arrow-pill { padding: 10px var(--space-md); }
+    }
+
     /* Focus */
     a:focus-visible, button:focus-visible {
       outline: 2px solid var(--interactive);
@@ -390,7 +417,7 @@
 
     <!-- Left: Hero -->
     <div class="event-hero">
-      <a href="index.html" class="event-hero__back" aria-label="Back to CIM home">&lt;</a>
+      <a href="index.html" class="event-hero__back arrow-chip" aria-label="Back to CIM home">&lt;</a>
       <div class="event-hero__label">CIM LAUNCH EVENT</div>
       <div class="event-hero__date">APR 27</div>
       <div class="event-hero__year">2026</div>
@@ -412,7 +439,10 @@
           <span class="event-hero__info-value">~100 attendees</span>
         </div>
       </div>
-      <a href="https://kennesawstateuniversity-vbzux.formstack.com/forms/cim_launch_event" target="_blank" rel="noopener noreferrer" class="event-hero__cta">REGISTER NOW →</a>
+      <a href="https://kennesawstateuniversity-vbzux.formstack.com/forms/cim_launch_event" target="_blank" rel="noopener noreferrer" class="event-hero__cta arrow-pill arrow-pill--accent">
+        <span>REGISTER NOW</span>
+        <span class="arrow-pill__arrow">→</span>
+      </a>
     </div>
 
     <!-- Right: Program -->

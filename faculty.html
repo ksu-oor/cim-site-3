@@ -28,9 +28,15 @@
       --space-xs: 4px; --space-sm: 8px; --space-md: 16px;
       --space-lg: 24px; --space-xl: 32px; --space-2xl: 48px;
       --space-3xl: 64px;
-      --label: 11px; --caption: 12px; --body-sm: 14px;
-      --body: 16px; --subheading: 18px; --heading: 24px;
-      --display-md: 36px; --display-lg: 48px; --display-xl: 72px;
+      --display-xl: clamp(56px, min(7vw, 12vh), 132px);
+      --display-lg: clamp(40px, min(4.8vw, 8vh),  92px);
+      --display-md: clamp(32px, min(3.4vw, 5.8vh), 64px);
+      --heading:    clamp(22px, min(2.1vw, 3.5vh), 40px);
+      --subheading: clamp(18px, min(1.6vw, 2.7vh), 30px);
+      --body:       clamp(15px, min(1.15vw, 1.9vh), 22px);
+      --body-sm:    clamp(14px, min(1vw,    1.7vh), 19px);
+      --caption:    clamp(13px, min(0.85vw, 1.4vh), 17px);
+      --label:      clamp(12px, min(0.75vw, 1.25vh), 15px);
     }
     [data-theme="light"] {
       --black: #F5F5F5; --surface: #FFFFFF; --surface-raised: #F0F0F0;
@@ -66,7 +72,7 @@
     .faculty-page {
       min-height: 100vh;
       display: grid;
-      grid-template-columns: 300px 1fr;
+      grid-template-columns: 360px 1fr;
       grid-template-rows: 1fr;
     }
 
@@ -74,36 +80,21 @@
     .faculty-sidebar {
       background: var(--surface);
       border-right: 1px solid var(--border);
-      padding: var(--space-3xl) var(--space-lg);
+      padding: var(--space-3xl) var(--space-md);
       display: flex;
       flex-direction: column;
       justify-content: center;
       position: sticky;
       top: 0;
       height: 100vh;
+      overflow: hidden;
     }
 
     .faculty-sidebar__back {
       position: absolute;
       top: var(--space-lg);
       left: var(--space-lg);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: var(--surface-raised);
-      border: 1px solid var(--border-visible);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Space Mono', monospace;
-      font-size: var(--subheading);
-      color: var(--text-secondary);
-      cursor: pointer;
-      transition: border-color 200ms, color 200ms;
-    }
-    .faculty-sidebar__back:hover {
-      border-color: var(--text-secondary);
-      color: var(--text-display);
+      z-index: 50;
     }
 
     .faculty-sidebar__label {
@@ -133,37 +124,63 @@
       margin-bottom: var(--space-2xl);
     }
 
-    /* College nav */
-    .college-nav {
+    /* College pixel-dot distribution — each dot = 1 faculty member */
+    .college-dots {
       display: flex;
       flex-direction: column;
-      gap: var(--space-xs);
+      gap: var(--space-sm);
     }
 
-    .college-nav__item {
-      display: flex;
-      justify-content: space-between;
+    .college-dots__row {
+      display: grid;
+      grid-template-columns: 68px 1fr auto;
       align-items: center;
+      gap: var(--space-md);
       padding: var(--space-sm) 0;
       border-bottom: 1px solid var(--border);
+      text-decoration: none;
       cursor: pointer;
-      transition: color 200ms;
+      transition: border-color 200ms var(--ease);
     }
-    .college-nav__item:hover { color: var(--text-display); }
+    .college-dots__row:hover { border-color: var(--border-visible); }
 
-    .college-nav__name {
-      font-family: 'Space Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-secondary);
-    }
-    .college-nav__item:hover .college-nav__name { color: var(--text-display); }
-
-    .college-nav__count {
+    .college-dots__label {
       font-family: 'Space Mono', monospace;
       font-size: var(--caption);
-      color: var(--text-disabled);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      transition: color 200ms var(--ease);
+    }
+    .college-dots__row:hover .college-dots__label { color: var(--text-display); }
+
+    .college-dots__grid {
+      display: grid;
+      grid-template-columns: repeat(16, 8px);
+      grid-auto-rows: 8px;
+      gap: 3px;
+    }
+
+    .college-dots__grid .dot {
+      width: 8px;
+      height: 8px;
+      background: var(--text-primary);
+      transition: background 200ms var(--ease);
+    }
+    .college-dots__row[data-emphasis="accent"] .dot { background: var(--accent); }
+    .college-dots__row[data-emphasis="interactive"] .dot { background: var(--interactive); }
+    .college-dots__row:hover .dot { background: var(--text-display); }
+
+    .college-dots__count {
+      font-family: 'Doto', 'Space Mono', monospace;
+      font-size: var(--subheading);
+      color: var(--text-display);
+      line-height: 1;
+    }
+
+    @media (max-width: 900px) {
+      .college-dots__grid { grid-template-columns: repeat(12, 8px); }
+      .college-dots__row { grid-template-columns: 56px 1fr auto; }
     }
 
     /* Right: faculty list */
@@ -243,7 +260,15 @@
         height: auto;
         border-right: none;
         border-bottom: 1px solid var(--border);
-        padding: var(--space-2xl) var(--space-lg);
+        /* Reserve room for fixed back-arrow chip + mobile toolbar */
+        padding: calc(var(--space-2xl) + 44px) var(--space-lg) var(--space-2xl);
+      }
+
+      .faculty-sidebar__back {
+        position: fixed;
+        top: max(var(--space-md), env(safe-area-inset-top));
+        left: var(--space-md);
+        z-index: 100;
       }
 
       .faculty-sidebar__hero { font-size: 72px; }
@@ -318,6 +343,29 @@
       outline-offset: 2px;
     }
 
+    /* Arrow chip — shared with main site */
+    .arrow-chip {
+      width: 40px; height: 40px; border-radius: 50%;
+      border: 1px solid var(--border-visible);
+      background: var(--surface-raised);
+      color: var(--text-display);
+      font-family: 'Space Mono', monospace;
+      font-size: var(--subheading); line-height: 1;
+      display: inline-flex; align-items: center; justify-content: center;
+      cursor: pointer; text-decoration: none; padding: 0;
+      transition: background 180ms cubic-bezier(0.25,0.1,0.25,1),
+                  color 180ms cubic-bezier(0.25,0.1,0.25,1),
+                  border-color 180ms cubic-bezier(0.25,0.1,0.25,1);
+    }
+    .arrow-chip:hover {
+      background: var(--text-display); color: var(--black);
+      border-color: var(--text-display);
+    }
+    .arrow-chip:focus-visible { outline: 2px solid var(--interactive); outline-offset: 2px; }
+    @media (max-width: 900px) {
+      .arrow-chip { width: 44px; height: 44px; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { transition-duration: 0ms !important; }
     }
@@ -343,35 +391,41 @@
 
     <!-- Sidebar -->
     <div class="faculty-sidebar">
-      <a href="index.html" class="faculty-sidebar__back" aria-label="Back to CIM home">&lt;</a>
+      <a href="index.html" class="faculty-sidebar__back arrow-chip" aria-label="Back to CIM home">&lt;</a>
       <div class="faculty-sidebar__label">FACULTY NETWORK</div>
       <div class="faculty-sidebar__hero">49</div>
       <div class="faculty-sidebar__unit">AFFILIATED FACULTY</div>
 
-      <nav class="college-nav" aria-label="Jump to college">
-        <a href="#ccse" class="college-nav__item">
-          <span class="college-nav__name">CCSE</span>
-          <span class="college-nav__count">11</span>
+      <nav class="college-dots" aria-label="Faculty distribution by college — click to jump">
+        <a href="#rchss" class="college-dots__row" data-emphasis="interactive" aria-label="RCHSS: 12 faculty">
+          <span class="college-dots__label">RCHSS</span>
+          <span class="college-dots__grid" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+          <span class="college-dots__count">12</span>
         </a>
-        <a href="#rchss" class="college-nav__item">
-          <span class="college-nav__name">RCHSS</span>
-          <span class="college-nav__count">12</span>
+        <a href="#ccse" class="college-dots__row" data-emphasis="accent" aria-label="CCSE: 11 faculty">
+          <span class="college-dots__label">CCSE</span>
+          <span class="college-dots__grid" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+          <span class="college-dots__count">11</span>
         </a>
-        <a href="#gca" class="college-nav__item">
-          <span class="college-nav__name">GCA</span>
-          <span class="college-nav__count">5</span>
+        <a href="#gca" class="college-dots__row" aria-label="GCA: 5 faculty">
+          <span class="college-dots__label">GCA</span>
+          <span class="college-dots__grid" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+          <span class="college-dots__count">5</span>
         </a>
-        <a href="#wchhs" class="college-nav__item">
-          <span class="college-nav__name">WCHHS</span>
-          <span class="college-nav__count">4</span>
+        <a href="#wchhs" class="college-dots__row" aria-label="WCHHS: 4 faculty">
+          <span class="college-dots__label">WCHHS</span>
+          <span class="college-dots__grid" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+          <span class="college-dots__count">4</span>
         </a>
-        <a href="#bagwell" class="college-nav__item">
-          <span class="college-nav__name">BAGWELL</span>
-          <span class="college-nav__count">2</span>
+        <a href="#bagwell" class="college-dots__row" aria-label="Bagwell: 2 faculty">
+          <span class="college-dots__label">BAGWELL</span>
+          <span class="college-dots__grid" aria-hidden="true"><span class="dot"></span><span class="dot"></span></span>
+          <span class="college-dots__count">2</span>
         </a>
-        <a href="#other" class="college-nav__item">
-          <span class="college-nav__name">OTHER</span>
-          <span class="college-nav__count">15</span>
+        <a href="#other" class="college-dots__row" aria-label="Other colleges: 15 faculty">
+          <span class="college-dots__label">OTHER</span>
+          <span class="college-dots__grid" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+          <span class="college-dots__count">15</span>
         </a>
       </nav>
     </div>

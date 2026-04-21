@@ -32,16 +32,16 @@
   --space-3xl: 64px;
   --space-4xl: 96px;
 
-  /* Type Scale — tuned for across-the-room billboard legibility */
-  --display-xl: 88px;
-  --display-lg: 60px;
-  --display-md: 44px;
-  --heading: 28px;
-  --subheading: 22px;
-  --body: 18px;
-  --body-sm: 16px;
-  --caption: 15px;
-  --label: 13px;
+  /* Type Scale — fluid, scales with viewport (min of width/height) */
+  --display-xl: clamp(56px, min(7vw, 12vh), 132px);
+  --display-lg: clamp(40px, min(4.8vw, 8vh),  92px);
+  --display-md: clamp(32px, min(3.4vw, 5.8vh), 64px);
+  --heading:    clamp(22px, min(2.1vw, 3.5vh), 40px);
+  --subheading: clamp(18px, min(1.6vw, 2.7vh), 30px);
+  --body:       clamp(15px, min(1.15vw, 1.9vh), 22px);
+  --body-sm:    clamp(14px, min(1vw,    1.7vh), 19px);
+  --caption:    clamp(13px, min(0.85vw, 1.4vh), 17px);
+  --label:      clamp(12px, min(0.75vw, 1.25vh), 15px);
 
   /* Grid */
   --tile-radius: 12px;
@@ -248,7 +248,7 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
 
 .tile-hero__title {
   font-family: 'Doto', 'Space Mono', monospace;
-  font-size: clamp(56px, 8vw, var(--display-xl));
+  font-size: var(--display-xl);
   font-weight: 700;
   line-height: 0.95;
   letter-spacing: -0.04em;
@@ -274,7 +274,8 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
 }
 
 .tile-hero__cta {
-  align-self: flex-start;
+  align-self: flex-end;
+  margin-top: auto;
 }
 
 /* ============================================================
@@ -296,7 +297,7 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
 
 .tile-event__date {
   font-family: 'Doto', 'Space Mono', monospace;
-  font-size: clamp(36px, 5vw, var(--display-lg));
+  font-size: var(--display-lg);
   font-weight: 700;
   line-height: 0.95;
   letter-spacing: -0.03em;
@@ -320,30 +321,20 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
   letter-spacing: 0.08em;
   color: var(--text-disabled);
   text-transform: uppercase;
-  margin-top: auto;
+  margin-top: var(--space-md);
 }
 
-.tile-event__cta {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  font-family: 'Space Mono', monospace;
-  font-size: var(--label);
-  letter-spacing: 0.06em;
-  color: var(--accent);
-  text-transform: uppercase;
-  margin-top: var(--space-sm);
+/* .tile-event__cta inherits bottom-right anchoring from .arrow-pill */
+.tile-event:hover .arrow-pill__arrow { transform: translateX(4px); }
+.tile-event:hover .tile-event__cta {
+  background: var(--accent);
+  color: var(--black);
+  border-color: var(--accent);
 }
-
-.tile-event__arrow {
-  font-size: var(--subheading);
-  transition: transform 200ms var(--ease);
-}
-.tile-event:hover .tile-event__arrow { transform: translateX(4px); }
 
 .tile-event--past { border-color: var(--border-visible); }
 .tile-event--past:hover { background: var(--surface-raised); }
-.tile-event--past .tile-event__cta { color: var(--text-secondary); }
+.tile-event--past .tile-event__cta { color: var(--text-secondary); border-color: var(--border-visible); }
 .tile-event--past .tile-label::after { content: ' · RECAP'; }
 
 /* ============================================================
@@ -443,7 +434,7 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
 
 .slide__feature-name {
   font-family: 'Doto', 'Space Mono', monospace;
-  font-size: clamp(32px, 4.5vw, var(--display-md));
+  font-size: var(--display-md);
   font-weight: 700;
   line-height: 1.0;
   letter-spacing: -0.03em;
@@ -492,7 +483,7 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
 
 .tile-faculty__hero {
   font-family: 'Doto', 'Space Mono', monospace;
-  font-size: clamp(36px, 5vw, var(--display-lg));
+  font-size: var(--display-lg);
   font-weight: 700;
   line-height: 1.0;
   color: var(--text-display);
@@ -569,7 +560,7 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
 
 .stat-value {
   font-family: 'Doto', 'Space Mono', monospace;
-  font-size: clamp(24px, 3.5vw, var(--display-md));
+  font-size: var(--display-md);
   font-weight: 700;
   line-height: 1.0;
   letter-spacing: -0.03em;
@@ -587,7 +578,7 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
 /* --- Stat hero inside a research slide --- */
 .tile-stat-hero {
   font-family: 'Doto', 'Space Mono', monospace;
-  font-size: clamp(32px, 4.5vw, var(--display-md));
+  font-size: var(--display-md);
   font-weight: 700;
   line-height: 1.0;
   letter-spacing: -0.03em;
@@ -706,28 +697,22 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
   white-space: nowrap;
 }
 
-/* --- Published games slide --- */
-.slide__body--games {
+/* --- Published games slide (one game per pane) --- */
+.slide__body--game {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
-}
-
-.games-showcase {
-  display: flex;
   gap: var(--space-md);
-  flex: 1;
-  min-height: 0;
 }
 
 .game-card {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: var(--space-md);
   text-decoration: none;
   color: inherit;
   min-width: 0;
+  min-height: 0;
 }
 
 .game-card__img-wrap {
@@ -807,27 +792,47 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: var(--space-sm);
+  justify-content: space-between;
+  align-items: stretch;
+  gap: var(--space-md);
   text-align: left;
+}
+
+.touch-primary-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
 }
 
 .touch-primary {
   font-family: 'Space Mono', monospace;
-  font-size: clamp(16px, 2vw, var(--subheading));
+  font-size: var(--subheading);
   color: var(--interactive);
-  word-break: break-all;
+  overflow-wrap: anywhere;
   transition: color 200ms var(--ease);
 }
 .touch-primary:hover { color: var(--text-display); }
 
+.touch-primary--large {
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(16px, 1.6vw, 26px);
+  letter-spacing: -0.01em;
+  color: var(--text-display);
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+  font-weight: 700;
+}
+.touch-primary--large:hover { color: var(--interactive); }
+
 .touch-handle {
   font-family: 'Doto', 'Space Mono', monospace;
-  font-size: clamp(24px, 3vw, var(--display-md));
+  font-size: var(--display-md);
   color: var(--text-display);
   letter-spacing: -0.02em;
+  line-height: 1.0;
 }
+
+.touch-handle--xl { font-size: clamp(32px, 3.2vw, 56px); line-height: 1.0; }
 
 .touch-venue {
   font-family: 'Space Grotesk', sans-serif;
@@ -846,41 +851,64 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
   color: var(--text-secondary);
 }
 
-.touch-cta { margin-top: var(--space-sm); }
+.touch-cta { align-self: flex-end; margin-top: auto; }
+
+/* Touchpoint decorations: pixel-art SVG accents that fill the tile's middle space */
+.touch-decoration {
+  display: flex;
+  align-self: flex-start;
+  opacity: 0.9;
+}
+.touch-decoration svg {
+  width: 80px;
+  height: 80px;
+  fill: var(--text-display);
+  display: block;
+}
+[data-theme="light"] .touch-decoration svg { fill: var(--text-primary); }
+.touch-decoration--qr svg { width: 96px; height: 96px; }
+@media (max-width: 768px) {
+  .touch-decoration svg { width: 64px; height: 64px; }
+  .touch-decoration--qr svg { width: 80px; height: 80px; }
+}
 
 /* ============================================================
-   SPOTLIGHT CONTROLS (segmented pill)
+   SPOTLIGHT CONTROLS — circle-chip arrows flanking dot row
    ============================================================ */
 .spotlight__controls {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
+  gap: var(--space-sm);
+  align-self: flex-start;
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
+/* .spot-btn--prev / --next inherit .arrow-chip styling */
+.spot-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-visible);
+  background: var(--surface-raised);
+  color: var(--text-display);
+  font-family: 'Space Mono', monospace;
+  font-size: var(--subheading);
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  gap: var(--space-xs);
-  padding: 4px;
-  background: var(--border);
-  border-radius: 999px;
-  align-self: center;
+  cursor: pointer;
+  padding: 0;
+  transition: background 180ms var(--ease), color 180ms var(--ease), border-color 180ms var(--ease);
   flex-shrink: 0;
 }
-
-.spot-btn {
-  font-family: 'Space Mono', monospace;
-  font-size: var(--body-sm);
-  line-height: 1;
-  color: var(--text-disabled);
-  background: var(--surface);
-  border: none;
-  cursor: pointer;
-  padding: 5px 10px;
-  border-radius: 999px;
-  transition: color 150ms var(--ease), background 150ms var(--ease);
-  min-width: 24px;
+.spot-btn:hover {
+  background: var(--text-display);
+  color: var(--black);
+  border-color: var(--text-display);
 }
-.spot-btn:hover { color: var(--text-primary); }
-.spot-btn:active { background: var(--surface-raised); }
-
-.spot-btn--play { font-size: var(--label); letter-spacing: 0.1em; }
-.spot-btn__play-icon { font-size: var(--label); line-height: 1; }
 
 .spot-dots {
   display: flex;
@@ -923,19 +951,92 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
   font-family: 'Space Mono', monospace;
   font-size: var(--label);
   letter-spacing: 0.06em;
+  line-height: 1.2;
   text-transform: uppercase;
   text-align: center;
   color: var(--black);
   background: var(--text-display);
-  border: none;
+  border: 1px solid var(--text-display);
   border-radius: 999px;
-  padding: 10px 20px;
+  padding: 10px 18px;
   cursor: pointer;
   transition: opacity 200ms var(--ease);
   text-decoration: none;
   flex-shrink: 0;
 }
 .btn-primary:hover { opacity: 0.85; }
+
+/* --- Circle chip: navigation & back arrows --- */
+.arrow-chip {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-visible);
+  background: var(--surface-raised);
+  color: var(--text-display);
+  font-family: 'Space Mono', monospace;
+  font-size: var(--subheading);
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  flex-shrink: 0;
+  padding: 0;
+  transition: background 180ms var(--ease), color 180ms var(--ease), border-color 180ms var(--ease);
+}
+.arrow-chip:hover {
+  background: var(--text-display);
+  color: var(--black);
+  border-color: var(--text-display);
+}
+.arrow-chip:focus-visible {
+  outline: 2px solid var(--interactive);
+  outline-offset: 2px;
+}
+
+/* --- Pill button: inline CTA arrows (VIEW PROGRAM, FOLLOW, etc.) --- */
+.arrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 10px 18px;
+  border: 1px solid var(--border-visible);
+  border-radius: 999px;
+  background: var(--surface-raised);
+  color: var(--text-display);
+  font-family: 'Space Mono', monospace;
+  font-size: var(--label);
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-top: auto;
+  transition: background 180ms var(--ease), color 180ms var(--ease), border-color 180ms var(--ease);
+}
+.arrow-pill:hover {
+  background: var(--text-display);
+  color: var(--black);
+  border-color: var(--text-display);
+}
+.arrow-pill--accent { color: var(--accent); border-color: var(--accent); }
+.arrow-pill--accent:hover { background: var(--accent); color: var(--black); border-color: var(--accent); }
+.arrow-pill--interactive { color: var(--interactive); border-color: var(--interactive); }
+.arrow-pill--interactive:hover { background: var(--interactive); color: var(--black); border-color: var(--interactive); }
+
+.arrow-pill__arrow {
+  font-size: var(--body-sm);
+  line-height: 1;
+  transition: transform 200ms var(--ease);
+}
+.arrow-pill:hover .arrow-pill__arrow { transform: translateX(4px); }
+.arrow-pill:focus-visible {
+  outline: 2px solid var(--interactive);
+  outline-offset: 2px;
+}
 
 /* ============================================================
    FOOTER
@@ -1017,21 +1118,47 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
     padding-bottom: var(--tile-gap);
   }
 
-  .tile { min-height: auto; padding: var(--space-md); }
+  .tile {
+    min-height: auto;
+    padding: var(--space-md);
+    /* Clear fixed top-right toolbar and iOS notch/status bar on the first tile */
+    padding-top: max(var(--space-md), calc(env(safe-area-inset-top) + var(--space-sm)));
+  }
 
   .tile-hero { padding: var(--space-2xl) var(--space-md); }
+
+  .tile-event {
+    /* Belt-and-braces — keep LAUNCH EVENT eyebrow clear of the toolbar */
+    padding-top: max(var(--space-lg), calc(env(safe-area-inset-top) + var(--space-md)));
+  }
+
+  /* Reserve space for the fixed page-toolbar in the top-right */
+  .slide__label,
+  .tile-label {
+    padding-right: 64px;
+  }
 
   .spotlight {
     min-height: 360px;
     padding: var(--space-md);
+    padding-top: max(var(--space-lg), calc(env(safe-area-inset-top) + var(--space-sm)));
   }
 
-  .games-showcase { flex-direction: column; }
+  /* Floating toolbar chip — surface-raised + visible border on mobile */
+  .page-toolbar {
+    top: max(6px, env(safe-area-inset-top));
+    right: 6px;
+    background: var(--surface-raised);
+    border-color: var(--border-visible);
+    padding: 3px var(--space-xs);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
 
   .stats-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
     gap: var(--space-md);
+    padding-right: 72px; /* clear the fixed top-right toolbar chip */
   }
 
   .partners-list { overflow: visible; }

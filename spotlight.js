@@ -88,13 +88,11 @@
     var dots = Array.prototype.slice.call(spotlightEl.querySelectorAll('.spot-dot'));
     var btnPrev = spotlightEl.querySelector('.spot-btn--prev');
     var btnNext = spotlightEl.querySelector('.spot-btn--next');
-    var btnPlay = spotlightEl.querySelector('.spot-btn--play');
 
     if (!slides.length || !stage) return;
 
     var idx = 0;
     var timer = null;
-    var userPaused = false;
     var ariaLiveTimer = null;
 
     // Cache the original label text so we never re-read it after it's been
@@ -129,7 +127,7 @@
     }
 
     function canAutoAdvance() {
-      return !userPaused && !mobile() && !reduced();
+      return !mobile() && !reduced();
     }
 
     function startTimer() {
@@ -145,49 +143,33 @@
       timer = null;
     }
 
-    function updatePlayBtnUI() {
-      if (!btnPlay) return;
-      var icon = btnPlay.querySelector('.spot-btn__play-icon');
-      btnPlay.setAttribute('aria-pressed', userPaused ? 'true' : 'false');
-      btnPlay.setAttribute('aria-label', userPaused ? 'Resume auto-advance' : 'Pause auto-advance');
-      if (icon) icon.textContent = userPaused ? '\u25B6' : '\u2759\u2759';
-    }
-
     /* ---- Controls ---- */
 
     if (btnPrev) btnPrev.addEventListener('click', function () {
       setActiveSlide(idx - 1, false);
-      if (!userPaused) startTimer();
+      startTimer();
     });
 
     if (btnNext) btnNext.addEventListener('click', function () {
       setActiveSlide(idx + 1, false);
-      if (!userPaused) startTimer();
+      startTimer();
     });
 
     dots.forEach(function (d, i) {
       d.addEventListener('click', function () {
         setActiveSlide(i, false);
-        if (!userPaused) startTimer();
+        startTimer();
       });
-    });
-
-    if (btnPlay) btnPlay.addEventListener('click', function () {
-      userPaused = !userPaused;
-      updatePlayBtnUI();
-      if (userPaused) stopTimer(); else startTimer();
     });
 
     /* ---- Pause on hover / focus ---- */
 
     spotlightEl.addEventListener('mouseenter', stopTimer);
-    spotlightEl.addEventListener('mouseleave', function () {
-      if (!userPaused) startTimer();
-    });
+    spotlightEl.addEventListener('mouseleave', startTimer);
     spotlightEl.addEventListener('focusin', stopTimer);
     spotlightEl.addEventListener('focusout', function (e) {
       if (spotlightEl.contains(e.relatedTarget)) return;
-      if (!userPaused) startTimer();
+      startTimer();
     });
 
     /* ---- Keyboard ---- */
@@ -197,28 +179,22 @@
         case 'ArrowLeft':
           e.preventDefault();
           setActiveSlide(idx - 1, false);
-          if (!userPaused) startTimer();
+          startTimer();
           break;
         case 'ArrowRight':
           e.preventDefault();
           setActiveSlide(idx + 1, false);
-          if (!userPaused) startTimer();
-          break;
-        case ' ':
-        case 'Spacebar':
-          if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') return;
-          e.preventDefault();
-          if (btnPlay) btnPlay.click();
+          startTimer();
           break;
         case 'Home':
           e.preventDefault();
           setActiveSlide(0, false);
-          if (!userPaused) startTimer();
+          startTimer();
           break;
         case 'End':
           e.preventDefault();
           setActiveSlide(slides.length - 1, false);
-          if (!userPaused) startTimer();
+          startTimer();
           break;
       }
     });
