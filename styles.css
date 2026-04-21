@@ -704,25 +704,193 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
 }
 
 /* --- Partners slide --- */
-.partners-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-sm);
-  align-content: start;
-  flex: 1;
-  min-height: 0;
-  overflow: hidden;
+.partners-count {
+  font-family: 'Doto', 'Space Mono', monospace;
+  font-size: var(--display-md);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--text-display);
+  margin-left: auto;
 }
 
-.partners-list span {
-  font-family: 'Space Mono', monospace;
-  font-size: var(--caption);
-  letter-spacing: 0.04em;
+.slide__body--partners {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  min-height: 0;
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
+  gap: var(--space-sm);
+  flex: 1;
+  min-height: 0;
+}
+
+.partners-grid__cell {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid transparent;
+  border-radius: 4px;
   color: var(--text-secondary);
-  padding: var(--space-xs) var(--space-md);
-  border: 1px solid var(--border-visible);
-  border-radius: 999px;
+  text-decoration: none;
+  text-align: center;
+  transition:
+    background-color 200ms var(--ease),
+    border-color 200ms var(--ease),
+    color 200ms var(--ease);
+  min-width: 0;
+  opacity: 0;
+}
+
+.slide[data-active] .partners-grid__cell {
+  animation: partner-cell-in 420ms var(--ease) both;
+  animation-delay: calc(var(--cell-idx, 0) * 80ms);
+}
+
+@keyframes partner-cell-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.partners-grid__cell:hover,
+.partners-grid__cell:focus-visible {
+  background: var(--surface-raised);
+  border-color: var(--border-visible);
+  color: var(--text-display);
+  outline: none;
+}
+
+.partner-wordmark {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  font-size: clamp(16px, min(1.5vw, 2.4vh), 24px);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: currentColor;
   white-space: nowrap;
+}
+
+.partner-wordmark--aws {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: lowercase;
+}
+
+.partner-wordmark--unity {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.partner-wordmark--georgia {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: clamp(14px, min(1.3vw, 2vh), 20px);
+}
+
+.partner-wordmark--tracked {
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.partner-wordmark--italic {
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: 0.01em;
+}
+
+.partner-wordmark--bracket {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.partner-wordmark--bracket::before { content: '['; margin-right: 2px; color: var(--text-disabled); }
+.partner-wordmark--bracket::after  { content: ']'; margin-left: 2px;  color: var(--text-disabled); }
+
+.partner-wordmark--stacked {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  white-space: normal;
+}
+.partner-wordmark__lead {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: clamp(16px, min(1.5vw, 2.4vh), 22px);
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+.partner-wordmark__lead--light { font-weight: 300; letter-spacing: 0.08em; }
+.partner-wordmark__sub {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: clamp(9px, min(0.7vw, 1.1vh), 11px);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-disabled);
+  line-height: 1;
+}
+.partner-wordmark__sub--mono {
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0.18em;
+}
+
+.partner-meta {
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  transform: translate(-50%, 4px);
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(9px, min(0.65vw, 1vh), 10px);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-disabled);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms var(--ease), transform 200ms var(--ease);
+}
+.partners-grid__cell:hover .partner-meta,
+.partners-grid__cell:focus-visible .partner-meta {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.slide__footnote {
+  margin-top: auto;
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--border-visible);
+  font-family: 'Space Mono', monospace;
+  font-size: var(--label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-disabled);
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .partners-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .partners-grid { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide[data-active] .partners-grid__cell {
+    animation: none;
+    opacity: 1;
+  }
+  .partner-meta { transition: opacity 0ms; }
 }
 
 /* --- Published games slide (one game per pane) --- */
