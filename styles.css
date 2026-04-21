@@ -600,7 +600,33 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
   gap: 2px;
   flex: 1;
   min-height: 0;
-  overflow: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-visible) transparent;
+  scroll-padding-block: var(--space-xs);
+  /* Bottom fade cues "more below" when content overflows. Lifted by .is-at-end. */
+  -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 24px), transparent 100%);
+          mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 24px), transparent 100%);
+}
+
+.tile-projects.is-at-end {
+  -webkit-mask-image: none;
+          mask-image: none;
+}
+
+.tile-projects::-webkit-scrollbar {
+  width: 4px;
+}
+.tile-projects::-webkit-scrollbar-track {
+  background: transparent;
+}
+.tile-projects::-webkit-scrollbar-thumb {
+  background: var(--border-visible);
+  border-radius: 2px;
+}
+.tile-projects::-webkit-scrollbar-thumb:hover {
+  background: var(--text-disabled);
 }
 
 .project {

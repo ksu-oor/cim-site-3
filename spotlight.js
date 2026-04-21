@@ -225,11 +225,171 @@
     else if (mqReduceMotion.addListener) mqReduceMotion.addListener(onMediaChange);
   }
 
+  /* ---------- Scrollable project tiles ---------- */
+
+  // End-of-scroll: toggle .is-at-end on each .tile-projects so the bottom
+  // fade mask lifts once the last project is fully in view.
+  function initProjectScrollAffordance() {
+    var SCROLL_END_FUZZ = 2; // px tolerance for sub-pixel scroll positions
+    var tiles = document.querySelectorAll('.tile-projects');
+    Array.prototype.forEach.call(tiles, function (el) {
+      function update() {
+        var atEnd = el.scrollTop + el.clientHeight >= el.scrollHeight - SCROLL_END_FUZZ;
+        var noOverflow = el.scrollHeight <= el.clientHeight + SCROLL_END_FUZZ;
+        el.classList.toggle('is-at-end', atEnd || noOverflow);
+      }
+      el.addEventListener('scroll', update, { passive: true });
+      // Re-check on resize — the tile height is flex-driven, so viewport
+      // changes can flip overflow on/off without any scroll event firing.
+      window.addEventListener('resize', update, { passive: true });
+      update();
+    });
+  }
+
+  /* ---------- Auto-scroll on slide activation (Phase 2) ---------- */
+
+  var AUTO_START_DELAY_MS = 1500;  // dwell before scrolling begins
+  var AUTO_DURATION_MS    = 4500;  // duration of the 0 → bottom traversal
+  // Both comfortably fit inside the 8 s auto-advance interval (1500 + 4500 = 6000).
+
+  // Smoothly animate el.scrollTop from its current value to `targetTop`.
+  // Returns a cancel() function. Honors prefers-reduced-motion (caller skips).
+  function animateScrollTo(el, targetTop, durationMs, onComplete) {
+    var startTop = el.scrollTop;
+    var delta = targetTop - startTop;
+    if (Math.abs(delta) < 1) { if (onComplete) onComplete(); return function noop() {}; }
+
+    var startTime = null;
+    var rafId = null;
+    var cancelled = false;
+
+    function ease(t) {
+      var u = 1 - t;
+      return 1 - u * u * u;
+    }
+
+    function step(now) {
+      if (cancelled) return;
+      if (startTime === null) startTime = now;
+      var t = Math.min(1, (now - startTime) / durationMs);
+      el.scrollTop = startTop + delta * ease(t);
+      if (t < 1) rafId = requestAnimationFrame(step);
+      else if (onComplete) onComplete();
+    }
+
+    rafId = requestAnimationFrame(step);
+    return function cancel() {
+      cancelled = true;
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }
+
+  function initProjectAutoScroll() {
+    var tiles = document.querySelectorAll('.slide .tile-projects');
+    Array.prototype.forEach.call(tiles, function (tile) {
+      var slide = tile.closest('.slide');
+      if (!slide) return;
+
+      var startTimer = null;
+      var cancelAnim = null;
+      var userTookOver = false; // set true on wheel/touch; stays until slide deactivates
+
+      function stopAll() {
+        if (startTimer) { clearTimeout(startTimer); startTimer = null; }
+        if (cancelAnim) { cancelAnim(); cancelAnim = null; }
+      }
+
+      function beginCycle() {
+        stopAll();
+        if (reduced()) return;
+        if (userTookOver) return;
+        // Nothing to scroll if it fits.
+        if (tile.scrollHeight <= tile.clientHeight + 2) return;
+
+        startTimer = setTimeout(function () {
+          startTimer = null;
+          var target = tile.scrollHeight - tile.clientHeight;
+          cancelAnim = animateScrollTo(tile, target, AUTO_DURATION_MS, function () {
+            cancelAnim = null;
+          });
+        }, AUTO_START_DELAY_MS);
+      }
+
+      function onActivate() {
+        userTookOver = false;
+        tile.scrollTop = 0;
+        beginCycle();
+      }
+
+      function onDeactivate() {
+        stopAll();
+        userTookOver = false;
+        tile.scrollTop = 0;
+      }
+
+      // Watch data-active on the slide. setActiveSlide() toggles this attribute.
+      var observer = new MutationObserver(function (mutations) {
+        for (var i = 0; i < mutations.length; i++) {
+          if (mutations[i].attributeName === 'data-active') {
+            if (slide.hasAttribute('data-active')) onActivate();
+            else onDeactivate();
+            return;
+          }
+        }
+      });
+      observer.observe(slide, { attributes: true, attributeFilter: ['data-active'] });
+
+      // Pause on hover/focus: stop the animation but keep current scrollTop.
+      // Resume by starting a fresh cycle from wherever we are.
+      tile.addEventListener('pointerenter', function () {
+        if (cancelAnim) { cancelAnim(); cancelAnim = null; }
+        if (startTimer) { clearTimeout(startTimer); startTimer = null; }
+      });
+      tile.addEventListener('pointerleave', function () {
+        if (!slide.hasAttribute('data-active')) return;
+        if (userTookOver) return;
+        // Only resume if there's still distance left to cover.
+        if (tile.scrollTop < tile.scrollHeight - tile.clientHeight - 2) {
+          var remaining = (tile.scrollHeight - tile.clientHeight) - tile.scrollTop;
+          var total = tile.scrollHeight - tile.clientHeight;
+          var ratio = total > 0 ? remaining / total : 0;
+          cancelAnim = animateScrollTo(tile, tile.scrollHeight - tile.clientHeight,
+            Math.max(800, AUTO_DURATION_MS * ratio), function () { cancelAnim = null; });
+        }
+      });
+      tile.addEventListener('focusin', function () {
+        if (cancelAnim) { cancelAnim(); cancelAnim = null; }
+        if (startTimer) { clearTimeout(startTimer); startTimer = null; }
+      });
+
+      // Manual interaction beats auto-scroll for the rest of the slide's active window.
+      function surrenderToUser() {
+        userTookOver = true;
+        if (cancelAnim) { cancelAnim(); cancelAnim = null; }
+        if (startTimer) { clearTimeout(startTimer); startTimer = null; }
+      }
+      tile.addEventListener('wheel', surrenderToUser, { passive: true });
+      tile.addEventListener('touchstart', surrenderToUser, { passive: true });
+      tile.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp' ||
+            e.key === 'PageDown' || e.key === 'PageUp' ||
+            e.key === 'Home' || e.key === 'End') {
+          surrenderToUser();
+        }
+      });
+
+      // If the initially-active slide contains a tile, kick off its cycle now.
+      if (slide.hasAttribute('data-active')) onActivate();
+    });
+  }
+
   /* ---------- Boot ---------- */
 
   function boot() {
     var spotlights = document.querySelectorAll('.spotlight');
     spotlights.forEach(initSpotlight);
+    initProjectScrollAffordance();
+    initProjectAutoScroll();
   }
 
   if (document.readyState === 'loading') {
