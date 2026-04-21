@@ -232,6 +232,8 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
   grid-area: hero;
   justify-content: center;
   padding: var(--space-xl);
+  margin-right: var(--space-md);
+  margin-bottom: var(--space-md);
 }
 
 .tile-hero__label {
@@ -1162,7 +1164,11 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
     padding-top: max(var(--space-md), calc(env(safe-area-inset-top) + var(--space-sm)));
   }
 
-  .tile-hero { padding: var(--space-2xl) var(--space-md); }
+  .tile-hero {
+    padding: var(--space-2xl) var(--space-md);
+    margin-right: 0;
+    margin-bottom: 0;
+  }
 
   .tile-event {
     /* Belt-and-braces — keep LAUNCH EVENT eyebrow clear of the toolbar */
