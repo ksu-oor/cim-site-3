@@ -731,16 +731,9 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
   position: relative;
   display: grid;
   place-items: center;
-  padding: var(--space-sm) var(--space-md);
-  border: 1px solid transparent;
+  padding: var(--space-md) var(--space-lg);
   border-radius: 4px;
-  color: var(--text-secondary);
   text-decoration: none;
-  text-align: center;
-  transition:
-    background-color 200ms var(--ease),
-    border-color 200ms var(--ease),
-    color 200ms var(--ease);
   min-width: 0;
   opacity: 0;
 }
@@ -755,113 +748,104 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.partners-grid__cell:hover,
 .partners-grid__cell:focus-visible {
-  background: var(--surface-raised);
-  border-color: var(--border-visible);
-  color: var(--text-display);
-  outline: none;
+  outline: 2px solid var(--border-visible);
+  outline-offset: 2px;
 }
 
-.partner-wordmark {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 500;
-  font-size: clamp(16px, min(1.5vw, 2.4vh), 24px);
-  line-height: 1;
-  letter-spacing: 0.02em;
-  color: currentColor;
-  white-space: nowrap;
+.partner-logo {
+  display: block;
+  width: 100%;
+  height: clamp(28px, 4.4vh, 40px);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-image: var(--logo-dark);
+  opacity: 0.82;
+  transition: opacity 200ms var(--ease);
 }
-
-.partner-wordmark--aws {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  text-transform: lowercase;
+[data-theme="light"] .partner-logo {
+  background-image: var(--logo-light);
 }
-
-.partner-wordmark--unity {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-
-.partner-wordmark--georgia {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 400;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  font-size: clamp(14px, min(1.3vw, 2vh), 20px);
-}
-
-.partner-wordmark--tracked {
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.partner-wordmark--italic {
-  font-weight: 500;
-  font-style: italic;
-  letter-spacing: 0.01em;
-}
-
-.partner-wordmark--bracket {
-  font-family: 'Space Mono', monospace;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-}
-.partner-wordmark--bracket::before { content: '['; margin-right: 2px; color: var(--text-disabled); }
-.partner-wordmark--bracket::after  { content: ']'; margin-left: 2px;  color: var(--text-disabled); }
-
-.partner-wordmark--stacked {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  white-space: normal;
-}
-.partner-wordmark__lead {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 600;
-  font-size: clamp(16px, min(1.5vw, 2.4vh), 22px);
-  letter-spacing: 0.04em;
-  line-height: 1;
-}
-.partner-wordmark__lead--light { font-weight: 300; letter-spacing: 0.08em; }
-.partner-wordmark__sub {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 400;
-  font-size: clamp(9px, min(0.7vw, 1.1vh), 11px);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--text-disabled);
-  line-height: 1;
-}
-.partner-wordmark__sub--mono {
-  font-family: 'Space Mono', monospace;
-  letter-spacing: 0.18em;
-}
-
-.partner-meta {
-  position: absolute;
-  left: 50%;
-  bottom: 4px;
-  transform: translate(-50%, 4px);
-  font-family: 'Space Mono', monospace;
-  font-size: clamp(9px, min(0.65vw, 1vh), 10px);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-disabled);
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 200ms var(--ease), transform 200ms var(--ease);
-}
-.partners-grid__cell:hover .partner-meta,
-.partners-grid__cell:focus-visible .partner-meta {
+.partners-grid__cell:hover .partner-logo,
+.partners-grid__cell:focus-visible .partner-logo {
   opacity: 1;
-  transform: translate(-50%, 0);
+}
+
+/* Per-partner optical-weight tuning: `background-size: auto <%>` maps to
+   logo-height-as-percent-of-cell-height. Values are hand-picked to equalize
+   visual presence across horizontal wordmarks, stacked marks, and pictograms. */
+.partner-logo--aws {
+  --logo-dark:  url('assets/partners/aws--on-dark.svg');
+  --logo-light: url('assets/partners/aws--on-light.svg');
+  /* AWS's viewBox is near-square (1.67:1, because wordmark sits above arrow),
+     so `contain` alone renders it small relative to horizontal wordmarks.
+     Scale up visually via `transform` — unlike `height`, transforms don't
+     participate in grid row math, so AWS's extra presence doesn't push the
+     grid into the footer. */
+  background-size: contain;
+  transform: scale(1.45);
+  transform-origin: center;
+}
+.partner-logo--unity {
+  --logo-dark:  url('assets/partners/unity--on-dark.svg');
+  --logo-light: url('assets/partners/unity--on-light.svg');
+  background-size: auto 95%;
+}
+.partner-logo--sgr-law {
+  --logo-dark:  url('assets/partners/sgr-law--on-dark.svg');
+  --logo-light: url('assets/partners/sgr-law--on-light.svg');
+  background-size: auto 95%;
+}
+.partner-logo--arc {
+  --logo-dark:  url('assets/partners/arc--on-dark.svg');
+  --logo-light: url('assets/partners/arc--on-light.svg');
+  background-size: auto 105%;
+}
+.partner-logo--georgia {
+  --logo-dark:  url('assets/partners/georgia-usa--on-dark.png');
+  --logo-light: url('assets/partners/georgia-usa--on-light.png');
+  background-size: auto 75%;
+}
+.partner-logo--provost {
+  --logo-dark:  url('assets/partners/provost-studio--on-dark.svg');
+  --logo-light: url('assets/partners/provost-studio--on-light.svg');
+  /* Very wide wordmark (aspect ~8.3:1). At `auto 40%` the rendered height is
+     ~16px and the auto-width stays inside the cell's 164px — anything above
+     ~50% would start overflowing horizontally and clip the P and O letters. */
+  background-size: auto 40%;
+}
+.partner-logo--telmore {
+  --logo-dark:  url('assets/partners/telmore--on-dark.svg');
+  --logo-light: url('assets/partners/telmore--on-light.svg');
+  background-size: auto 45%;
+}
+.partner-logo--soapbox {
+  --logo-dark:  url('assets/partners/soapbox--on-dark.png');
+  --logo-light: url('assets/partners/soapbox--on-light.png');
+  background-size: auto 75%;
+}
+.partner-logo--norton {
+  --logo-dark:  url('assets/partners/norton-childrens--on-dark.svg');
+  --logo-light: url('assets/partners/norton-childrens--on-light.svg');
+  background-size: auto 90%;
+}
+
+/* TEMP (2026-04-23): user only provided dark-ink logos for light backgrounds;
+   true on-dark (white) variants are still pending. `brightness(0) invert(1)`
+   collapses any input color to pure white, giving a silhouette wall in dark
+   mode until real white SVGs arrive. Remove this whole block once the
+   *--on-dark.* files are replaced with genuine white artwork. */
+[data-theme="dark"] .partner-logo {
+  filter: brightness(0) invert(1);
+}
+
+/* Silhouette enforcement in light mode: Georgia (full brand color) and Unity
+   (red ink) collapse to pure near-black so the PARTNERS wall stays monochrome
+   and the accent budget (red = Launch Event + CIM World) stays intact. */
+[data-theme="light"] .partner-logo--georgia,
+[data-theme="light"] .partner-logo--unity {
+  filter: brightness(0);
 }
 
 .slide__footnote {
@@ -888,7 +872,6 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
     animation: none;
     opacity: 1;
   }
-  .partner-meta { transition: opacity 0ms; }
 }
 
 /* --- Published games slide (one game per pane) --- */
