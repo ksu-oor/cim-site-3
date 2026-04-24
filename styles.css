@@ -868,10 +868,65 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .slide[data-active] .partners-grid__cell {
+  .slide[data-active] .partners-grid__cell,
+  .slide[data-active] .sponsors-grid__cell {
     animation: none;
     opacity: 1;
   }
+}
+
+/* --- Sponsors slide (celebrate via scale, Nothing 2.4: spacing-only grouping) --- */
+.slide__body--sponsors {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  min-height: 0;
+}
+
+.sponsors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
+  gap: var(--space-lg);
+  flex: 1;
+  min-height: 0;
+}
+
+.sponsors-grid__cell {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: var(--space-md) var(--space-lg);
+  border-radius: 4px;
+  text-decoration: none;
+  min-width: 0;
+  opacity: 0;
+  transition: opacity 200ms var(--ease);
+}
+.sponsors-grid__cell:focus-visible {
+  outline: 2px solid var(--border-visible);
+  outline-offset: 2px;
+}
+
+.slide[data-active] .sponsors-grid__cell {
+  animation: partner-cell-in 420ms var(--ease) both;
+  animation-delay: calc(var(--cell-idx, 0) * 120ms);
+}
+
+/* `contain` guarantees the logo fits its span width at narrow viewports — the
+   earlier `auto N%` sizing computed widths from the height, which overflowed
+   145px cells at a 1280px viewport. `max-width: 85%` leaves gutters so
+   neighbouring logos don't visually crowd each other. */
+.sponsors-grid .partner-logo {
+  height: clamp(52px, 9vh, 80px);
+  max-width: 85%;
+  background-size: contain;
+  transform: none;
+}
+
+@media (max-width: 900px) {
+  .sponsors-grid { grid-template-columns: 1fr; gap: var(--space-md); }
+  .sponsors-grid .partner-logo { height: clamp(44px, 8vh, 68px); max-width: 70%; }
 }
 
 /* --- Published games slide (one game per pane) --- */
