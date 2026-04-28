@@ -30,13 +30,7 @@
   <main id="main-content" class="bento-grid">
 
     <!-- FIXED: HERO -->
-    <section class="tile tile-hero" aria-label="CIM Hero">
-      <div class="tile-hero__label">KENNESAW STATE UNIVERSITY · OFFICE OF RESEARCH</div>
-      <h1 class="tile-hero__title">CIM</h1>
-      <p class="tile-hero__subtitle">Center for Interactive Media</p>
-      <p class="tile-hero__desc">49 KSU researchers build games, XR systems, and digital twins.</p>
-      <a href="mailto:cim@kennesaw.edu" class="btn-primary tile-hero__cta">START A CONVERSATION</a>
-    </section>
+    {% include "components/hero.njk" %}
 
     <!-- ROTATING: SPOTLIGHT A — RESEARCH (5 slides) -->
     <section class="spotlight spotlight--research tile" data-spotlight="research"
