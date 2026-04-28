@@ -38,20 +38,7 @@
     {% include "components/spotlight.njk" %}
 
     <!-- FIXED: LAUNCH EVENT -->
-    <a href="event.html" class="tile tile-event" aria-label="CIM Launch Event — April 27, 2026">
-      <div class="tile-label">LAUNCH EVENT</div>
-      <div class="tile-event__date">APR 27</div>
-      <div class="tile-event__details">
-        <span>9 AM – 2 PM</span>
-        <span>Shore Innovation Center</span>
-        <span>Marietta, GA</span>
-      </div>
-      <div class="tile-event__sponsors">AWS · UNITY · SGR LAW</div>
-      <div class="tile-event__cta arrow-pill arrow-pill--accent" aria-hidden="true">
-        <span>VIEW PROGRAM</span>
-        <span class="arrow-pill__arrow">→</span>
-      </div>
-    </a>
+    {% include "components/launch-event-tile.njk" %}
 
     <!-- ROTATING: SPOTLIGHT B — SHOWCASE (6 slides) -->
     {% set spot = "showcase" %}

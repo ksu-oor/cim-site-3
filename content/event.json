@@ -1,0 +1,89 @@
+{
+  "tile": {
+    "label": "LAUNCH EVENT",
+    "ariaLabel": "CIM Launch Event — April 27, 2026",
+    "href": "event.html",
+    "date": "APR 27",
+    "details": ["9 AM – 2 PM", "Shore Innovation Center", "Marietta, GA"],
+    "sponsors": "AWS · UNITY · SGR LAW",
+    "ctaText": "VIEW PROGRAM"
+  },
+  "page": {
+    "label": "CIM LAUNCH EVENT",
+    "backHref": "index.html",
+    "backLabel": "Back to CIM home",
+    "date": "APR 27",
+    "year": "2026",
+    "info": [
+      { "label": "TIME",    "value": "9:00 AM – 2:00 PM" },
+      { "label": "VENUE",   "value": "Robin & Doug Shore Innovation Center" },
+      { "label": "ADDRESS", "value": "970 Technology Way, Marietta, GA 30060" },
+      { "label": "TARGET",  "value": "~100 attendees" }
+    ],
+    "cta": {
+      "text": "REGISTER NOW",
+      "href": "https://kennesawstateuniversity-vbzux.formstack.com/forms/cim_launch_event",
+      "variant": "accent"
+    },
+    "program": [
+      {
+        "time": "9:00 AM",
+        "title": "Interactive Demos & Breakfast",
+        "description": "Hands-on demonstrations from CIM research teams and industry partners.",
+        "speaker": "SPONSORED BY UNITY"
+      },
+      {
+        "time": "10:00 AM",
+        "title": "CIM Research Showcase",
+        "description": "Project spotlights across all four research clusters — Digital Twin, XR & Healthcare, Immersive Education, and Digital Humanities & Arts.",
+        "speaker": "SPONSORED BY SGR LAW · REMARKS BY DR. KARIN SCARPINATO (EVP FOR RESEARCH) & CIM DIRECTOR"
+      },
+      {
+        "time": "11:00 AM",
+        "title": "Panel: The Future of Interactive Media",
+        "description": "Industry leaders and academic researchers explore where games, XR, and AI-driven narratives are headed.",
+        "speaker": "DANIEL LEE (AWS) · BRADSTON HENRY (UNITY) · YASMEEN TELSEM (TELMORE AGENCY) · SOAPBOX VR"
+      },
+      {
+        "time": "12:00 PM",
+        "title": "Panel: Smart Cities & Connected Communities",
+        "description": "How digital twins, simulation, and interactive technology are shaping urban planning and community engagement.",
+        "speaker": "GUY ROUSSEAU (ATLANTA REGIONAL COMMISSION) · PETER PROVOST (PROVOST STUDIO) · ASANTE BRADFORD (GA DEPT OF ECONOMIC DEVELOPMENT)"
+      },
+      {
+        "time": "1:00 PM",
+        "title": "Luncheon",
+        "description": "Networking with CIM leadership, industry partners, and featured speakers.",
+        "speaker": "SPONSORED BY AMAZON WEB SERVICES"
+      },
+      {
+        "time": "1:00 PM",
+        "title": "Shore Center AR Tour (Parallel Session)",
+        "description": "Led by Laila — an immersive walk-through of the Shore Innovation Center. Participants can win exclusive CIM swag.",
+        "speaker": "OPEN TO NON-LUNCH ATTENDEES"
+      }
+    ],
+    "featured": [
+      { "name": "Dr. Melissa Osborne",            "org": "WELLSTAR COLLEGE · XR & HEALTHCARE" },
+      { "name": "Dr. Erin Bahl & Shuchita Mishra","org": "APPLIED CARTOONING & FOLKLORE" },
+      { "name": "Andrea Knowlton & Dr. Kyungeun Lim", "org": "FULL-BODY MOVEMENT IN XR ART ED" },
+      { "name": "Dr. Mahyar Amirgholy",           "org": "DIGITAL TWIN · SMART TRANSPORTATION" },
+      { "name": "Dr. Joy Li",                     "org": "XR & HEALTHCARE" }
+    ],
+    "sponsors": [
+      { "name": "Amazon Web Services", "role": "LUNCH SPONSOR" },
+      { "name": "Unity",               "role": "BREAKFAST SPONSOR" },
+      { "name": "SGR Law",             "role": "EVENT SPONSOR" }
+    ],
+    "organizations": [
+      "Amazon Web Services",
+      "Unity",
+      "SGR Law",
+      "Soapbox",
+      "Provost Studio",
+      "Telmore Agency",
+      "Atlanta Regional Commission",
+      "GA Dept of Economic Development"
+    ]
+  }
+}

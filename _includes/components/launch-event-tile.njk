@@ -1,0 +1,14 @@
+<a href="{{ event.tile.href }}" class="tile tile-event" aria-label="{{ event.tile.ariaLabel | h }}">
+      <div class="tile-label">{{ event.tile.label | h }}</div>
+      <div class="tile-event__date">{{ event.tile.date | h }}</div>
+      <div class="tile-event__details">
+{%- for detail in event.tile.details %}
+        <span>{{ detail | h }}</span>
+{%- endfor %}
+      </div>
+      <div class="tile-event__sponsors">{{ event.tile.sponsors | h }}</div>
+      <div class="tile-event__cta arrow-pill arrow-pill--accent" aria-hidden="true">
+        <span>{{ event.tile.ctaText | h }}</span>
+        <span class="arrow-pill__arrow">→</span>
+      </div>
+    </a>

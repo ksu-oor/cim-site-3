@@ -408,34 +408,27 @@
     </button>
   </div>
 
+  {% set ev = event.page %}
+  {% set chipStyle = "font-family: 'Space Mono', monospace; font-size: var(--label); letter-spacing: 0.04em; color: var(--text-disabled); padding: 4px 10px; border: 1px solid var(--border-visible); border-radius: 999px;" %}
+
   <div class="event-page">
 
     <!-- Left: Hero -->
     <div class="event-hero">
-      <a href="index.html" class="event-hero__back arrow-chip" aria-label="Back to CIM home">&lt;</a>
-      <div class="event-hero__label">CIM LAUNCH EVENT</div>
-      <div class="event-hero__date">APR 27</div>
-      <div class="event-hero__year">2026</div>
+      <a href="{{ ev.backHref }}" class="event-hero__back arrow-chip" aria-label="{{ ev.backLabel | h }}">&lt;</a>
+      <div class="event-hero__label">{{ ev.label | h }}</div>
+      <div class="event-hero__date">{{ ev.date | h }}</div>
+      <div class="event-hero__year">{{ ev.year | h }}</div>
       <div class="event-hero__info">
+{%- for row in ev.info %}
         <div class="event-hero__info-row">
-          <span class="event-hero__info-label">TIME</span>
-          <span class="event-hero__info-value">9:00 AM – 2:00 PM</span>
+          <span class="event-hero__info-label">{{ row.label | h }}</span>
+          <span class="event-hero__info-value">{{ row.value | h }}</span>
         </div>
-        <div class="event-hero__info-row">
-          <span class="event-hero__info-label">VENUE</span>
-          <span class="event-hero__info-value">Robin &amp; Doug Shore Innovation Center</span>
-        </div>
-        <div class="event-hero__info-row">
-          <span class="event-hero__info-label">ADDRESS</span>
-          <span class="event-hero__info-value">970 Technology Way, Marietta, GA 30060</span>
-        </div>
-        <div class="event-hero__info-row">
-          <span class="event-hero__info-label">TARGET</span>
-          <span class="event-hero__info-value">~100 attendees</span>
-        </div>
+{%- endfor %}
       </div>
-      <a href="https://kennesawstateuniversity-vbzux.formstack.com/forms/cim_launch_event" target="_blank" rel="noopener noreferrer" class="event-hero__cta arrow-pill arrow-pill--accent">
-        <span>REGISTER NOW</span>
+      <a href="{{ ev.cta.href }}" target="_blank" rel="noopener noreferrer" class="event-hero__cta arrow-pill arrow-pill--{{ ev.cta.variant }}">
+        <span>{{ ev.cta.text | h }}</span>
         <span class="arrow-pill__arrow">→</span>
       </a>
     </div>
@@ -445,111 +438,48 @@
 
       <div class="program-section">
         <div class="program-section__title">PROGRAM</div>
+{%- for item in ev.program %}
         <div class="agenda-item">
-          <span class="agenda-item__time">9:00 AM</span>
+          <span class="agenda-item__time">{{ item.time | h }}</span>
           <div class="agenda-item__content">
-            <span class="agenda-item__title">Interactive Demos &amp; Breakfast</span>
-            <span class="agenda-item__desc">Hands-on demonstrations from CIM research teams and industry partners.</span>
-            <span class="agenda-item__speaker">SPONSORED BY UNITY</span>
+            <span class="agenda-item__title">{{ item.title | h }}</span>
+            <span class="agenda-item__desc">{{ item.description | h }}</span>
+            <span class="agenda-item__speaker">{{ item.speaker | h }}</span>
           </div>
         </div>
-        <div class="agenda-item">
-          <span class="agenda-item__time">10:00 AM</span>
-          <div class="agenda-item__content">
-            <span class="agenda-item__title">CIM Research Showcase</span>
-            <span class="agenda-item__desc">Project spotlights across all four research clusters — Digital Twin, XR &amp; Healthcare, Immersive Education, and Digital Humanities &amp; Arts.</span>
-            <span class="agenda-item__speaker">SPONSORED BY SGR LAW · REMARKS BY DR. KARIN SCARPINATO (EVP FOR RESEARCH) &amp; CIM DIRECTOR</span>
-          </div>
-        </div>
-        <div class="agenda-item">
-          <span class="agenda-item__time">11:00 AM</span>
-          <div class="agenda-item__content">
-            <span class="agenda-item__title">Panel: The Future of Interactive Media</span>
-            <span class="agenda-item__desc">Industry leaders and academic researchers explore where games, XR, and AI-driven narratives are headed.</span>
-            <span class="agenda-item__speaker">DANIEL LEE (AWS) · BRADSTON HENRY (UNITY) · YASMEEN TELSEM (TELMORE AGENCY) · SOAPBOX VR</span>
-          </div>
-        </div>
-        <div class="agenda-item">
-          <span class="agenda-item__time">12:00 PM</span>
-          <div class="agenda-item__content">
-            <span class="agenda-item__title">Panel: Smart Cities &amp; Connected Communities</span>
-            <span class="agenda-item__desc">How digital twins, simulation, and interactive technology are shaping urban planning and community engagement.</span>
-            <span class="agenda-item__speaker">GUY ROUSSEAU (ATLANTA REGIONAL COMMISSION) · PETER PROVOST (PROVOST STUDIO) · ASANTE BRADFORD (GA DEPT OF ECONOMIC DEVELOPMENT)</span>
-          </div>
-        </div>
-        <div class="agenda-item">
-          <span class="agenda-item__time">1:00 PM</span>
-          <div class="agenda-item__content">
-            <span class="agenda-item__title">Luncheon</span>
-            <span class="agenda-item__desc">Networking with CIM leadership, industry partners, and featured speakers.</span>
-            <span class="agenda-item__speaker">SPONSORED BY AMAZON WEB SERVICES</span>
-          </div>
-        </div>
-        <div class="agenda-item">
-          <span class="agenda-item__time">1:00 PM</span>
-          <div class="agenda-item__content">
-            <span class="agenda-item__title">Shore Center AR Tour (Parallel Session)</span>
-            <span class="agenda-item__desc">Led by Laila — an immersive walk-through of the Shore Innovation Center. Participants can win exclusive CIM swag.</span>
-            <span class="agenda-item__speaker">OPEN TO NON-LUNCH ATTENDEES</span>
-          </div>
-        </div>
+{%- endfor %}
       </div>
 
       <div class="program-section">
         <div class="program-section__title">FEATURED PRESENTATIONS</div>
         <div class="guest-list">
+{%- for guest in ev.featured %}
           <div class="guest">
-            <span class="guest__name">Dr. Melissa Osborne</span>
-            <span class="guest__org">WELLSTAR COLLEGE · XR &amp; HEALTHCARE</span>
+            <span class="guest__name">{{ guest.name | h }}</span>
+            <span class="guest__org">{{ guest.org | h }}</span>
           </div>
-          <div class="guest">
-            <span class="guest__name">Dr. Erin Bahl &amp; Shuchita Mishra</span>
-            <span class="guest__org">APPLIED CARTOONING &amp; FOLKLORE</span>
-          </div>
-          <div class="guest">
-            <span class="guest__name">Andrea Knowlton &amp; Dr. Kyungeun Lim</span>
-            <span class="guest__org">FULL-BODY MOVEMENT IN XR ART ED</span>
-          </div>
-          <div class="guest">
-            <span class="guest__name">Dr. Mahyar Amirgholy</span>
-            <span class="guest__org">DIGITAL TWIN · SMART TRANSPORTATION</span>
-          </div>
-          <div class="guest">
-            <span class="guest__name">Dr. Joy Li</span>
-            <span class="guest__org">XR &amp; HEALTHCARE</span>
-          </div>
+{%- endfor %}
         </div>
       </div>
 
       <div class="program-section">
         <div class="program-section__title">SPONSORS</div>
         <div class="sponsor-grid">
+{%- for s in ev.sponsors %}
           <div class="sponsor-item">
-            <span class="sponsor-item__name">Amazon Web Services</span>
-            <span class="sponsor-item__role">LUNCH SPONSOR</span>
+            <span class="sponsor-item__name">{{ s.name | h }}</span>
+            <span class="sponsor-item__role">{{ s.role | h }}</span>
           </div>
-          <div class="sponsor-item">
-            <span class="sponsor-item__name">Unity</span>
-            <span class="sponsor-item__role">BREAKFAST SPONSOR</span>
-          </div>
-          <div class="sponsor-item">
-            <span class="sponsor-item__name">SGR Law</span>
-            <span class="sponsor-item__role">EVENT SPONSOR</span>
-          </div>
+{%- endfor %}
         </div>
       </div>
 
       <div class="program-section">
         <div class="program-section__title">PARTICIPATING ORGANIZATIONS</div>
         <div class="guest-list" style="flex-direction: row; flex-wrap: wrap; gap: 8px;">
-          <span style="font-family: 'Space Mono', monospace; font-size: var(--label); letter-spacing: 0.04em; color: var(--text-disabled); padding: 4px 10px; border: 1px solid var(--border-visible); border-radius: 999px;">Amazon Web Services</span>
-          <span style="font-family: 'Space Mono', monospace; font-size: var(--label); letter-spacing: 0.04em; color: var(--text-disabled); padding: 4px 10px; border: 1px solid var(--border-visible); border-radius: 999px;">Unity</span>
-          <span style="font-family: 'Space Mono', monospace; font-size: var(--label); letter-spacing: 0.04em; color: var(--text-disabled); padding: 4px 10px; border: 1px solid var(--border-visible); border-radius: 999px;">SGR Law</span>
-          <span style="font-family: 'Space Mono', monospace; font-size: var(--label); letter-spacing: 0.04em; color: var(--text-disabled); padding: 4px 10px; border: 1px solid var(--border-visible); border-radius: 999px;">Soapbox</span>
-          <span style="font-family: 'Space Mono', monospace; font-size: var(--label); letter-spacing: 0.04em; color: var(--text-disabled); padding: 4px 10px; border: 1px solid var(--border-visible); border-radius: 999px;">Provost Studio</span>
-          <span style="font-family: 'Space Mono', monospace; font-size: var(--label); letter-spacing: 0.04em; color: var(--text-disabled); padding: 4px 10px; border: 1px solid var(--border-visible); border-radius: 999px;">Telmore Agency</span>
-          <span style="font-family: 'Space Mono', monospace; font-size: var(--label); letter-spacing: 0.04em; color: var(--text-disabled); padding: 4px 10px; border: 1px solid var(--border-visible); border-radius: 999px;">Atlanta Regional Commission</span>
-          <span style="font-family: 'Space Mono', monospace; font-size: var(--label); letter-spacing: 0.04em; color: var(--text-disabled); padding: 4px 10px; border: 1px solid var(--border-visible); border-radius: 999px;">GA Dept of Economic Development</span>
+{%- for org in ev.organizations %}
+          <span style="{{ chipStyle }}">{{ org | h }}</span>
+{%- endfor %}
         </div>
       </div>
 
