@@ -1,5 +1,6 @@
 module.exports = (eleventy) => {
   eleventy.addPassthroughCopy({ "public": "/" });
+  eleventy.addPassthroughCopy({ "admin": "/admin" });
 
   eleventy.addShortcode("year", () => new Date().getFullYear());
 

@@ -1,0 +1,387 @@
+backend:
+  name: github
+  repo: ksu-oor/cim-site-3
+  branch: main
+  base_url: https://cim-site-3.vercel.app
+  auth_endpoint: api/auth/github
+
+# All editor uploads land in /public/uploads/, which Eleventy
+# passthrough-copies to /uploads/ at the site root.
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+# JSON output formatted with 2-space indent for clean git diffs.
+json_extension: json
+
+# Show a richer dashboard with collection cards instead of a flat list.
+display_url: https://cim-site-3.vercel.app
+site_url: https://cim-site-3.vercel.app
+logo_url: /assets/partners/aws--on-dark.svg
+
+# ──────────────────────────────────────────────────────────────────
+# Collections
+# ──────────────────────────────────────────────────────────────────
+collections:
+
+  # Site-wide singletons: global, hero, event
+  - name: site_settings
+    label: "Site Settings"
+    label_singular: "Setting"
+    files:
+
+      - name: global
+        label: "Global"
+        file: content/site.json
+        fields:
+          - { name: siteName,      label: "Site Name",        widget: string }
+          - { name: fullName,      label: "Full Name",        widget: string }
+          - { name: institution,   label: "Institution",      widget: string }
+          - { name: contactEmail,  label: "Contact Email",    widget: string }
+          - { name: footerCopy,    label: "Footer Copyright", widget: string }
+          - name: footerClusters
+            label: "Footer Clusters"
+            widget: list
+            field: { name: cluster, label: "Cluster", widget: string }
+
+      - name: hero
+        label: "Homepage Hero"
+        file: content/hero.json
+        fields:
+          - { name: label,       label: "Eyebrow Label",   widget: string }
+          - { name: title,       label: "Title",           widget: string }
+          - { name: subtitle,    label: "Subtitle",        widget: string }
+          - { name: description, label: "Description",     widget: text }
+          - { name: ctaText,     label: "CTA Text",        widget: string }
+          - { name: ctaHref,     label: "CTA Link",        widget: string, hint: "URL or mailto: link" }
+
+      - name: event
+        label: "Launch Event"
+        file: content/event.json
+        fields:
+
+          - name: tile
+            label: "Homepage Tile"
+            widget: object
+            fields:
+              - { name: label,     label: "Tile Label",  widget: string }
+              - { name: ariaLabel, label: "Aria Label",  widget: string }
+              - { name: href,      label: "Tile Link",   widget: string }
+              - { name: date,      label: "Date Pill",   widget: string, hint: "e.g. APR 27" }
+              - { name: details,   label: "Detail Lines", widget: list, field: { name: line, label: "Line", widget: string } }
+              - { name: sponsors,  label: "Sponsors Line", widget: string, hint: "e.g. AWS · UNITY · SGR LAW" }
+              - { name: ctaText,   label: "CTA Text",    widget: string }
+
+          - name: page
+            label: "Event Landing Page"
+            widget: object
+            fields:
+              - { name: label,      label: "Page Label",  widget: string }
+              - { name: backHref,   label: "Back Link",   widget: string }
+              - { name: backLabel,  label: "Back Label",  widget: string }
+              - { name: date,       label: "Date",        widget: string }
+              - { name: year,       label: "Year",        widget: string }
+
+              - name: info
+                label: "Info Rows"
+                widget: list
+                fields:
+                  - { name: label, label: "Label", widget: string }
+                  - { name: value, label: "Value", widget: string }
+
+              - name: cta
+                label: "Register CTA"
+                widget: object
+                fields:
+                  - { name: text,    label: "Text",    widget: string }
+                  - { name: href,    label: "URL",     widget: string }
+                  - { name: variant, label: "Variant", widget: select, options: [accent, interactive] }
+
+              - name: program
+                label: "Program Agenda"
+                widget: list
+                fields:
+                  - { name: time,        label: "Time",        widget: string }
+                  - { name: title,       label: "Title",       widget: string }
+                  - { name: description, label: "Description", widget: text }
+                  - { name: speaker,     label: "Speaker Line", widget: string }
+
+              - name: featured
+                label: "Featured Presentations"
+                widget: list
+                fields:
+                  - { name: name, label: "Name", widget: string }
+                  - { name: org,  label: "Org",  widget: string }
+
+              - name: sponsors
+                label: "Sponsors"
+                widget: list
+                fields:
+                  - { name: name, label: "Name", widget: string }
+                  - { name: role, label: "Role", widget: string }
+
+              - name: organizations
+                label: "Participating Organizations"
+                widget: list
+                field: { name: name, label: "Name", widget: string }
+
+
+  # Three spotlight carousels with variant slides
+  - name: spotlights
+    label: "Spotlight Carousels"
+    files:
+
+      - name: research
+        label: "Research Spotlight"
+        file: content/spotlights/research.json
+        fields:
+          - { name: label,         label: "Aria Label",          widget: string }
+          - { name: controlsLabel, label: "Controls Aria Label", widget: string }
+          - { name: prevLabel,     label: "Prev Button Label",   widget: string }
+          - { name: nextLabel,     label: "Next Button Label",   widget: string }
+          - { name: dotsLabel,     label: "Dots Aria Label",     widget: string }
+          - name: slides
+            label: "Slides"
+            widget: list
+            types:
+              - name: project-list
+                label: "Project List"
+                fields:
+                  - { name: type,              label: "Type",         widget: hidden, default: "project-list" }
+                  - { name: label,             label: "Label",        widget: string }
+                  - { name: dotLabel,          label: "Dot Label",    widget: string }
+                  - { name: tagline,           label: "Tagline",      widget: string, required: false }
+                  - { name: projectsAriaLabel, label: "List Aria",    widget: string }
+                  - name: heroStat
+                    label: "Hero Stat (optional)"
+                    widget: object
+                    required: false
+                    fields:
+                      - { name: value, label: "Value", widget: string }
+                      - { name: unit,  label: "Unit",  widget: string }
+                  - name: projects
+                    label: "Projects"
+                    widget: list
+                    fields:
+                      - { name: name,              label: "Name",         widget: string }
+                      - { name: tags,              label: "Tags",         widget: string }
+                      - { name: progress,          label: "Progress %",   widget: number, min: 0, max: 100 }
+                      - { name: progressLabel,     label: "Progress Label", widget: string }
+                      - { name: progressVariant,   label: "Variant",      widget: select, options: [default, active, warning, success] }
+                      - { name: progressAria,      label: "Progress Aria", widget: string }
+
+      - name: showcase
+        label: "Showcase Spotlight"
+        file: content/spotlights/showcase.json
+        fields:
+          - { name: label,         label: "Aria Label",          widget: string }
+          - { name: controlsLabel, label: "Controls Aria Label", widget: string }
+          - { name: prevLabel,     label: "Prev Button Label",   widget: string }
+          - { name: nextLabel,     label: "Next Button Label",   widget: string }
+          - { name: dotsLabel,     label: "Dots Aria Label",     widget: string }
+          - name: slides
+            label: "Slides"
+            widget: list
+            types:
+
+              - name: sponsor-grid
+                label: "Sponsor Grid"
+                fields:
+                  - { name: type,     label: "Type",      widget: hidden, default: "sponsor-grid" }
+                  - { name: label,    label: "Label",     widget: string }
+                  - { name: dotLabel, label: "Dot Label", widget: string }
+                  - { name: items,    label: "Items Source", widget: select, options: [sponsors, partners], default: "sponsors", hint: "Which list in partners.json to render." }
+
+              - name: partner-grid
+                label: "Partner Grid"
+                fields:
+                  - { name: type,     label: "Type",      widget: hidden, default: "partner-grid" }
+                  - { name: label,    label: "Label",     widget: string }
+                  - { name: dotLabel, label: "Dot Label", widget: string }
+                  - { name: items,    label: "Items Source", widget: select, options: [sponsors, partners], default: "partners", hint: "Which list in partners.json to render." }
+
+              - name: stats-grid
+                label: "Stats Grid"
+                fields:
+                  - { name: type,     label: "Type",      widget: hidden, default: "stats-grid" }
+                  - { name: label,    label: "Label",     widget: string }
+                  - { name: dotLabel, label: "Dot Label", widget: string }
+                  - name: stats
+                    label: "Stats"
+                    widget: list
+                    fields:
+                      - { name: value, label: "Value", widget: string }
+                      - { name: label, label: "Label", widget: string }
+
+              - name: faculty-bar
+                label: "Faculty Bar Chart"
+                fields:
+                  - { name: type,         label: "Type",      widget: hidden, default: "faculty-bar" }
+                  - { name: label,        label: "Label",     widget: string }
+                  - { name: dotLabel,     label: "Dot Label", widget: string }
+                  - { name: total,        label: "Total Number", widget: number }
+                  - { name: barAriaLabel, label: "Bar Aria",  widget: string }
+                  - name: segments
+                    label: "Segments"
+                    widget: list
+                    fields:
+                      - { name: variant,   label: "Color Variant", widget: select, options: [null, alt1, alt2, alt3, alt4, alt5], required: false }
+                      - { name: count,     label: "Count",         widget: number }
+                      - { name: title,     label: "Title (tooltip)", widget: string }
+                      - { name: ariaLabel, label: "Aria Label",    widget: string }
+                  - name: legend
+                    label: "Legend"
+                    widget: list
+                    field: { name: label, label: "Label", widget: string }
+                  - name: cta
+                    label: "CTA Pill"
+                    widget: object
+                    fields:
+                      - { name: text, label: "Text", widget: string }
+                      - { name: href, label: "Link", widget: string }
+
+              - name: game-card
+                label: "Game Card (Steam)"
+                fields:
+                  - { name: type,           label: "Type",         widget: hidden, default: "game-card" }
+                  - { name: label,          label: "Label",        widget: string }
+                  - { name: dotLabel,       label: "Dot Label",    widget: string }
+                  - { name: title,          label: "Game Title",   widget: string }
+                  - { name: tags,           label: "Tags",         widget: string }
+                  - { name: meta,           label: "Meta",         widget: string, hint: "e.g. $2.99 · 2024" }
+                  - { name: href,           label: "Steam URL",    widget: string }
+                  - { name: imageUrl,       label: "Image URL",    widget: string, hint: "Steam header.jpg URL works directly." }
+                  - { name: imageAlt,       label: "Image Alt",    widget: string }
+                  - { name: availableLabel, label: "Status Label", widget: string, default: "AVAILABLE NOW" }
+
+              - name: feature
+                label: "Feature Slide (TRANSFORMER / CIM WORLD)"
+                fields:
+                  - { name: type,         label: "Type",      widget: hidden, default: "feature" }
+                  - { name: label,        label: "Label",     widget: string }
+                  - { name: dotLabel,     label: "Dot Label", widget: string }
+                  - { name: extraClasses, label: "Extra CSS Classes", widget: string, required: false, hint: "e.g. 'slide--feature slide--world' for the red CIM World accent" }
+                  - { name: name,         label: "Feature Name", widget: string }
+                  - { name: subtitle,     label: "Subtitle",  widget: string }
+                  - { name: ctaText,      label: "CTA Text",  widget: string }
+                  - { name: ctaHref,      label: "CTA Link",  widget: string }
+                  - { name: ctaVariant,   label: "CTA Variant", widget: select, options: [interactive, accent] }
+
+      - name: touchpoint
+        label: "Touchpoint Spotlight"
+        file: content/spotlights/touchpoint.json
+        fields:
+          - { name: label,         label: "Aria Label",          widget: string }
+          - { name: controlsLabel, label: "Controls Aria Label", widget: string }
+          - { name: prevLabel,     label: "Prev Button Label",   widget: string }
+          - { name: nextLabel,     label: "Next Button Label",   widget: string }
+          - { name: dotsLabel,     label: "Dots Aria Label",     widget: string }
+          - name: slides
+            label: "Slides"
+            widget: list
+            types:
+              - name: touchpoint
+                label: "Touchpoint"
+                fields:
+                  - { name: type,         label: "Type",      widget: hidden, default: "touchpoint" }
+                  - { name: label,        label: "Label",     widget: string }
+                  - { name: dotLabel,     label: "Dot Label", widget: string }
+                  - { name: extraClasses, label: "Extra CSS Classes", widget: string, default: "slide--touch" }
+                  - name: primary
+                    label: "Primary Content"
+                    widget: object
+                    fields:
+                      - { name: kind,       label: "Kind",  widget: select, options: [link, handle, venue], hint: "link = clickable email/URL; handle = social handle; venue = static venue name" }
+                      - { name: text,       label: "Text",  widget: string }
+                      - { name: href,       label: "Href (link kind only)", widget: string, required: false }
+                      - { name: extraClass, label: "Extra CSS Class", widget: string, required: false }
+                  - { name: decoration,    label: "Decoration", widget: select, options: [null, qr, linkedin], required: false }
+                  - name: address
+                    label: "Address (venue kind only)"
+                    widget: object
+                    required: false
+                    fields:
+                      - name: lines
+                        label: "Address Lines"
+                        widget: list
+                        field: { name: line, label: "Line", widget: string }
+                  - name: cta
+                    label: "Call to Action"
+                    widget: object
+                    required: false
+                    fields:
+                      - { name: kind,    label: "Kind", widget: select, options: [btn-primary, arrow-pill] }
+                      - { name: text,    label: "Text", widget: string }
+                      - { name: href,    label: "Link", widget: string }
+                      - { name: variant, label: "Variant (arrow-pill only)", widget: string, required: false, hint: "interactive | accent" }
+
+
+  # Sponsors and partners (single source of truth, referenced by spotlights)
+  - name: partners
+    label: "Sponsors & Partners"
+    files:
+
+      - name: partners
+        label: "Sponsors & Partners"
+        file: content/partners.json
+        fields:
+
+          - name: sponsors
+            label: "Sponsors"
+            widget: list
+            fields:
+              - { name: name,       label: "Name",       widget: string }
+              - { name: shortName,  label: "Short Name", widget: string, required: false }
+              - { name: href,       label: "Website",    widget: string }
+              - { name: ariaLabel,  label: "Aria Label", widget: string, hint: "e.g. 'Amazon Web Services — cloud infrastructure sponsor'" }
+              - { name: logoClass,  label: "Existing Logo Class", widget: string, required: false, hint: "Pick a known CSS class (e.g. 'aws', 'unity'). Leave blank to upload an image instead." }
+              - { name: logoImage,  label: "Logo Image (optional)", widget: image, required: false, hint: "Upload SVG/PNG if no CSS class exists. Mutually exclusive with Logo Class." }
+
+          - name: partners
+            label: "Partners"
+            widget: list
+            fields:
+              - { name: name,       label: "Name",       widget: string }
+              - { name: shortName,  label: "Short Name", widget: string, required: false }
+              - { name: href,       label: "Website",    widget: string }
+              - { name: ariaLabel,  label: "Aria Label", widget: string }
+              - { name: logoClass,  label: "Existing Logo Class", widget: string, required: false }
+              - { name: logoImage,  label: "Logo Image (optional)", widget: image, required: false }
+
+
+  # Faculty (49 people across 6 colleges)
+  - name: faculty
+    label: "Faculty"
+    files:
+      - name: faculty
+        label: "Faculty Network"
+        file: content/faculty.json
+        fields:
+          - { name: label,         label: "Sidebar Label",      widget: string }
+          - { name: total,         label: "Total Count",        widget: number }
+          - { name: totalUnit,     label: "Total Unit Caption", widget: string }
+          - { name: backHref,      label: "Back Link",          widget: string }
+          - { name: backLabel,     label: "Back Aria Label",    widget: string }
+          - { name: navAriaLabel,  label: "Nav Aria Label",     widget: string }
+
+          - name: sidebarOrder
+            label: "Sidebar Order (College IDs)"
+            widget: list
+            field: { name: id, label: "College ID", widget: string }
+
+          - name: colleges
+            label: "Colleges"
+            widget: list
+            fields:
+              - { name: id,                 label: "ID (slug)",        widget: string, hint: "e.g. ccse, rchss — used as URL anchor" }
+              - { name: title,              label: "Section Title",    widget: string }
+              - { name: sidebarLabel,       label: "Sidebar Label",    widget: string }
+              - { name: sidebarAriaLabel,   label: "Sidebar Aria",     widget: string }
+              - { name: sidebarEmphasis,    label: "Sidebar Emphasis", widget: select, options: [null, interactive, accent], required: false }
+              - { name: count,              label: "Count",            widget: number }
+              - name: members
+                label: "Members"
+                widget: list
+                fields:
+                  - { name: name,     label: "Name",          widget: string }
+                  - { name: dept,     label: "Department",    widget: string }
+                  - { name: interest, label: "Research Interest", widget: string, required: false }
