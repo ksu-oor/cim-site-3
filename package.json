@@ -1,0 +1,16 @@
+{
+  "name": "cim-site-3",
+  "version": "1.0.0",
+  "description": "CIM — Center for Interactive Media at Kennesaw State University",
+  "private": true,
+  "scripts": {
+    "dev": "eleventy --serve --quiet",
+    "build": "eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,12 @@
+# Build output
+_site/
+
+# Dependencies
+node_modules/
+
+# Vercel
+.vercel/
+
+# OS / editor
+.DS_Store
+.playwright-mcp/
