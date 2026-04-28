@@ -1,23 +1,19 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr" data-theme="dark">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accessibility Statement — CIM · Kennesaw State University</title>
-  <meta name="description" content="Accessibility Conformance Report and statement for the Center for Interactive Media website at Kennesaw State University.">
+{% extends "layout.njk" %}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@400;700&family=Space+Grotesk:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+{% set title = "Accessibility Statement — CIM · Kennesaw State University" %}
+{% set description = "Accessibility Conformance Report and statement for the Center for Interactive Media website at Kennesaw State University." %}
+{% set bodyClass = "page-accessibility" %}
 
+{% block head %}
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="accessibility.css">
   <script>
     // Prevent FOUC: apply saved theme before first paint
     (function(){var t=localStorage.getItem('cim-theme');if(t)document.documentElement.setAttribute('data-theme',t)})();
   </script>
-</head>
-<body class="page-accessibility">
+{% endblock %}
+
+{% block body %}
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -448,5 +444,4 @@
     </div>
   </footer>
 
-</body>
-</html>
+{% endblock %}

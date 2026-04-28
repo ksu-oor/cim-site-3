@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr" data-theme="dark">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CIM Launch Event — April 27, 2026</title>
-  <meta name="description" content="Center for Interactive Media launch event at Kennesaw State University — demos, research showcase, panels on the future of interactive media.">
+{% extends "layout.njk" %}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@400;700&family=Space+Grotesk:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+{% set title = "CIM Launch Event — April 27, 2026" %}
+{% set description = "Center for Interactive Media launch event at Kennesaw State University — demos, research showcase, panels on the future of interactive media." %}
 
+{% block head %}
   <script>
     // Prevent FOUC: apply saved theme before first paint
     (function(){
@@ -401,8 +395,9 @@
       }
     }
   </style>
-</head>
-<body>
+{% endblock %}
+
+{% block body %}
 
   <div class="page-toolbar" role="toolbar" aria-label="Display settings">
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark and light mode" title="Toggle theme">
@@ -578,5 +573,4 @@
       });
     })();
   </script>
-</body>
-</html>
+{% endblock %}

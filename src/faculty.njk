@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr" data-theme="dark" data-zoom="medium">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Faculty Network — CIM · Kennesaw State University</title>
-  <meta name="description" content="49 affiliated faculty across 7+ colleges driving interdisciplinary research in interactive media at Kennesaw State University.">
+{% extends "layout.njk" %}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@400;700&family=Space+Grotesk:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+{% set title = "Faculty Network — CIM · Kennesaw State University" %}
+{% set description = "49 affiliated faculty across 7+ colleges driving interdisciplinary research in interactive media at Kennesaw State University." %}
+{% set zoom = "medium" %}
 
+{% block head %}
   <script>
     // Prevent FOUC: apply saved theme + zoom before first paint
     (function(){
@@ -370,8 +365,9 @@
       *, *::before, *::after { transition-duration: 0ms !important; }
     }
   </style>
-</head>
-<body>
+{% endblock %}
+
+{% block body %}
 
   <div class="page-toolbar" role="toolbar" aria-label="Display settings">
     <div class="zoom-control" role="radiogroup" aria-label="Zoom level">
@@ -748,5 +744,4 @@
       });
     })();
   </script>
-</body>
-</html>
+{% endblock %}
