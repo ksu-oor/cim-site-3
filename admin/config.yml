@@ -2,7 +2,7 @@ backend:
   name: github
   repo: ksu-oor/cim-site-3
   branch: main
-  base_url: https://cim-site-3.vercel.app
+  base_url: https://centerforinteractivemedia.com
   auth_endpoint: api/auth/github
 
 # All editor uploads land in /public/uploads/, which Eleventy
@@ -14,8 +14,8 @@ public_folder: "/uploads"
 json_extension: json
 
 # Show a richer dashboard with collection cards instead of a flat list.
-display_url: https://cim-site-3.vercel.app
-site_url: https://cim-site-3.vercel.app
+display_url: https://centerforinteractivemedia.com
+site_url: https://centerforinteractivemedia.com
 logo_url: /assets/partners/aws--on-dark.svg
 
 # ──────────────────────────────────────────────────────────────────

@@ -13,8 +13,8 @@ survives staff turnover.
 2. Visit <https://github.com/organizations/ksu-oor/settings/applications/new>.
 3. Fill in the form:
    - **Application name:** `CIM Site CMS`
-   - **Homepage URL:** `https://cim-site-3.vercel.app` (replace if you have a custom domain).
-   - **Authorization callback URL:** `https://cim-site-3.vercel.app/api/auth/github/callback`
+   - **Homepage URL:** `https://centerforinteractivemedia.com` (replace if you have a custom domain).
+   - **Authorization callback URL:** `https://centerforinteractivemedia.com/api/auth/github/callback`
 4. Click **Register application**.
 5. On the resulting page:
    - **Copy the Client ID.** You'll paste it into Vercel.
@@ -32,7 +32,7 @@ In the Vercel dashboard for the `cim-site-3` project:
    |-----------------------------|-----------------------------------------|
    | `GITHUB_OAUTH_CLIENT_ID`    | Client ID from step 1                   |
    | `GITHUB_OAUTH_CLIENT_SECRET`| Client Secret from step 1 (mark as encrypted) |
-   | `SITE_URL`                  | `https://cim-site-3.vercel.app` (or custom domain) |
+   | `SITE_URL`                  | `https://centerforinteractivemedia.com` (or custom domain) |
 
 3. Trigger a redeploy so the new env vars are picked up by the
    serverless functions (push any commit, or click **Redeploy** in the
@@ -53,7 +53,7 @@ Editors must have a GitHub account. If they don't, point them to
 
 ## 4. Test the Login
 
-1. Visit `https://cim-site-3.vercel.app/admin/`.
+1. Visit `https://centerforinteractivemedia.com/admin/`.
 2. Click **Sign in with GitHub**.
 3. A popup opens GitHub's OAuth consent screen. Click **Authorize ksu-oor**.
 4. Popup closes; the admin should now show the Sveltia editor with
