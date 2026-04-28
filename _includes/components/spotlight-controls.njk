@@ -1,0 +1,9 @@
+      <div class="spotlight__controls" role="group" aria-label="{{ spotData.controlsLabel | h }}">
+        <button class="spot-btn spot-btn--prev" type="button" aria-label="{{ spotData.prevLabel | h }}">‹</button>
+        <div class="spot-dots" role="tablist" aria-label="{{ spotData.dotsLabel | h }}">
+{%- for slide in spotData.slides %}
+          <button class="spot-dot" role="tab" aria-selected="{% if loop.first %}true{% else %}false{% endif %}" aria-label="Slide {{ loop.index }} of {{ spotData.slides | length }}: {{ slide.dotLabel | h }}" data-dot="{{ loop.index0 }}"></button>
+{%- endfor %}
+        </div>
+        <button class="spot-btn spot-btn--next" type="button" aria-label="{{ spotData.nextLabel | h }}">›</button>
+      </div>

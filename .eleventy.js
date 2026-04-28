@@ -3,6 +3,18 @@ module.exports = (eleventy) => {
 
   eleventy.addShortcode("year", () => new Date().getFullYear());
 
+  // Encode &, <, > but leave quotes raw — matches the existing HTML's
+  // character handling (which uses &amp; and &lt; but raw apostrophes).
+  eleventy.addFilter("h", (input) => {
+    if (input === null || input === undefined) return "";
+    return String(input)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  });
+
+  eleventy.setNunjucksEnvironmentOptions({ autoescape: false });
+
   return {
     dir: {
       input: "src",

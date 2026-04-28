@@ -1,0 +1,179 @@
+{
+  "label": "Research spotlight",
+  "controlsLabel": "Research spotlight controls",
+  "prevLabel": "Previous research slide",
+  "nextLabel": "Next research slide",
+  "dotsLabel": "Research slides",
+  "slides": [
+    {
+      "type": "project-list",
+      "label": "KSU GAME STUDIO",
+      "dotLabel": "KSU Game Studio",
+      "tagline": null,
+      "heroStat": { "value": "23", "unit": "STUDENTS" },
+      "projectsAriaLabel": "KSU Game Studio projects",
+      "projects": [
+        {
+          "name": "Project Excelsior",
+          "tags": "Visual Novel · Dungeon · Identity",
+          "progress": 40,
+          "progressLabel": "EARLY DEV",
+          "progressVariant": "default",
+          "progressAria": "Early development"
+        },
+        {
+          "name": "The Historians",
+          "tags": "Historical Arguments · Primary Sources",
+          "progress": 50,
+          "progressLabel": "DEMO",
+          "progressVariant": "default",
+          "progressAria": "Interactive demo"
+        }
+      ]
+    },
+    {
+      "type": "project-list",
+      "label": "DIGITAL TWIN",
+      "dotLabel": "Digital Twin",
+      "tagline": "Modeling infrastructure, digitally",
+      "heroStat": null,
+      "projectsAriaLabel": "Digital Twin projects",
+      "projects": [
+        {
+          "name": "Smart Transportation",
+          "tags": "3 projects · ARC · NSF",
+          "progress": 50,
+          "progressLabel": "ACTIVE",
+          "progressVariant": "active",
+          "progressAria": "Active development"
+        },
+        {
+          "name": "Communication & Cybersecurity",
+          "tags": "NSF · DOT/DOD",
+          "progress": 20,
+          "progressLabel": "LIT REVIEW",
+          "progressVariant": "default",
+          "progressAria": "Literature review"
+        },
+        {
+          "name": "Supply Chain & Logistics",
+          "tags": "Framework Design",
+          "progress": 10,
+          "progressLabel": "CONCEPT",
+          "progressVariant": "default",
+          "progressAria": "Conceptualization"
+        }
+      ]
+    },
+    {
+      "type": "project-list",
+      "label": "XR & HEALTHCARE",
+      "dotLabel": "XR & Healthcare",
+      "tagline": "Healing through immersion",
+      "heroStat": null,
+      "projectsAriaLabel": "XR and healthcare projects",
+      "projects": [
+        {
+          "name": "Child Injury Prevention",
+          "tags": "NIH R15 · Prototype",
+          "progress": 45,
+          "progressLabel": "PROTOTYPE",
+          "progressVariant": "warning",
+          "progressAria": "Prototype"
+        },
+        {
+          "name": "Dementia Healthcare XR Training",
+          "tags": "Macy Foundation · NIH R15",
+          "progress": 20,
+          "progressLabel": "PLANNING",
+          "progressVariant": "default",
+          "progressAria": "Planning"
+        },
+        {
+          "name": "VR Blood Donation",
+          "tags": "NIH R15 · $530K",
+          "progress": 60,
+          "progressLabel": "SUBMITTED",
+          "progressVariant": "success",
+          "progressAria": "Submitted"
+        }
+      ]
+    },
+    {
+      "type": "project-list",
+      "label": "IMMERSIVE EDUCATION",
+      "dotLabel": "Immersive Education",
+      "tagline": "AI meets the classroom",
+      "heroStat": null,
+      "projectsAriaLabel": "Immersive education projects",
+      "projects": [
+        {
+          "name": "AI Avatar Coaching",
+          "tags": "Spencer · $371K",
+          "progress": 40,
+          "progressLabel": "EARLY DEV",
+          "progressVariant": "default",
+          "progressAria": "Early development"
+        },
+        {
+          "name": "AI + Digital Narrative for STEM",
+          "tags": "NSF K-12 · $750K",
+          "progress": 30,
+          "progressLabel": "DRAFTING",
+          "progressVariant": "default",
+          "progressAria": "Drafting proposal"
+        },
+        {
+          "name": "VR Driving — Autism",
+          "tags": "Norton Center · Prototype",
+          "progress": 50,
+          "progressLabel": "TESTING",
+          "progressVariant": "warning",
+          "progressAria": "Testing prototype"
+        }
+      ]
+    },
+    {
+      "type": "project-list",
+      "label": "DIGITAL HUMANITIES & ARTS",
+      "dotLabel": "Digital Humanities & Arts",
+      "tagline": "Technology meets culture",
+      "heroStat": null,
+      "projectsAriaLabel": "Digital humanities and arts projects",
+      "projects": [
+        {
+          "name": "Playable Archives",
+          "tags": "NEH · $350K · Game Preservation",
+          "progress": 25,
+          "progressLabel": "PLANNING",
+          "progressVariant": "default",
+          "progressAria": "Planning"
+        },
+        {
+          "name": "Applied Cartooning & Folklore",
+          "tags": "FYS · Ethnographic Comics",
+          "progress": 100,
+          "progressLabel": "COMPLETE",
+          "progressVariant": "success",
+          "progressAria": "Completed"
+        },
+        {
+          "name": "H'MMM Journal",
+          "tags": "Networked Media Ecologies",
+          "progress": 20,
+          "progressLabel": "PLATFORM",
+          "progressVariant": "default",
+          "progressAria": "Finding platform"
+        },
+        {
+          "name": "BodyBrush",
+          "tags": "Embodied Drawing · XR Art",
+          "progress": 20,
+          "progressLabel": "FUNDING",
+          "progressVariant": "default",
+          "progressAria": "Seeking funding"
+        }
+      ]
+    }
+  ]
+}

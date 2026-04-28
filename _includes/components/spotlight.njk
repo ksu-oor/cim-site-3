@@ -1,0 +1,11 @@
+<section class="spotlight spotlight--{{ spot }} tile" data-spotlight="{{ spot }}"
+             role="region" aria-roledescription="carousel" aria-label="{{ spotData.label | h }}">
+      <div class="spotlight__stage" aria-live="off">
+{% for slide in spotData.slides %}
+        <article class="slide{% if slide.extraClasses %} {{ slide.extraClasses }}{% endif %}" data-slide-index="{{ loop.index0 }}"{% if loop.first %} data-active{% endif %}>
+{% include "slides/" + slide.type + ".njk" %}
+        </article>
+{% endfor %}
+      </div>
+{% include "components/spotlight-controls.njk" %}
+    </section>

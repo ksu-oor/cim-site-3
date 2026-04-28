@@ -1,0 +1,24 @@
+          <div class="tile-label slide__label">{{ slide.label | h }}</div>
+{%- if slide.tagline %}
+          <p class="slide__tagline">{{ slide.tagline | h }}</p>
+{%- endif %}
+          <div class="slide__body">
+{%- if slide.heroStat %}
+            <div class="slide__hero-row">
+              <div class="tile-stat-hero">{{ slide.heroStat.value | h }}</div>
+              <span class="tile-stat-unit">{{ slide.heroStat.unit | h }}</span>
+            </div>
+{%- endif %}
+            <div class="tile-projects" role="region" aria-label="{{ slide.projectsAriaLabel | h }}" tabindex="0">
+{%- for project in slide.projects %}
+              <div class="project">
+                <span class="project-name">{{ project.name | h }}</span>
+                <span class="project-tags">{{ project.tags | h }}</span>
+                <div class="progress-bar" role="progressbar" aria-valuenow="{{ project.progress }}" aria-valuemin="0" aria-valuemax="100" aria-label="{{ project.progressAria | h }}">
+                  <div class="progress-bar__fill{% if project.progressVariant != 'default' %} progress-bar__fill--{{ project.progressVariant }}{% endif %}" style="width: {{ project.progress }}%"></div>
+                  <span class="progress-bar__label">{{ project.progressLabel | h }}</span>
+                </div>
+              </div>
+{%- endfor %}
+            </div>
+          </div>
