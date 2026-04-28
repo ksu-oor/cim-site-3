@@ -1,0 +1,78 @@
+{
+  "sponsors": [
+    {
+      "name": "Amazon Web Services",
+      "shortName": "AWS",
+      "href": "https://aws.amazon.com/",
+      "ariaLabel": "Amazon Web Services — cloud infrastructure sponsor",
+      "logoClass": "aws",
+      "logoImage": null
+    },
+    {
+      "name": "Unity",
+      "shortName": "UNITY",
+      "href": "https://unity.com/",
+      "ariaLabel": "Unity — realtime engine sponsor",
+      "logoClass": "unity",
+      "logoImage": null
+    },
+    {
+      "name": "Smith, Gambrell and Russell",
+      "shortName": "SGR LAW",
+      "href": "https://www.sgrlaw.com/",
+      "ariaLabel": "Smith, Gambrell and Russell — legal counsel sponsor",
+      "logoClass": "sgr-law",
+      "logoImage": null
+    }
+  ],
+  "partners": [
+    {
+      "name": "Atlanta Regional Commission",
+      "shortName": "ARC",
+      "href": "https://atlantaregional.org/",
+      "ariaLabel": "Atlanta Regional Commission — regional planning partner",
+      "logoClass": "arc",
+      "logoImage": null
+    },
+    {
+      "name": "Georgia Department of Economic Development",
+      "shortName": "GEORGIA",
+      "href": "https://www.georgia.org/",
+      "ariaLabel": "Georgia Department of Economic Development — state partner",
+      "logoClass": "georgia",
+      "logoImage": null
+    },
+    {
+      "name": "Provost Studio",
+      "shortName": "PROVOST",
+      "href": "https://provoststudio.com/",
+      "ariaLabel": "Provost Studio — brand and experience design partner",
+      "logoClass": "provost",
+      "logoImage": null
+    },
+    {
+      "name": "Telmore Agency",
+      "shortName": "TELMORE",
+      "href": "https://telmoreagency.com",
+      "ariaLabel": "Telmore Agency — creative agency partner",
+      "logoClass": "telmore",
+      "logoImage": null
+    },
+    {
+      "name": "Soapbox",
+      "shortName": "SOAPBOX",
+      "href": "http://soapbox.us",
+      "ariaLabel": "Soapbox — creative platform partner",
+      "logoClass": "soapbox",
+      "logoImage": null
+    },
+    {
+      "name": "Norton Autism Center",
+      "shortName": "NORTON",
+      "href": "https://nortonchildrens.com/services/autism-spectrum-disorder/",
+      "ariaLabel": "Norton Autism Center — clinical research partner",
+      "logoClass": "norton",
+      "logoImage": null
+    }
+  ]
+}

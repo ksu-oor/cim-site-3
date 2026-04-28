@@ -1,0 +1,16 @@
+          <div class="tile-label slide__label">{{ slide.label | h }}</div>
+          <div class="slide__body slide__body--faculty">
+            <div class="tile-faculty__hero">{{ slide.total }}</div>
+            <div class="tile-faculty__bar" aria-label="{{ slide.barAriaLabel | h }}">
+{%- for seg in slide.segments %}
+              <span class="faculty-seg{% if seg.variant %} faculty-seg--{{ seg.variant }}{% endif %}" style="flex: {{ seg.count }}" title="{{ seg.title | h }}" aria-label="{{ seg.ariaLabel | h }}"></span>
+{%- endfor %}
+            </div>
+            <div class="tile-faculty__legend">
+              {% for label in slide.legend %}<span>{{ label | h }}</span>{% endfor %}
+            </div>
+            <a href="{{ slide.cta.href }}" class="arrow-pill">
+              <span>{{ slide.cta.text | h }}</span>
+              <span class="arrow-pill__arrow">→</span>
+            </a>
+          </div>

@@ -1,0 +1,15 @@
+          <div class="tile-label slide__label">{{ slide.label | h }}</div>
+          <div class="slide__body slide__body--game">
+            <a href="{{ slide.href }}" target="_blank" rel="noopener noreferrer" class="game-card">
+              <div class="game-card__img-wrap">
+                <img src="{{ slide.imageUrl }}" alt="{{ slide.imageAlt | h }}" class="game-card__img" loading="lazy">
+                <div class="game-card__paper-overlay" aria-hidden="true"></div>
+              </div>
+              <div class="game-card__info">
+                <span class="game-card__title">{{ slide.title | h }}</span>
+                <span class="game-card__tags">{{ slide.tags | h }}</span>
+                <span class="game-card__meta">{{ slide.meta | h }}</span>
+              </div>
+            </a>
+            <div class="game-card__available"><span class="accent-dot" aria-hidden="true"></span> {{ slide.availableLabel | h }}</div>
+          </div>

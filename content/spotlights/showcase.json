@@ -1,0 +1,100 @@
+{
+  "label": "Showcase spotlight",
+  "controlsLabel": "Showcase spotlight controls",
+  "prevLabel": "Previous showcase slide",
+  "nextLabel": "Next showcase slide",
+  "dotsLabel": "Showcase slides",
+  "slides": [
+    {
+      "type": "sponsor-grid",
+      "label": "SPONSORS",
+      "dotLabel": "Sponsors",
+      "items": "sponsors"
+    },
+    {
+      "type": "stats-grid",
+      "label": "AT A GLANCE",
+      "dotLabel": "At a Glance",
+      "stats": [
+        { "value": "49",   "label": "FACULTY" },
+        { "value": "18",   "label": "PROJECTS" },
+        { "value": "5",    "label": "CLUSTERS" },
+        { "value": "7+",   "label": "COLLEGES" },
+        { "value": "~50",  "label": "STUDENTS" },
+        { "value": "$2M+", "label": "PIPELINE" }
+      ]
+    },
+    {
+      "type": "faculty-bar",
+      "label": "FACULTY NETWORK",
+      "dotLabel": "Faculty Network",
+      "total": 49,
+      "barAriaLabel": "Faculty distribution by college",
+      "segments": [
+        { "variant": null,   "count": 12, "title": "RCHSS: 12",                    "ariaLabel": "RCHSS 12 faculty" },
+        { "variant": "alt1", "count": 11, "title": "CCSE: 11",                     "ariaLabel": "CCSE 11 faculty" },
+        { "variant": "alt2", "count": 5,  "title": "GCA: 5",                       "ariaLabel": "GCA 5 faculty" },
+        { "variant": "alt3", "count": 4,  "title": "WCHHS: 4",                     "ariaLabel": "WCHHS 4 faculty" },
+        { "variant": "alt4", "count": 4,  "title": "Other: 4",                     "ariaLabel": "Other 4 faculty" },
+        { "variant": "alt5", "count": 13, "title": "Bagwell/SPCEET/CCB/Unspec: 13","ariaLabel": "Other colleges 13 faculty" }
+      ],
+      "legend": ["RCHSS", "CCSE", "GCA", "WCHHS", "OTHER"],
+      "cta": {
+        "text": "VIEW ALL 49 FACULTY",
+        "href": "faculty.html"
+      }
+    },
+    {
+      "type": "partner-grid",
+      "label": "PARTNERS",
+      "dotLabel": "Partners",
+      "items": "partners"
+    },
+    {
+      "type": "game-card",
+      "label": "PUBLISHED ON STEAM",
+      "dotLabel": "Corporation Inc.",
+      "title": "Corporation Inc.",
+      "tags": "INTERACTIVE FICTION · EDUCATION",
+      "meta": "$2.99 · 2024",
+      "href": "https://store.steampowered.com/app/2946740/Corporation_Inc/",
+      "imageUrl": "https://cdn.akamai.steamstatic.com/steam/apps/2946740/header.jpg",
+      "imageAlt": "Corporation Inc. — narrative hiring simulation",
+      "availableLabel": "AVAILABLE NOW"
+    },
+    {
+      "type": "game-card",
+      "label": "PUBLISHED ON STEAM",
+      "dotLabel": "Chiba",
+      "title": "Chiba",
+      "tags": "PUZZLE · PIXEL ART · COZY",
+      "meta": "$5.99 · 2025",
+      "href": "https://store.steampowered.com/app/3660440/Chiba/",
+      "imageUrl": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3660440/3f3da711226c0d4a057c837c2daf1260e5543f13/header.jpg",
+      "imageAlt": "Chiba — pixel art puzzle game",
+      "availableLabel": "AVAILABLE NOW"
+    },
+    {
+      "type": "feature",
+      "label": "ANNUAL CONFERENCE",
+      "dotLabel": "Transformer Conference",
+      "extraClasses": "slide--feature",
+      "name": "TRANSFORMER",
+      "subtitle": "AI and the Future of Games",
+      "ctaText": "TAIG.DEV",
+      "ctaHref": "https://taig.dev",
+      "ctaVariant": "interactive"
+    },
+    {
+      "type": "feature",
+      "label": "VIRTUAL CAMPUS",
+      "dotLabel": "CIM World",
+      "extraClasses": "slide--feature slide--world",
+      "name": "CIM WORLD",
+      "subtitle": "Explore the interactive 3D campus",
+      "ctaText": "WORLD.CIM",
+      "ctaHref": "https://world.centerforinteractivemedia.com",
+      "ctaVariant": "accent"
+    }
+  ]
+}

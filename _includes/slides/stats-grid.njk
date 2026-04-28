@@ -1,0 +1,8 @@
+          <div class="tile-label slide__label">{{ slide.label | h }}</div>
+          <div class="slide__body">
+            <div class="stats-grid">
+{%- for stat in slide.stats %}
+              <div class="stat"><span class="stat-value">{{ stat.value | h }}</span><span class="stat-label">{{ stat.label | h }}</span></div>
+{%- endfor %}
+            </div>
+          </div>

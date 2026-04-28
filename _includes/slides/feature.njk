@@ -1,0 +1,12 @@
+          <div class="slide__dot-grid" aria-hidden="true"></div>
+          <div class="slide__content">
+            <div class="tile-label slide__label">{{ slide.label | h }}</div>
+            <div class="slide__body">
+              <div class="slide__feature-name">{{ slide.name | h }}</div>
+              <p class="slide__feature-sub">{{ slide.subtitle | h }}</p>
+              <a href="{{ slide.ctaHref }}" target="_blank" rel="noopener noreferrer" class="arrow-pill arrow-pill--{{ slide.ctaVariant }}">
+                <span>{{ slide.ctaText | h }}</span>
+                <span class="arrow-pill__arrow">→</span>
+              </a>
+            </div>
+          </div>

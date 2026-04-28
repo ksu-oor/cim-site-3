@@ -1,0 +1,19 @@
+          <div class="slide__hero-row">
+            <div class="tile-label slide__label">{{ slide.label | h }}</div>
+            <div class="partners-count" aria-hidden="true">{{ partners[slide.items] | length }}</div>
+          </div>
+          <div class="slide__body slide__body--sponsors">
+            <div class="sponsors-grid" role="list">
+{%- for item in partners[slide.items] %}
+              <a class="sponsors-grid__cell" style="--cell-idx: {{ loop.index0 }}" role="listitem"
+                 href="{{ item.href }}" target="_blank" rel="noopener noreferrer"
+                 aria-label="{{ item.ariaLabel | h }}">
+{%- if item.logoClass %}
+                <span class="partner-logo partner-logo--{{ item.logoClass }}" aria-hidden="true"></span>
+{%- else %}
+                <img src="{{ item.logoImage }}" alt="" class="partner-logo partner-logo--uploaded">
+{%- endif %}
+              </a>
+{%- endfor %}
+            </div>
+          </div>
