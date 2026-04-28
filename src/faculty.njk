@@ -387,323 +387,40 @@
 
     <!-- Sidebar -->
     <div class="faculty-sidebar">
-      <a href="index.html" class="faculty-sidebar__back arrow-chip" aria-label="Back to CIM home">&lt;</a>
-      <div class="faculty-sidebar__label">FACULTY NETWORK</div>
-      <div class="faculty-sidebar__hero">49</div>
-      <div class="faculty-sidebar__unit">AFFILIATED FACULTY</div>
+      <a href="{{ faculty.backHref }}" class="faculty-sidebar__back arrow-chip" aria-label="{{ faculty.backLabel | h }}">&lt;</a>
+      <div class="faculty-sidebar__label">{{ faculty.label | h }}</div>
+      <div class="faculty-sidebar__hero">{{ faculty.total }}</div>
+      <div class="faculty-sidebar__unit">{{ faculty.totalUnit | h }}</div>
 
-      <nav class="college-dots" aria-label="Faculty distribution by college — click to jump">
-        <a href="#rchss" class="college-dots__row" data-emphasis="interactive" aria-label="RCHSS: 12 faculty">
-          <span class="college-dots__label">RCHSS</span>
-          <span class="college-dots__grid" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
-          <span class="college-dots__count">12</span>
+      <nav class="college-dots" aria-label="{{ faculty.navAriaLabel | h }}">
+{%- for id in faculty.sidebarOrder %}
+{%- for c in faculty.colleges %}
+{%- if c.id == id %}
+        <a href="#{{ c.id }}" class="college-dots__row"{% if c.sidebarEmphasis %} data-emphasis="{{ c.sidebarEmphasis }}"{% endif %} aria-label="{{ c.sidebarAriaLabel | h }}">
+          <span class="college-dots__label">{{ c.sidebarLabel | h }}</span>
+          <span class="college-dots__grid" aria-hidden="true">{% for i in range(0, c.count) %}<span class="dot"></span>{% endfor %}</span>
+          <span class="college-dots__count">{{ c.count }}</span>
         </a>
-        <a href="#ccse" class="college-dots__row" data-emphasis="accent" aria-label="CCSE: 11 faculty">
-          <span class="college-dots__label">CCSE</span>
-          <span class="college-dots__grid" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
-          <span class="college-dots__count">11</span>
-        </a>
-        <a href="#gca" class="college-dots__row" aria-label="GCA: 5 faculty">
-          <span class="college-dots__label">GCA</span>
-          <span class="college-dots__grid" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
-          <span class="college-dots__count">5</span>
-        </a>
-        <a href="#wchhs" class="college-dots__row" aria-label="WCHHS: 4 faculty">
-          <span class="college-dots__label">WCHHS</span>
-          <span class="college-dots__grid" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
-          <span class="college-dots__count">4</span>
-        </a>
-        <a href="#bagwell" class="college-dots__row" aria-label="Bagwell: 2 faculty">
-          <span class="college-dots__label">BAGWELL</span>
-          <span class="college-dots__grid" aria-hidden="true"><span class="dot"></span><span class="dot"></span></span>
-          <span class="college-dots__count">2</span>
-        </a>
-        <a href="#other" class="college-dots__row" aria-label="Other colleges: 15 faculty">
-          <span class="college-dots__label">OTHER</span>
-          <span class="college-dots__grid" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
-          <span class="college-dots__count">15</span>
-        </a>
+{%- endif %}
+{%- endfor %}
+{%- endfor %}
       </nav>
     </div>
 
     <!-- Faculty List -->
     <div class="faculty-list">
-
-      <div class="college-section" id="ccse">
-        <div class="college-section__title">CCSE — College of Computing and Software Engineering</div>
-
+{% for c in faculty.colleges %}
+      <div class="college-section" id="{{ c.id }}">
+        <div class="college-section__title">{{ c.title | h }}</div>
+{% for m in c.members %}
         <div class="faculty-member">
-          <span class="faculty-member__name">Joy Li</span>
-          <span class="faculty-member__dept">Software Engineering &amp; Game Development</span>
-          <span class="faculty-member__interest">XR, HCI, serious games</span>
+          <span class="faculty-member__name">{{ m.name | h }}</span>
+          <span class="faculty-member__dept">{{ m.dept | h }}</span>
+          <span class="faculty-member__interest">{{ m.interest | h }}</span>
         </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Lei Zhang</span>
-          <span class="faculty-member__dept">Software Engineering &amp; Game Development</span>
-          <span class="faculty-member__interest">VR</span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Sungchul Jung</span>
-          <span class="faculty-member__dept">Software Engineering &amp; Game Development</span>
-          <span class="faculty-member__interest">VR in education, affective computing</span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Brooke Zhao</span>
-          <span class="faculty-member__dept">Software Engineering &amp; Game Development</span>
-          <span class="faculty-member__interest">VR/AR, HCI, cognitive psychology</span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Chenyu Wang</span>
-          <span class="faculty-member__dept">Software Engineering &amp; Game Development</span>
-          <span class="faculty-member__interest">Digital Twin Modeling</span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Honghui Xu</span>
-          <span class="faculty-member__dept">Information Technology</span>
-          <span class="faculty-member__interest">Cyber Security</span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Amir Karami</span>
-          <span class="faculty-member__dept">School of Data Science &amp; Analytics</span>
-          <span class="faculty-member__interest">Computational linguistics, AI</span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Selena He</span>
-          <span class="faculty-member__dept">Computer Science</span>
-          <span class="faculty-member__interest">AI-Driven Healthcare, Computing Ed</span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">M. Rasel Mahmud</span>
-          <span class="faculty-member__dept">Computer Science</span>
-          <span class="faculty-member__interest">VR in healthcare, digital twin</span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Soo Il Shin</span>
-          <span class="faculty-member__dept">CCSE</span>
-          <span class="faculty-member__interest">AI &amp; entertainment</span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Maria Valero de Clemente</span>
-          <span class="faculty-member__dept">Information Technology</span>
-          <span class="faculty-member__interest"></span>
-        </div>
+{%- endfor %}
       </div>
-
-      <div class="college-section" id="rchss">
-        <div class="college-section__title">RCHSS — Radow College of Humanities and Social Sciences</div>
-
-        <div class="faculty-member">
-          <span class="faculty-member__name">Laura Palmer</span>
-          <span class="faculty-member__dept">Technical Communication &amp; Interactive Design</span>
-          <span class="faculty-member__interest">UX research</span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Shadi Beshai</span>
-          <span class="faculty-member__dept">Psychology</span>
-          <span class="faculty-member__interest">Adult depression/anxiety, VR</span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Kanu Priya Singh</span>
-          <span class="faculty-member__dept">Technical Communication &amp; Interactive Design</span>
-          <span class="faculty-member__interest"></span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">David Bennett</span>
-          <span class="faculty-member__dept">History &amp; Philosophy</span>
-          <span class="faculty-member__interest"></span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Russel James</span>
-          <span class="faculty-member__dept">School of Communication &amp; Media</span>
-          <span class="faculty-member__interest"></span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Ian Dunham</span>
-          <span class="faculty-member__dept">Communication</span>
-          <span class="faculty-member__interest">Critical data studies</span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Lydia Ferguson</span>
-          <span class="faculty-member__dept">English</span>
-          <span class="faculty-member__interest"></span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Erin Bahl</span>
-          <span class="faculty-member__dept">English</span>
-          <span class="faculty-member__interest"></span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Elaine Venter</span>
-          <span class="faculty-member__dept">School of Communication &amp; Media</span>
-          <span class="faculty-member__interest"></span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Dominique McDaniel</span>
-          <span class="faculty-member__dept">English</span>
-          <span class="faculty-member__interest"></span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Nefertari Yancie</span>
-          <span class="faculty-member__dept">History</span>
-          <span class="faculty-member__interest">Immersive education</span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Tom Doleys</span>
-          <span class="faculty-member__dept">RCHSS</span>
-          <span class="faculty-member__interest"></span>
-        </div>
-      </div>
-
-      <div class="college-section" id="gca">
-        <div class="college-section__title">GCA — Georgia College of the Arts</div>
-
-        <div class="faculty-member">
-          <span class="faculty-member__name">Helena Shaskevich</span>
-          <span class="faculty-member__dept">School of Art &amp; Design</span>
-          <span class="faculty-member__interest">New media, AI in art, experimental film</span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Shuchita Mishra</span>
-          <span class="faculty-member__dept">School of Art &amp; Design</span>
-          <span class="faculty-member__interest">Immersive storytelling, comics, XR</span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Jeremy Speed-Schwartz</span>
-          <span class="faculty-member__dept">School of Art &amp; Design</span>
-          <span class="faculty-member__interest">Digital animation, motion tracking</span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Kyungeun Lim</span>
-          <span class="faculty-member__dept">School of Art &amp; Design</span>
-          <span class="faculty-member__interest"></span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Andrea Knowlton</span>
-          <span class="faculty-member__dept">Dance</span>
-          <span class="faculty-member__interest">Performance, embodiment, AI</span>
-        </div>
-      </div>
-
-      <div class="college-section" id="wchhs">
-        <div class="college-section__title">WCHHS — Wellstar College of Health and Human Services</div>
-
-        <div class="faculty-member">
-          <span class="faculty-member__name">Modupe Akintomide</span>
-          <span class="faculty-member__dept">WellStar School of Nursing</span>
-          <span class="faculty-member__interest">Dementia care, VR, gamification</span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Melissa Osborne</span>
-          <span class="faculty-member__dept">WellStar School of Nursing</span>
-          <span class="faculty-member__interest">Immersive VR, home safety</span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Kyu-soo Chung</span>
-          <span class="faculty-member__dept">Exercise Science &amp; Sport Management</span>
-          <span class="faculty-member__interest"></span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Kawther Hamash</span>
-          <span class="faculty-member__dept">WellStar School of Nursing</span>
-          <span class="faculty-member__interest">Oncology, AI in healthcare/education</span>
-        </div>
-      </div>
-
-      <div class="college-section" id="bagwell">
-        <div class="college-section__title">BAGWELL COLLEGE OF EDUCATION</div>
-
-        <div class="faculty-member">
-          <span class="faculty-member__name">Ivan Jorrin Abellan</span>
-          <span class="faculty-member__dept">Bagwell College of Education</span>
-          <span class="faculty-member__interest"></span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Christine Wusylko</span>
-          <span class="faculty-member__dept">School of Instructional Technology &amp; Innovation</span>
-          <span class="faculty-member__interest">AI literacy, STEM education</span>
-        </div>
-      </div>
-
-      <div class="college-section" id="other">
-        <div class="college-section__title">OTHER COLLEGES &amp; DEPARTMENTS</div>
-
-        <div class="faculty-member">
-          <span class="faculty-member__name">Mahyar Amirgholy</span>
-          <span class="faculty-member__dept">Digital Twin Cluster Lead</span>
-          <span class="faculty-member__interest">Traffic, supply chain simulation</span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Sergio Figueiredo</span>
-          <span class="faculty-member__dept">English</span>
-          <span class="faculty-member__interest">Metaverse education, rhetoric</span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Jeffrey Greene</span>
-          <span class="faculty-member__dept">English</span>
-          <span class="faculty-member__interest">Metaverse education</span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Max North</span>
-          <span class="faculty-member__dept">—</span>
-          <span class="faculty-member__interest">VR therapy, anxiety, sense of presence</span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Reza Vaezi</span>
-          <span class="faculty-member__dept">—</span>
-          <span class="faculty-member__interest">Brainwave, empathy</span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Harun Avci</span>
-          <span class="faculty-member__dept">Quantitative Analysis</span>
-          <span class="faculty-member__interest">Simulation optimization</span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Pegah Zamani</span>
-          <span class="faculty-member__dept">Architecture</span>
-          <span class="faculty-member__interest"></span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Hannah Mabry Wang</span>
-          <span class="faculty-member__dept">—</span>
-          <span class="faculty-member__interest"></span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Kamyar Raoufi</span>
-          <span class="faculty-member__dept">Industrial &amp; Systems Engineering (SPCEET)</span>
-          <span class="faculty-member__interest">Digital Twin</span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Aysu Ozel Avci</span>
-          <span class="faculty-member__dept">Quantitative Analysis (CCB)</span>
-          <span class="faculty-member__interest">Digital Twin</span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Victoria Lagrange</span>
-          <span class="faculty-member__dept">CIM Director</span>
-          <span class="faculty-member__interest">Game design, interactive narrative, AI</span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Nick Murphy</span>
-          <span class="faculty-member__dept">Game Studio</span>
-          <span class="faculty-member__interest">Game development</span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Robert Keyser</span>
-          <span class="faculty-member__dept">Industrial &amp; Systems Engineering (SPCEET)</span>
-          <span class="faculty-member__interest"></span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Lin Li</span>
-          <span class="faculty-member__dept">Industrial &amp; Systems Engineering (SPCEET)</span>
-          <span class="faculty-member__interest"></span>
-        </div>
-        <div class="faculty-member">
-          <span class="faculty-member__name">Kyusik Kim</span>
-          <span class="faculty-member__dept">Geographic Information Science</span>
-          <span class="faculty-member__interest">Digital Twin</span>
-        </div>
-      </div>
-
+{% endfor %}
     </div>
 
   </div>

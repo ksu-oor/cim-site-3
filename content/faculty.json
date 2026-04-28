@@ -1,0 +1,120 @@
+{
+  "label": "FACULTY NETWORK",
+  "total": 49,
+  "totalUnit": "AFFILIATED FACULTY",
+  "backHref": "index.html",
+  "backLabel": "Back to CIM home",
+  "navAriaLabel": "Faculty distribution by college — click to jump",
+  "sidebarOrder": ["rchss", "ccse", "gca", "wchhs", "bagwell", "other"],
+  "colleges": [
+    {
+      "id": "ccse",
+      "title": "CCSE — College of Computing and Software Engineering",
+      "sidebarLabel": "CCSE",
+      "sidebarAriaLabel": "CCSE: 11 faculty",
+      "sidebarEmphasis": "accent",
+      "count": 11,
+      "members": [
+        { "name": "Joy Li",                  "dept": "Software Engineering & Game Development", "interest": "XR, HCI, serious games" },
+        { "name": "Lei Zhang",               "dept": "Software Engineering & Game Development", "interest": "VR" },
+        { "name": "Sungchul Jung",           "dept": "Software Engineering & Game Development", "interest": "VR in education, affective computing" },
+        { "name": "Brooke Zhao",             "dept": "Software Engineering & Game Development", "interest": "VR/AR, HCI, cognitive psychology" },
+        { "name": "Chenyu Wang",             "dept": "Software Engineering & Game Development", "interest": "Digital Twin Modeling" },
+        { "name": "Honghui Xu",              "dept": "Information Technology",                  "interest": "Cyber Security" },
+        { "name": "Amir Karami",             "dept": "School of Data Science & Analytics",      "interest": "Computational linguistics, AI" },
+        { "name": "Selena He",               "dept": "Computer Science",                        "interest": "AI-Driven Healthcare, Computing Ed" },
+        { "name": "M. Rasel Mahmud",         "dept": "Computer Science",                        "interest": "VR in healthcare, digital twin" },
+        { "name": "Soo Il Shin",             "dept": "CCSE",                                    "interest": "AI & entertainment" },
+        { "name": "Maria Valero de Clemente","dept": "Information Technology",                  "interest": "" }
+      ]
+    },
+    {
+      "id": "rchss",
+      "title": "RCHSS — Radow College of Humanities and Social Sciences",
+      "sidebarLabel": "RCHSS",
+      "sidebarAriaLabel": "RCHSS: 12 faculty",
+      "sidebarEmphasis": "interactive",
+      "count": 12,
+      "members": [
+        { "name": "Laura Palmer",       "dept": "Technical Communication & Interactive Design", "interest": "UX research" },
+        { "name": "Shadi Beshai",       "dept": "Psychology",                                   "interest": "Adult depression/anxiety, VR" },
+        { "name": "Kanu Priya Singh",   "dept": "Technical Communication & Interactive Design", "interest": "" },
+        { "name": "David Bennett",      "dept": "History & Philosophy",                         "interest": "" },
+        { "name": "Russel James",       "dept": "School of Communication & Media",              "interest": "" },
+        { "name": "Ian Dunham",         "dept": "Communication",                                "interest": "Critical data studies" },
+        { "name": "Lydia Ferguson",     "dept": "English",                                      "interest": "" },
+        { "name": "Erin Bahl",          "dept": "English",                                      "interest": "" },
+        { "name": "Elaine Venter",      "dept": "School of Communication & Media",              "interest": "" },
+        { "name": "Dominique McDaniel", "dept": "English",                                      "interest": "" },
+        { "name": "Nefertari Yancie",   "dept": "History",                                      "interest": "Immersive education" },
+        { "name": "Tom Doleys",         "dept": "RCHSS",                                        "interest": "" }
+      ]
+    },
+    {
+      "id": "gca",
+      "title": "GCA — Georgia College of the Arts",
+      "sidebarLabel": "GCA",
+      "sidebarAriaLabel": "GCA: 5 faculty",
+      "sidebarEmphasis": null,
+      "count": 5,
+      "members": [
+        { "name": "Helena Shaskevich",     "dept": "School of Art & Design", "interest": "New media, AI in art, experimental film" },
+        { "name": "Shuchita Mishra",       "dept": "School of Art & Design", "interest": "Immersive storytelling, comics, XR" },
+        { "name": "Jeremy Speed-Schwartz", "dept": "School of Art & Design", "interest": "Digital animation, motion tracking" },
+        { "name": "Kyungeun Lim",          "dept": "School of Art & Design", "interest": "" },
+        { "name": "Andrea Knowlton",       "dept": "Dance",                  "interest": "Performance, embodiment, AI" }
+      ]
+    },
+    {
+      "id": "wchhs",
+      "title": "WCHHS — Wellstar College of Health and Human Services",
+      "sidebarLabel": "WCHHS",
+      "sidebarAriaLabel": "WCHHS: 4 faculty",
+      "sidebarEmphasis": null,
+      "count": 4,
+      "members": [
+        { "name": "Modupe Akintomide", "dept": "WellStar School of Nursing",            "interest": "Dementia care, VR, gamification" },
+        { "name": "Melissa Osborne",   "dept": "WellStar School of Nursing",            "interest": "Immersive VR, home safety" },
+        { "name": "Kyu-soo Chung",     "dept": "Exercise Science & Sport Management",   "interest": "" },
+        { "name": "Kawther Hamash",    "dept": "WellStar School of Nursing",            "interest": "Oncology, AI in healthcare/education" }
+      ]
+    },
+    {
+      "id": "bagwell",
+      "title": "BAGWELL COLLEGE OF EDUCATION",
+      "sidebarLabel": "BAGWELL",
+      "sidebarAriaLabel": "Bagwell: 2 faculty",
+      "sidebarEmphasis": null,
+      "count": 2,
+      "members": [
+        { "name": "Ivan Jorrin Abellan",  "dept": "Bagwell College of Education",                          "interest": "" },
+        { "name": "Christine Wusylko",    "dept": "School of Instructional Technology & Innovation",       "interest": "AI literacy, STEM education" }
+      ]
+    },
+    {
+      "id": "other",
+      "title": "OTHER COLLEGES & DEPARTMENTS",
+      "sidebarLabel": "OTHER",
+      "sidebarAriaLabel": "Other colleges: 15 faculty",
+      "sidebarEmphasis": null,
+      "count": 15,
+      "members": [
+        { "name": "Mahyar Amirgholy",  "dept": "Digital Twin Cluster Lead",                      "interest": "Traffic, supply chain simulation" },
+        { "name": "Sergio Figueiredo", "dept": "English",                                        "interest": "Metaverse education, rhetoric" },
+        { "name": "Jeffrey Greene",    "dept": "English",                                        "interest": "Metaverse education" },
+        { "name": "Max North",         "dept": "—",                                              "interest": "VR therapy, anxiety, sense of presence" },
+        { "name": "Reza Vaezi",        "dept": "—",                                              "interest": "Brainwave, empathy" },
+        { "name": "Harun Avci",        "dept": "Quantitative Analysis",                          "interest": "Simulation optimization" },
+        { "name": "Pegah Zamani",      "dept": "Architecture",                                   "interest": "" },
+        { "name": "Hannah Mabry Wang", "dept": "—",                                              "interest": "" },
+        { "name": "Kamyar Raoufi",     "dept": "Industrial & Systems Engineering (SPCEET)",      "interest": "Digital Twin" },
+        { "name": "Aysu Ozel Avci",    "dept": "Quantitative Analysis (CCB)",                    "interest": "Digital Twin" },
+        { "name": "Victoria Lagrange", "dept": "CIM Director",                                   "interest": "Game design, interactive narrative, AI" },
+        { "name": "Nick Murphy",       "dept": "Game Studio",                                    "interest": "Game development" },
+        { "name": "Robert Keyser",     "dept": "Industrial & Systems Engineering (SPCEET)",      "interest": "" },
+        { "name": "Lin Li",            "dept": "Industrial & Systems Engineering (SPCEET)",      "interest": "" },
+        { "name": "Kyusik Kim",        "dept": "Geographic Information Science",                 "interest": "Digital Twin" }
+      ]
+    }
+  ]
+}
