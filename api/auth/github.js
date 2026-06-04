@@ -10,8 +10,10 @@
 //   SITE_URL — e.g. https://cim-site-3.vercel.app
 
 export default function handler(req, res) {
-  const clientId = process.env.GITHUB_OAUTH_CLIENT_ID;
-  const siteUrl = process.env.SITE_URL;
+  // .trim() guards against stray whitespace/newlines pasted into the Vercel
+  // env vars (a trailing newline in SITE_URL previously broke the redirect_uri).
+  const clientId = process.env.GITHUB_OAUTH_CLIENT_ID?.trim();
+  const siteUrl = process.env.SITE_URL?.trim();
 
   if (!clientId || !siteUrl) {
     res.status(500).send(

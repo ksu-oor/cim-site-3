@@ -11,8 +11,10 @@
 //   GITHUB_OAUTH_CLIENT_SECRET (encrypted in Vercel env)
 
 export default async function handler(req, res) {
-  const clientId = process.env.GITHUB_OAUTH_CLIENT_ID;
-  const clientSecret = process.env.GITHUB_OAUTH_CLIENT_SECRET;
+  // .trim() guards against stray whitespace/newlines pasted into the Vercel
+  // env vars (a trailing newline would silently corrupt the OAuth request).
+  const clientId = process.env.GITHUB_OAUTH_CLIENT_ID?.trim();
+  const clientSecret = process.env.GITHUB_OAUTH_CLIENT_SECRET?.trim();
 
   if (!clientId || !clientSecret) {
     res.status(500).send(
