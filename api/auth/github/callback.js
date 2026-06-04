@@ -54,16 +54,30 @@ export default async function handler(req, res) {
     payload = `authorization:github:error:${JSON.stringify({ error: String(err) })}`;
   }
 
-  // Decap/Sveltia popup OAuth handshake (must match the CMS exactly):
-  //   1. The popup announces readiness by posting "authorizing:github" to
-  //      the opener with targetOrigin "*".
-  //   2. The CMS replies (echoing "authorizing:github") to the popup. That
-  //      reply's `origin` is the CMS's own origin.
-  //   3. The popup posts the token back to THAT origin (e.origin) — never
-  //      our own origin. The CMS only accepts a message whose origin equals
-  //      its configured `base_url` origin, so replying to e.origin is what
-  //      makes the handoff land. (See admin/config.yml `base_url`, which
-  //      must be the same host the popup ends up on — i.e. the www host.)
+  // Allowlist of origins the token may be handed off to. SECURITY: the token
+  // must ONLY ever be postMessage'd to one of OUR OWN origins — never to
+  // whatever origin happens to send the handshake. Otherwise a malicious page
+  // could open this callback as a popup (becoming window.opener), trigger the
+  // handshake, and exfiltrate the victim's GitHub access token to its own
+  // origin. We derive the allowlist from SITE_URL and accept both the apex and
+  // www hosts (the apex 301-redirects to www, where the CMS/opener lives). If
+  // SITE_URL is missing/malformed the allowlist is empty and NO token is sent
+  // (fail closed).
+  let allowedOrigins = [];
+  try {
+    const u = new URL((process.env.SITE_URL || "").trim());
+    const bareHost = u.host.replace(/^www\./, "");
+    allowedOrigins = [`${u.protocol}//${bareHost}`, `${u.protocol}//www.${bareHost}`];
+  } catch (_) {
+    allowedOrigins = [];
+  }
+
+  // Decap/Sveltia popup OAuth handshake:
+  //   1. The popup announces readiness by posting "authorizing:github" to the
+  //      opener (only to our allowed origins).
+  //   2. The CMS replies (echoing "authorizing:github"). We verify that reply
+  //      came from window.opener AND from an allowed origin.
+  //   3. Only then do we post the token, and only back to that verified origin.
   res.setHeader("Content-Type", "text/html; charset=utf-8");
   res.end(`<!DOCTYPE html>
 <html><head><meta charset="UTF-8"><title>Auth handoff</title></head>
@@ -72,15 +86,23 @@ export default async function handler(req, res) {
   <script>
     (function () {
       var payload = ${JSON.stringify(payload)};
+      var allowedOrigins = ${JSON.stringify(allowedOrigins)};
       function receiveMessage(e) {
-        if (e.data !== "authorizing:github" || !window.opener) return;
+        // Only accept the handshake reply from our own opener, from an
+        // allowlisted origin. This is what prevents token exfiltration.
+        if (e.source !== window.opener) return;
+        if (allowedOrigins.indexOf(e.origin) === -1) return;
+        if (e.data !== "authorizing:github") return;
         window.opener.postMessage(payload, e.origin);
         window.removeEventListener("message", receiveMessage, false);
       }
       window.addEventListener("message", receiveMessage, false);
-      // Kick off the handshake; the CMS replies, revealing its origin.
+      // Kick off the handshake — announce only to our allowed origins (a post
+      // to a non-matching opener origin is silently dropped by the browser).
       if (window.opener) {
-        window.opener.postMessage("authorizing:github", "*");
+        allowedOrigins.forEach(function (o) {
+          window.opener.postMessage("authorizing:github", o);
+        });
       }
     })();
   </script>
