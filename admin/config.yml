@@ -2,7 +2,7 @@ backend:
   name: github
   repo: ksu-oor/cim-site-3
   branch: main
-  base_url: https://centerforinteractivemedia.com
+  base_url: https://www.centerforinteractivemedia.com
   auth_endpoint: api/auth/github
 
 # All editor uploads land in /public/uploads/, which Eleventy

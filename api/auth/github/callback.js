@@ -54,11 +54,16 @@ export default async function handler(req, res) {
     payload = `authorization:github:error:${JSON.stringify({ error: String(err) })}`;
   }
 
-  // Sveltia (and Decap) listen for a `postMessage` from the popup and pull
-  // the token out. The opener also sends a message first to trigger the
-  // handshake (some browsers require the postMessage to be in response to
-  // a user-driven event, which the parent's "authorizing:github" message
-  // counts as).
+  // Decap/Sveltia popup OAuth handshake (must match the CMS exactly):
+  //   1. The popup announces readiness by posting "authorizing:github" to
+  //      the opener with targetOrigin "*".
+  //   2. The CMS replies (echoing "authorizing:github") to the popup. That
+  //      reply's `origin` is the CMS's own origin.
+  //   3. The popup posts the token back to THAT origin (e.origin) — never
+  //      our own origin. The CMS only accepts a message whose origin equals
+  //      its configured `base_url` origin, so replying to e.origin is what
+  //      makes the handoff land. (See admin/config.yml `base_url`, which
+  //      must be the same host the popup ends up on — i.e. the www host.)
   res.setHeader("Content-Type", "text/html; charset=utf-8");
   res.end(`<!DOCTYPE html>
 <html><head><meta charset="UTF-8"><title>Auth handoff</title></head>
@@ -67,14 +72,16 @@ export default async function handler(req, res) {
   <script>
     (function () {
       var payload = ${JSON.stringify(payload)};
-      function send() {
-        if (window.opener) {
-          window.opener.postMessage(payload, window.location.origin);
-        }
+      function receiveMessage(e) {
+        if (e.data !== "authorizing:github" || !window.opener) return;
+        window.opener.postMessage(payload, e.origin);
+        window.removeEventListener("message", receiveMessage, false);
       }
-      window.addEventListener("message", send, { once: false });
-      // Also send unprompted in case the parent's listener was set up first.
-      send();
+      window.addEventListener("message", receiveMessage, false);
+      // Kick off the handshake; the CMS replies, revealing its origin.
+      if (window.opener) {
+        window.opener.postMessage("authorizing:github", "*");
+      }
     })();
   </script>
 </body></html>`);
