@@ -34,7 +34,6 @@ collections:
         file: content/site.json
         fields:
           - { name: siteName,      label: "Site Name",        widget: string }
-          - { name: fullName,      label: "Full Name",        widget: string }
           - { name: institution,   label: "Institution",      widget: string }
           - { name: contactEmail,  label: "Contact Email",    widget: string }
           - { name: footerCopy,    label: "Footer Copyright", widget: string }
@@ -330,7 +329,6 @@ collections:
             widget: list
             fields:
               - { name: name,       label: "Name",       widget: string }
-              - { name: shortName,  label: "Short Name", widget: string, required: false }
               - { name: href,       label: "Website",    widget: string }
               - { name: ariaLabel,  label: "Aria Label", widget: string, hint: "e.g. 'Amazon Web Services — cloud infrastructure sponsor'" }
               - { name: logoClass,  label: "Existing Logo Class", widget: string, required: false, hint: "Pick a known CSS class (e.g. 'aws', 'unity'). Leave blank to upload an image instead." }
@@ -341,7 +339,6 @@ collections:
             widget: list
             fields:
               - { name: name,       label: "Name",       widget: string }
-              - { name: shortName,  label: "Short Name", widget: string, required: false }
               - { name: href,       label: "Website",    widget: string }
               - { name: ariaLabel,  label: "Aria Label", widget: string }
               - { name: logoClass,  label: "Existing Logo Class", widget: string, required: false }

@@ -67,7 +67,7 @@
         </div>
         <div class="acr-row">
           <span class="acr-label">CONTACT</span>
-          <span class="acr-value"><a href="mailto:cim@kennesaw.edu">cim@kennesaw.edu</a></span>
+          <span class="acr-value"><a href="mailto:{{ site.contactEmail | h }}">{{ site.contactEmail | h }}</a></span>
         </div>
       </div>
 
@@ -415,7 +415,7 @@
       <h2 id="feedback-heading" class="section-heading">FEEDBACK</h2>
       <p>We welcome your feedback on the accessibility of the CIM website. If you encounter accessibility barriers or have suggestions for improvement, please contact us:</p>
       <ul>
-        <li>Email: <a href="mailto:cim@kennesaw.edu">cim@kennesaw.edu</a></li>
+        <li>Email: <a href="mailto:{{ site.contactEmail | h }}">{{ site.contactEmail | h }}</a></li>
         <li>Phone: (470) 578-6000</li>
       </ul>
       <p>We aim to respond to accessibility feedback within 5 business days.</p>
@@ -434,14 +434,7 @@
 
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <span class="footer-clusters">GAME STUDIO · DIGITAL TWIN · XR &amp; HEALTHCARE · DIGITAL HUMANITIES</span>
-      <span class="footer-links">
-        <a href="index.html">HOME</a>
-      </span>
-      <span class="footer-copy">&copy; 2026 Center for Interactive Media, Kennesaw State University</span>
-    </div>
-  </footer>
+  {% set footerLinks = [{ href: "index.html", label: "HOME" }] %}
+  {% include "components/footer.njk" %}
 
 {% endblock %}

@@ -53,15 +53,8 @@
   </main>
 
   <!-- Footer -->
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <span class="footer-clusters">GAME STUDIO · DIGITAL TWIN · XR &amp; HEALTHCARE · IMMERSIVE ED · DIGITAL HUMANITIES</span>
-      <span class="footer-links">
-        <a href="accessibility.html">ACCESSIBILITY</a>
-      </span>
-      <span class="footer-copy">&copy; 2026 Center for Interactive Media, Kennesaw State University</span>
-    </div>
-  </footer>
+  {% set footerLinks = [{ href: "accessibility.html", label: "ACCESSIBILITY" }] %}
+  {% include "components/footer.njk" %}
 
   <script>
     // Theme toggle

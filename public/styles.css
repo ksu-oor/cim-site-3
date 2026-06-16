@@ -1285,9 +1285,9 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
    FOOTER
    ============================================================ */
 .site-footer {
-  height: var(--footer-height);
+  min-height: var(--footer-height);
   flex-shrink: 0;
-  padding: 0 var(--grid-padding);
+  padding: var(--space-xs) var(--grid-padding);
   display: flex;
   align-items: center;
 }
@@ -1300,7 +1300,7 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
   gap: var(--space-md);
 }
 
-.footer-clusters, .footer-copy, .footer-links a {
+.footer-clusters, .footer-copy, .footer-institution, .footer-links a {
   font-family: 'Space Mono', monospace;
   font-size: var(--caption);
   letter-spacing: 0.06em;

@@ -1,0 +1,10 @@
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span class="footer-clusters">{{ site.footerClusters | join(" · ") | h }}</span>
+    <span class="footer-links">
+      {% for link in footerLinks %}<a href="{{ link.href | h }}">{{ link.label | h }}</a>{% endfor %}
+    </span>
+    <span class="footer-institution">{{ site.institution | h }}</span>
+    <span class="footer-copy">{{ site.footerCopy | h }}</span>
+  </div>
+</footer>
