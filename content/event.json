@@ -51,7 +51,7 @@
       {
         "time": "10:00 AM",
         "title": "CIM Research Showcase",
-        "description": "Project spotlights across all four research clusters — Digital Twin, XR & Healthcare, Immersive Education, and Digital Humanities & Arts.",
+        "description": "Project spotlights across four research clusters — Digital Twin & Smart Environments, XR & Healthcare, Immersive Education, and Digital Humanities & Arts.",
         "speaker": "SPONSORED BY SGR LAW · REMARKS BY DR. KARIN SCARPINATO (EVP FOR RESEARCH) & DR. VICTORIA LAGRANGE (CIM DIRECTOR)"
       },
       {
@@ -75,30 +75,30 @@
       {
         "time": "1:00 PM",
         "title": "Shore Center AR Tour (Parallel Session)",
-        "description": "Led by Laila — an immersive walk-through of the Shore Innovation Center. Participants can win exclusive CIM swag.",
+        "description": "Led by Laila Harrison — an immersive walk-through of the Robin and Doug Shore Innovation Center. Participants can win exclusive CIM swag.",
         "speaker": "OPEN TO NON-LUNCH ATTENDEES"
       }
     ],
     "featured": [
       {
-        "name": "Dr. Melissa Osborne",
-        "org": "WELLSTAR COLLEGE · XR & HEALTHCARE"
-      },
-      {
-        "name": "Dr. Erin Bahl & Shuchita Mishra",
-        "org": "APPLIED CARTOONING & FOLKLORE"
-      },
-      {
         "name": "Andrea Knowlton & Dr. Kyungeun Lim",
-        "org": "FULL-BODY MOVEMENT IN XR ART ED"
+        "org": "BODY BRUSH: INTEGRATION OF VISUAL ARTS & DANCE FOR EMBODIED XR LEARNING · DIGITAL HUMANITIES & ARTS"
       },
       {
         "name": "Dr. Mahyar Amirgholy",
-        "org": "DIGITAL TWIN · SMART TRANSPORTATION"
+        "org": "DIGITAL TWINS FOR GEORGIA'S INFRASTRUCTURE · DIGITAL TWIN & SMART ENVIRONMENTS"
       },
       {
         "name": "Dr. Joy Li",
-        "org": "XR & HEALTHCARE"
+        "org": "VR DRIVING SIMULATION FOR AUTISM · IMMERSIVE EDUCATION"
+      },
+      {
+        "name": "Dr. Melissa Osborne",
+        "org": "PARENTSHIELD-XR · WELLSTAR COLLEGE · XR & HEALTHCARE"
+      },
+      {
+        "name": "Dr. Erin Bahl & Shuchita Mishra",
+        "org": "THINKING IN PANELS: APPLIED CARTOONING & FOLKLORE · DIGITAL HUMANITIES & ARTS"
       }
     ],
     "sponsors": [
