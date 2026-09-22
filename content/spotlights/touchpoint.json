@@ -37,7 +37,7 @@
       },
       "decoration": "linkedin",
       "cta": {
-        "kind": "arrow-pill",
+        "kind": "btn-primary",
         "text": "FOLLOW",
         "href": "https://www.linkedin.com/showcase/ksu-cim/",
         "variant": "interactive"
@@ -50,7 +50,7 @@
       "extraClasses": "slide--touch",
       "primary": {
         "kind": "venue",
-        "text": "Visit Us!",
+        "text": "Visit us!",
         "href": "",
         "extraClass": ""
       },
@@ -61,7 +61,8 @@
           "Robin and Doug Shore Innovation Center",
           "Room 2320"
         ]
-      }
+      },
+      "cta": null
     }
   ]
 }
