@@ -56,6 +56,21 @@
       },
       "decoration": null,
       "address": null
+    },
+    {
+      "type": "touchpoint",
+      "label": "hi",
+      "dotLabel": "hello",
+      "extraClasses": "slide--touch",
+      "primary": {
+        "kind": "link",
+        "text": "Test",
+        "href": "",
+        "extraClass": ""
+      },
+      "decoration": "",
+      "address": null,
+      "cta": null
     }
   ]
 }
