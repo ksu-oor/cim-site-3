@@ -1,15 +1,13 @@
 {
   "tile": {
-    "label": "LAUNCH EVENT",
-    "ariaLabel": "CIM Launch Event — April 27, 2026",
+    "label": "UNITY LIVESTREAM",
+    "ariaLabel": "Unity Livestream — September 24, 2026",
     "href": "https://www.youtube.com/live/pFKW1nN6cn4",
-    "date": "APR 27",
+    "date": "SEPT 24",
     "details": [
-      "9 AM – 2 PM",
-      "Shore Innovation Center",
-      "Marietta, GA"
+      "12 PM EST"
     ],
-    "sponsors": "AWS · UNITY · SGR LAW",
+    "sponsors": "UNITY",
     "ctaText": "WATCH LIVESTREAM"
   },
   "page": {
