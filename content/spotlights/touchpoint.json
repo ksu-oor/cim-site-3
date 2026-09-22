@@ -37,7 +37,7 @@
       },
       "decoration": "linkedin",
       "cta": {
-        "kind": "btn-primary",
+        "kind": "arrow-pill",
         "text": "FOLLOW",
         "href": "https://www.linkedin.com/showcase/ksu-cim/",
         "variant": "interactive"
