@@ -154,9 +154,9 @@
       "type": "feature",
       "label": "PREVIOUS EVENT",
       "dotLabel": "CIM LAUNCH EVENT",
-      "extraClasses": "",
+      "extraClasses": "slide--feature slide--world",
       "name": "CIM LAUNCH EVENT",
-      "subtitle": "Launch",
+      "subtitle": "970 Technology Way Marietta, GA 30060 KSU Marietta Campus",
       "ctaText": "More Info",
       "ctaHref": "/event",
       "ctaVariant": "interactive"
