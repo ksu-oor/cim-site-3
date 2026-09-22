@@ -52,25 +52,25 @@
         "time": "10:00 AM",
         "title": "CIM Research Showcase",
         "description": "Project spotlights across all four research clusters — Digital Twin, XR & Healthcare, Immersive Education, and Digital Humanities & Arts.",
-        "speaker": "SPONSORED BY SGR LAW · REMARKS BY DR. KARIN SCARPINATO (EVP FOR RESEARCH) & CIM DIRECTOR"
+        "speaker": "SPONSORED BY SGR LAW · REMARKS BY DR. KARIN SCARPINATO (EVP FOR RESEARCH) & DR. VICTORIA LAGRANGE (CIM DIRECTOR)"
       },
       {
         "time": "11:00 AM",
         "title": "Panel: The Future of Interactive Media",
         "description": "Industry leaders and academic researchers explore where games, XR, and AI-driven narratives are headed.",
-        "speaker": "DANIEL LEE (AWS) · BRADSTON HENRY (UNITY) · YASMEEN TELSEM (TELMORE AGENCY) · SOAPBOX VR"
+        "speaker": "DANIEL LEE (AWS) · BRADSTON HENRY (UNITY) · YASMEEN TELSEM (TELMORE AGENCY) · NICHO WILE (SOAPBOX)"
       },
       {
         "time": "12:00 PM",
         "title": "Panel: Smart Cities & Connected Communities",
         "description": "How digital twins, simulation, and interactive technology are shaping urban planning and community engagement.",
-        "speaker": "GUY ROUSSEAU (ATLANTA REGIONAL COMMISSION) · PETER PROVOST (PROVOST STUDIO) · ASANTE BRADFORD (GA DEPT OF ECONOMIC DEVELOPMENT)"
+        "speaker": "GUY ROUSSEAU (ATLANTA REGIONAL COMMISSION) · PETER PROVOST (PROVOST STUDIO) · ASANTE BRADFORD (GEORGIA DEPARTMENT OF ECONOMIC DEVELOPMENT)"
       },
       {
         "time": "1:00 PM",
         "title": "Luncheon",
         "description": "Networking with CIM leadership, industry partners, and featured speakers.",
-        "speaker": "SPONSORED BY AMAZON WEB SERVICES"
+        "speaker": "SPONSORED BY AWS"
       },
       {
         "time": "1:00 PM",
@@ -103,7 +103,7 @@
     ],
     "sponsors": [
       {
-        "name": "Amazon Web Services",
+        "name": "AWS",
         "role": "LUNCH SPONSOR"
       },
       {
@@ -116,14 +116,14 @@
       }
     ],
     "organizations": [
-      "Amazon Web Services",
+      "AWS",
       "Unity",
       "SGR Law",
       "Soapbox",
       "Provost Studio",
       "Telmore Agency",
       "Atlanta Regional Commission",
-      "GA Dept of Economic Development"
+      "Georgia Department of Economic Development"
     ]
   }
 }
