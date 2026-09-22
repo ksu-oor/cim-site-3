@@ -16,12 +16,30 @@
       "label": "AT A GLANCE",
       "dotLabel": "At a Glance",
       "stats": [
-        { "value": "49",   "label": "FACULTY" },
-        { "value": "18",   "label": "PROJECTS" },
-        { "value": "5",    "label": "CLUSTERS" },
-        { "value": "7+",   "label": "COLLEGES" },
-        { "value": "~50",  "label": "STUDENTS" },
-        { "value": "$2M+", "label": "PIPELINE" }
+        {
+          "value": "49",
+          "label": "FACULTY"
+        },
+        {
+          "value": "18",
+          "label": "PROJECTS"
+        },
+        {
+          "value": "5",
+          "label": "CLUSTERS"
+        },
+        {
+          "value": "7+",
+          "label": "COLLEGES"
+        },
+        {
+          "value": "~50",
+          "label": "STUDENTS"
+        },
+        {
+          "value": "$2M+",
+          "label": "PIPELINE"
+        }
       ]
     },
     {
@@ -31,14 +49,50 @@
       "total": 49,
       "barAriaLabel": "Faculty distribution by college",
       "segments": [
-        { "variant": null,   "count": 12, "title": "RCHSS: 12",                    "ariaLabel": "RCHSS 12 faculty" },
-        { "variant": "alt1", "count": 11, "title": "CCSE: 11",                     "ariaLabel": "CCSE 11 faculty" },
-        { "variant": "alt2", "count": 5,  "title": "GCA: 5",                       "ariaLabel": "GCA 5 faculty" },
-        { "variant": "alt3", "count": 4,  "title": "WCHHS: 4",                     "ariaLabel": "WCHHS 4 faculty" },
-        { "variant": "alt4", "count": 4,  "title": "Other: 4",                     "ariaLabel": "Other 4 faculty" },
-        { "variant": "alt5", "count": 13, "title": "Bagwell/SPCEET/CCB/Unspec: 13","ariaLabel": "Other colleges 13 faculty" }
+        {
+          "variant": "",
+          "count": 12,
+          "title": "RCHSS: 12",
+          "ariaLabel": "RCHSS 12 faculty"
+        },
+        {
+          "variant": "alt1",
+          "count": 11,
+          "title": "CCSE: 11",
+          "ariaLabel": "CCSE 11 faculty"
+        },
+        {
+          "variant": "alt2",
+          "count": 5,
+          "title": "GCA: 5",
+          "ariaLabel": "GCA 5 faculty"
+        },
+        {
+          "variant": "alt3",
+          "count": 4,
+          "title": "WCHHS: 4",
+          "ariaLabel": "WCHHS 4 faculty"
+        },
+        {
+          "variant": "alt4",
+          "count": 4,
+          "title": "Other: 4",
+          "ariaLabel": "Other 4 faculty"
+        },
+        {
+          "variant": "alt5",
+          "count": 13,
+          "title": "Bagwell/SPCEET/CCB/Unspec: 13",
+          "ariaLabel": "Other colleges 13 faculty"
+        }
       ],
-      "legend": ["RCHSS", "CCSE", "GCA", "WCHHS", "OTHER"],
+      "legend": [
+        "RCHSS",
+        "CCSE",
+        "GCA",
+        "WCHHS",
+        "OTHER"
+      ],
       "cta": {
         "text": "VIEW ALL 49 FACULTY",
         "href": "faculty.html"
@@ -95,6 +149,17 @@
       "ctaText": "WORLD.CIM",
       "ctaHref": "https://world.centerforinteractivemedia.com",
       "ctaVariant": "accent"
+    },
+    {
+      "type": "feature",
+      "label": "PREVIOUS EVENT",
+      "dotLabel": "CIM LAUNCH EVENT",
+      "extraClasses": "",
+      "name": "CIM LAUNCH EVENT",
+      "subtitle": "Launch",
+      "ctaText": "More Info",
+      "ctaHref": "/event",
+      "ctaVariant": "interactive"
     }
   ]
 }
