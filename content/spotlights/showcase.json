@@ -141,17 +141,6 @@
     },
     {
       "type": "feature",
-      "label": "VIRTUAL CAMPUS",
-      "dotLabel": "CIM World",
-      "extraClasses": "slide--feature slide--world",
-      "name": "CIM WORLD",
-      "subtitle": "Explore the interactive 3D campus",
-      "ctaText": "WORLD.CIM",
-      "ctaHref": "https://world.centerforinteractivemedia.com",
-      "ctaVariant": "accent"
-    },
-    {
-      "type": "feature",
       "label": "PREVIOUS EVENT",
       "dotLabel": "CIM Launch Event",
       "extraClasses": "slide--feature slide--world",
@@ -159,6 +148,17 @@
       "subtitle": "On April 27, 2026, we celebrated the official launch of the Center for Interactive Media, bringing together faculty across the arts, humanities, computing, education, and design. The event featured project spotlights, live interactive demos, and panel conversations!",
       "ctaText": "More Info",
       "ctaHref": "/event",
+      "ctaVariant": "accent"
+    },
+    {
+      "type": "feature",
+      "label": "VIRTUAL CAMPUS",
+      "dotLabel": "CIM World",
+      "extraClasses": "slide--feature slide--world",
+      "name": "CIM WORLD",
+      "subtitle": "Explore the interactive 3D campus",
+      "ctaText": "WORLD.CIM",
+      "ctaHref": "https://world.centerforinteractivemedia.com",
       "ctaVariant": "accent"
     }
   ]
