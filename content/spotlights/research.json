@@ -7,30 +7,35 @@
   "slides": [
     {
       "type": "project-list",
-      "label": "KSU GAME STUDIO",
-      "dotLabel": "KSU Game Studio",
-      "tagline": "",
-      "projectsAriaLabel": "KSU Game Studio projects",
-      "heroStat": {
-        "value": "23",
-        "unit": "STUDENTS"
-      },
+      "label": "XR & HEALTHCARE",
+      "dotLabel": "XR & Healthcare",
+      "tagline": "Healing through immersion",
+      "projectsAriaLabel": "XR and healthcare projects",
+      "heroStat": null,
       "projects": [
         {
-          "name": "Project Excelsior",
-          "tags": "Visual Novel · Dungeon · Identity",
-          "progress": 40,
-          "progressLabel": "EARLY DEV",
-          "progressVariant": "default",
-          "progressAria": "Early development"
+          "name": "Child Injury Prevention",
+          "tags": "NIH R15 · Prototype",
+          "progress": 45,
+          "progressLabel": "PROTOTYPE",
+          "progressVariant": "warning",
+          "progressAria": "Prototype"
         },
         {
-          "name": "The Historians",
-          "tags": "Historical Arguments · Primary Sources",
-          "progress": 50,
-          "progressLabel": "DEMO",
+          "name": "Dementia Healthcare XR Training",
+          "tags": "Macy Foundation · NIH R15",
+          "progress": 20,
+          "progressLabel": "PLANNING",
           "progressVariant": "default",
-          "progressAria": "Interactive demo"
+          "progressAria": "Planning"
+        },
+        {
+          "name": "VR Blood Donation",
+          "tags": "NIH R15 · $530K",
+          "progress": 60,
+          "progressLabel": "SUBMITTED",
+          "progressVariant": "success",
+          "progressAria": "Submitted"
         }
       ]
     },
@@ -65,40 +70,6 @@
           "progressLabel": "CONCEPT",
           "progressVariant": "default",
           "progressAria": "Conceptualization"
-        }
-      ]
-    },
-    {
-      "type": "project-list",
-      "label": "XR & HEALTHCARE",
-      "dotLabel": "XR & Healthcare",
-      "tagline": "Healing through immersion",
-      "projectsAriaLabel": "XR and healthcare projects",
-      "heroStat": null,
-      "projects": [
-        {
-          "name": "Child Injury Prevention",
-          "tags": "NIH R15 · Prototype",
-          "progress": 45,
-          "progressLabel": "PROTOTYPE",
-          "progressVariant": "warning",
-          "progressAria": "Prototype"
-        },
-        {
-          "name": "Dementia Healthcare XR Training",
-          "tags": "Macy Foundation · NIH R15",
-          "progress": 20,
-          "progressLabel": "PLANNING",
-          "progressVariant": "default",
-          "progressAria": "Planning"
-        },
-        {
-          "name": "VR Blood Donation",
-          "tags": "NIH R15 · $530K",
-          "progress": 60,
-          "progressLabel": "SUBMITTED",
-          "progressVariant": "success",
-          "progressAria": "Submitted"
         }
       ]
     },
@@ -193,6 +164,35 @@
           "progressLabel": "LOADING",
           "progressVariant": "default",
           "progressAria": "Coming soon"
+        }
+      ]
+    },
+    {
+      "type": "project-list",
+      "label": "KSU GAME STUDIO",
+      "dotLabel": "KSU Game Studio",
+      "tagline": "",
+      "projectsAriaLabel": "KSU Game Studio projects",
+      "heroStat": {
+        "value": "23",
+        "unit": "STUDENTS"
+      },
+      "projects": [
+        {
+          "name": "Project Excelsior",
+          "tags": "Visual Novel · Dungeon · Identity",
+          "progress": 40,
+          "progressLabel": "EARLY DEV",
+          "progressVariant": "default",
+          "progressAria": "Early development"
+        },
+        {
+          "name": "The Historians",
+          "tags": "Historical Arguments · Primary Sources",
+          "progress": 50,
+          "progressLabel": "DEMO",
+          "progressVariant": "default",
+          "progressAria": "Interactive demo"
         }
       ]
     }
