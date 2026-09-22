@@ -4,11 +4,11 @@
   "contactEmail": "cim@kennesaw.edu",
   "footerCopy": "© 2026 Center for Interactive Media, Kennesaw State University",
   "footerClusters": [
-    "KSU GAME STUDIO",
     "DIGITAL TWIN & SMART ENVIRONMENTS",
     "XR & HEALTHCARE",
     "IMMERSIVE EDUCATION",
     "DIGITAL HUMANITIES & ARTS",
-    "SOCIAL MEDIA & DIGITAL COMMUNITIES"
+    "SOCIAL MEDIA & DIGITAL COMMUNITIES",
+    "KSU GAME STUDIO"
   ]
 }
