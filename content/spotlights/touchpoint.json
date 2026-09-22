@@ -50,12 +50,18 @@
       "extraClasses": "slide--touch",
       "primary": {
         "kind": "venue",
-        "text": "Robin and Doug Shore Innovation Center",
+        "text": "Shore Innovation Center",
         "href": "",
         "extraClass": ""
       },
       "decoration": null,
-      "address": null
+      "address": {
+        "lines": [
+          "KSU Marietta Campus",
+          "Robin and Doug Shore Innovation Center",
+          "Room 2320"
+        ]
+      }
     }
   ]
 }
