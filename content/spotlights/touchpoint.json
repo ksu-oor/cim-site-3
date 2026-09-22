@@ -45,32 +45,17 @@
     },
     {
       "type": "touchpoint",
-      "label": "VISIT",
+      "label": "VISIT US",
       "dotLabel": "Visit",
       "extraClasses": "slide--touch",
       "primary": {
         "kind": "venue",
-        "text": "Shore Innovation Center",
+        "text": "Robin and Doug Shore Innovation Center",
         "href": "",
         "extraClass": ""
       },
       "decoration": null,
       "address": null
-    },
-    {
-      "type": "touchpoint",
-      "label": "hi",
-      "dotLabel": "hello",
-      "extraClasses": "slide--touch",
-      "primary": {
-        "kind": "link",
-        "text": "Test",
-        "href": "",
-        "extraClass": ""
-      },
-      "decoration": "",
-      "address": null,
-      "cta": null
     }
   ]
 }
