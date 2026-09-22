@@ -2,9 +2,13 @@
   "tile": {
     "label": "LAUNCH EVENT",
     "ariaLabel": "CIM Launch Event — April 27, 2026",
-    "href": "event.html",
+    "href": "https://www.youtube.com/live/pFKW1nN6cn4",
     "date": "APR 27",
-    "details": ["9 AM – 2 PM", "Shore Innovation Center", "Marietta, GA"],
+    "details": [
+      "9 AM – 2 PM",
+      "Shore Innovation Center",
+      "Marietta, GA"
+    ],
     "sponsors": "AWS · UNITY · SGR LAW",
     "ctaText": "VIEW PROGRAM"
   },
@@ -15,10 +19,22 @@
     "date": "APR 27",
     "year": "2026",
     "info": [
-      { "label": "TIME",    "value": "9:00 AM – 2:00 PM" },
-      { "label": "VENUE",   "value": "Robin & Doug Shore Innovation Center" },
-      { "label": "ADDRESS", "value": "970 Technology Way, Marietta, GA 30060" },
-      { "label": "TARGET",  "value": "~100 attendees" }
+      {
+        "label": "TIME",
+        "value": "9:00 AM – 2:00 PM"
+      },
+      {
+        "label": "VENUE",
+        "value": "Robin & Doug Shore Innovation Center"
+      },
+      {
+        "label": "ADDRESS",
+        "value": "970 Technology Way, Marietta, GA 30060"
+      },
+      {
+        "label": "TARGET",
+        "value": "~100 attendees"
+      }
     ],
     "cta": {
       "text": "REGISTER NOW",
@@ -64,16 +80,40 @@
       }
     ],
     "featured": [
-      { "name": "Dr. Melissa Osborne",            "org": "WELLSTAR COLLEGE · XR & HEALTHCARE" },
-      { "name": "Dr. Erin Bahl & Shuchita Mishra","org": "APPLIED CARTOONING & FOLKLORE" },
-      { "name": "Andrea Knowlton & Dr. Kyungeun Lim", "org": "FULL-BODY MOVEMENT IN XR ART ED" },
-      { "name": "Dr. Mahyar Amirgholy",           "org": "DIGITAL TWIN · SMART TRANSPORTATION" },
-      { "name": "Dr. Joy Li",                     "org": "XR & HEALTHCARE" }
+      {
+        "name": "Dr. Melissa Osborne",
+        "org": "WELLSTAR COLLEGE · XR & HEALTHCARE"
+      },
+      {
+        "name": "Dr. Erin Bahl & Shuchita Mishra",
+        "org": "APPLIED CARTOONING & FOLKLORE"
+      },
+      {
+        "name": "Andrea Knowlton & Dr. Kyungeun Lim",
+        "org": "FULL-BODY MOVEMENT IN XR ART ED"
+      },
+      {
+        "name": "Dr. Mahyar Amirgholy",
+        "org": "DIGITAL TWIN · SMART TRANSPORTATION"
+      },
+      {
+        "name": "Dr. Joy Li",
+        "org": "XR & HEALTHCARE"
+      }
     ],
     "sponsors": [
-      { "name": "Amazon Web Services", "role": "LUNCH SPONSOR" },
-      { "name": "Unity",               "role": "BREAKFAST SPONSOR" },
-      { "name": "SGR Law",             "role": "EVENT SPONSOR" }
+      {
+        "name": "Amazon Web Services",
+        "role": "LUNCH SPONSOR"
+      },
+      {
+        "name": "Unity",
+        "role": "BREAKFAST SPONSOR"
+      },
+      {
+        "name": "SGR Law",
+        "role": "EVENT SPONSOR"
+      }
     ],
     "organizations": [
       "Amazon Web Services",
