@@ -45,12 +45,12 @@
     },
     {
       "type": "touchpoint",
-      "label": "VISIT US",
+      "label": "LOCATION",
       "dotLabel": "Visit",
       "extraClasses": "slide--touch",
       "primary": {
         "kind": "venue",
-        "text": "Shore Innovation Center",
+        "text": "Visit Us!",
         "href": "",
         "extraClass": ""
       },
