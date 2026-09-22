@@ -1,13 +1,14 @@
 {
   "tile": {
-    "label": "UNITY LIVESTREAM",
+    "label": "LATEST NEWS",
     "ariaLabel": "Unity Livestream — September 24, 2026",
     "href": "https://www.youtube.com/live/pFKW1nN6cn4",
     "date": "SEPT 24",
     "details": [
+      "Unity Livestream",
       "12 PM EST"
     ],
-    "sponsors": "UNITY",
+    "sponsors": "We’re extremely excited to contribute to this upcoming Unity livestream with our projects! Please tune in to hear from CIM's director Dr. Victoria Lagrange, and researchers @Brooke and @Chenyu as they showcase the research being done with Unity at the Center for Interactive Media!",
     "ctaText": "WATCH LIVESTREAM"
   },
   "page": {
