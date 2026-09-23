@@ -15,8 +15,8 @@
       "projects": [
         {
           "name": "ParentShield XR: Child Injury Prevention",
-          "tags": "NIH R15 · Prototype",
-          "progress": 45,
+          "tags": "NIH R15",
+          "progress": 50,
           "progressLabel": "PROTOTYPE",
           "progressVariant": "active",
           "progressAria": "Prototype"
@@ -54,7 +54,7 @@
           "progressAria": "Submitted"
         },
         {
-          "name": "CAREER: Understanding and Mitigating Imbalance Induced by VR",
+          "name": "Understanding and Mitigating Imbalance Induced by VR",
           "tags": "NSF · VR",
           "progress": 10,
           "progressLabel": "SUBMITTED",
@@ -203,8 +203,8 @@
       },
       "projects": [
         {
-          "name": "Games for Change Competition",
-          "tags": "RESILIENCE · MEMORY",
+          "name": "Joy",
+          "tags": "G4C · RESILIENCE · MEMORY",
           "progress": 10,
           "progressLabel": "EARLY DEV",
           "progressVariant": "active",
@@ -212,7 +212,7 @@
         },
         {
           "name": "Chiba",
-          "tags": "PUZZLE · PIXEL ART · COZY",
+          "tags": "STEAM · PUZZLE · PIXEL ART · COZY",
           "progress": 100,
           "progressLabel": "RELEASED",
           "progressVariant": "success",
@@ -220,7 +220,7 @@
         },
         {
           "name": "Corporation Inc.",
-          "tags": "INTERACTIVE FICTION · EDUCATION",
+          "tags": "STEAM · INTERACTIVE FICTION · EDUCATION",
           "progress": 100,
           "progressLabel": "RELEASED",
           "progressVariant": "success",
