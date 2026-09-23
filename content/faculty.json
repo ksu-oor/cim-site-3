@@ -101,7 +101,7 @@
         {
           "name": "Victoria Lagrange",
           "dept": "CIM Director",
-          "interest": ""
+          "interest": "Game design, interactive narrative, AI"
         },
         {
           "name": "Dominique McDaniel",
@@ -184,34 +184,39 @@
       "id": "gca",
       "title": "GCA — Geer College of the Arts",
       "sidebarLabel": "GCA",
-      "sidebarAriaLabel": "GCA: 5 faculty",
+      "sidebarAriaLabel": "GCA: 6 faculty",
       "sidebarEmphasis": null,
-      "count": 5,
+      "count": 6,
       "members": [
         {
           "name": "Helena Shaskevich",
-          "dept": "School of Art & Design",
-          "interest": "New media, AI in art, experimental film"
+          "dept": "School of Art and Design",
+          "interest": "New media practices, AI in art, history of experimental film, computer and video art"
         },
         {
           "name": "Shuchita Mishra",
-          "dept": "School of Art & Design",
+          "dept": "School of Art and Design",
           "interest": "Immersive storytelling, comics, XR"
         },
         {
           "name": "Jeremy Speed-Schwartz",
-          "dept": "School of Art & Design",
-          "interest": "Digital animation, motion tracking"
+          "dept": "School of Art and Design",
+          "interest": "Digital animation, motion tracking, physical interface, immersive projection"
         },
         {
           "name": "Kyungeun Lim",
-          "dept": "School of Art & Design",
+          "dept": "School of Art and Design",
           "interest": ""
         },
         {
           "name": "Andrea Knowlton",
           "dept": "Dance",
           "interest": "Performance, embodiment, AI"
+        },
+        {
+          "name": "Kristine Hwang Kim",
+          "dept": "School of Art and Design",
+          "interest": ""
         }
       ]
     },
@@ -225,23 +230,23 @@
       "members": [
         {
           "name": "Modupe Akintomide",
-          "dept": "WellStar School of Nursing",
+          "dept": "Wellstar School of Nursing",
           "interest": "Dementia care, VR, gamification"
         },
         {
           "name": "Melissa Osborne",
-          "dept": "WellStar School of Nursing",
+          "dept": "Wellstar School of Nursing",
           "interest": "Immersive VR, home safety"
         },
         {
           "name": "Kyu-soo Chung",
-          "dept": "Exercise Science & Sport Management",
+          "dept": "Department of Exercise Science and Sport Management",
           "interest": ""
         },
         {
           "name": "Kawther Hamash",
-          "dept": "WellStar School of Nursing",
-          "interest": "Oncology, AI in healthcare/education"
+          "dept": "Wellstar School of Nursing",
+          "interest": "Oncology, nursing education, AI in healthcare and education, Interactive education tools"
         }
       ]
     },
@@ -249,19 +254,29 @@
       "id": "bcoe",
       "title": "BCOE — BAGWELL COLLEGE OF EDUCATION",
       "sidebarLabel": "BCOE",
-      "sidebarAriaLabel": "Bagwell: 2 faculty",
+      "sidebarAriaLabel": "BCOE: 4 faculty",
       "sidebarEmphasis": null,
-      "count": 2,
+      "count": 4,
       "members": [
         {
           "name": "Ivan Jorrin Abellan",
-          "dept": "Bagwell College of Education",
+          "dept": "Department of Secondary and Middle Grades Education",
           "interest": ""
         },
         {
           "name": "Christine Wusylko",
-          "dept": "School of Instructional Technology & Innovation",
-          "interest": "AI literacy, STEM education"
+          "dept": "School of Instructional Technology and Innovation",
+          "interest": "Cyber awareness, digital security, cyberliteracy, AI literacy, STEM education"
+        },
+        {
+          "name": "Jayoung Choi",
+          "dept": "Department of Inclusive Education",
+          "interest": ""
+        },
+        {
+          "name": "Tuba Angay-Crowder",
+          "dept": "Bagwell College of Education - Office of the Dean",
+          "interest": "Immersive education, avatar lab"
         }
       ]
     },
@@ -315,53 +330,18 @@
       "members": [
         {
           "name": "Mahyar Amirgholy",
-          "dept": "Digital Twin Cluster Lead",
+          "dept": "Digital Twin & Smart Environments Cluster Lead",
           "interest": "Traffic, supply chain simulation"
         },
         {
-          "name": "Sergio Figueiredo",
-          "dept": "English",
-          "interest": "Metaverse education, rhetoric"
-        },
-        {
-          "name": "Jeffrey Greene",
-          "dept": "English",
-          "interest": "Metaverse education"
-        },
-        {
-          "name": "Reza Vaezi",
-          "dept": "—",
-          "interest": "Brainwave, empathy"
-        },
-        {
-          "name": "Harun Avci",
-          "dept": "Quantitative Analysis",
-          "interest": "Simulation optimization"
+          "name": "Kamyar Raoufi",
+          "dept": "Department of Industrial and Systems Engineering (SPCEET)",
+          "interest": "Digital twins"
         },
         {
           "name": "Pegah Zamani",
-          "dept": "Architecture",
+          "dept": "Architecture (ACM)",
           "interest": ""
-        },
-        {
-          "name": "Hannah Mabry Wang",
-          "dept": "—",
-          "interest": ""
-        },
-        {
-          "name": "Kamyar Raoufi",
-          "dept": "Industrial & Systems Engineering (SPCEET)",
-          "interest": "Digital Twin"
-        },
-        {
-          "name": "Aysu Ozel Avci",
-          "dept": "Quantitative Analysis (CCB)",
-          "interest": "Digital Twin"
-        },
-        {
-          "name": "Victoria Lagrange",
-          "dept": "CIM Director",
-          "interest": "Game design, interactive narrative, AI"
         },
         {
           "name": "Nick Murphy",
@@ -381,7 +361,12 @@
         {
           "name": "Kyusik Kim",
           "dept": "Geographic Information Science",
-          "interest": "Digital Twin"
+          "interest": "Digital twins"
+        },
+        {
+          "name": "Hannah Mabry Wang",
+          "dept": "KSU Library System - Kennesaw",
+          "interest": ""
         }
       ]
     }
