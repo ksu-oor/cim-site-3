@@ -14,7 +14,7 @@
       "heroStat": null,
       "projects": [
         {
-          "name": "Child Injury Prevention",
+          "name": "ParentShield XR: Child Injury Prevention",
           "tags": "NIH R15 · Prototype",
           "progress": 45,
           "progressLabel": "PROTOTYPE",
@@ -183,7 +183,7 @@
           "tags": "RESILIENCE · MEMORY",
           "progress": 10,
           "progressLabel": "EARLY DEV",
-          "progressVariant": "default",
+          "progressVariant": "active",
           "progressAria": "Early development"
         },
         {
