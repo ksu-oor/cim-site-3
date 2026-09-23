@@ -19,9 +19,9 @@
       "id": "ccse",
       "title": "CCSE — College of Computing and Software Engineering",
       "sidebarLabel": "CCSE",
-      "sidebarAriaLabel": "CCSE: 11 faculty",
+      "sidebarAriaLabel": "CCSE: 13 faculty",
       "sidebarEmphasis": "accent",
-      "count": 11,
+      "count": 13,
       "members": [
         {
           "name": "Joy Li",
@@ -94,28 +94,38 @@
       "id": "rchss",
       "title": "RCHSS — Norman J. Radow College of Humanities and Social Sciences",
       "sidebarLabel": "RCHSS",
-      "sidebarAriaLabel": "RCHSS: 12 faculty",
+      "sidebarAriaLabel": "RCHSS: 16 faculty",
       "sidebarEmphasis": "interactive",
-      "count": 12,
+      "count": 16,
       "members": [
         {
+          "name": "Victoria Lagrange",
+          "dept": "CIM Director",
+          "interest": ""
+        },
+        {
+          "name": "Dominique McDaniel",
+          "dept": "Department of English",
+          "interest": "Digital literacy practices in social media communities and teacher education"
+        },
+        {
           "name": "Laura Palmer",
-          "dept": "Technical Communication & Interactive Design",
+          "dept": "Department of Technical Communication & Interactive Design",
           "interest": "UX research"
         },
         {
           "name": "Shadi Beshai",
-          "dept": "Psychology",
-          "interest": "Adult depression/anxiety, VR"
+          "dept": "Department of Psychological Science",
+          "interest": "Adult depression and anxiety, VR"
         },
         {
           "name": "Kanu Priya Singh",
-          "dept": "Technical Communication & Interactive Design",
+          "dept": "Department of Technical Communication & Interactive Design",
           "interest": ""
         },
         {
           "name": "David Bennett",
-          "dept": "History & Philosophy",
+          "dept": "Department of History and Philosophy",
           "interest": ""
         },
         {
@@ -125,17 +135,17 @@
         },
         {
           "name": "Ian Dunham",
-          "dept": "Communication",
+          "dept": "School of Communication & Media",
           "interest": "Critical data studies"
         },
         {
           "name": "Lydia Ferguson",
-          "dept": "English",
+          "dept": "Department of English",
           "interest": ""
         },
         {
           "name": "Erin Bahl",
-          "dept": "English",
+          "dept": "Department of English",
           "interest": ""
         },
         {
@@ -144,19 +154,29 @@
           "interest": ""
         },
         {
-          "name": "Dominique McDaniel",
-          "dept": "English",
-          "interest": ""
-        },
-        {
           "name": "Nefertari Yancie",
-          "dept": "History",
+          "dept": "Department of History and Philosophy",
           "interest": "Immersive education"
         },
         {
-          "name": "Tom Doleys",
-          "dept": "RCHSS",
-          "interest": ""
+          "name": "Diva Smriti",
+          "dept": "Department of English",
+          "interest": "XR and healthcare, immersive education, dementia caregivers, parent and child nutrition"
+        },
+        {
+          "name": "Jeffrey Greene",
+          "dept": "Department of English",
+          "interest": "Metaverse education"
+        },
+        {
+          "name": "Liping Yang",
+          "dept": "Department of English",
+          "interest": "Digital humanities, computational rhetoric, human–machine collaboration, writing technology"
+        },
+        {
+          "name": "Sergio Figueredo",
+          "dept": "Department of English",
+          "interest": "Metaverse education, rhetoric"
         }
       ]
     },
