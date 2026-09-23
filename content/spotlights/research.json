@@ -179,20 +179,28 @@
       },
       "projects": [
         {
-          "name": "Project Excelsior",
-          "tags": "Visual Novel · Dungeon · Identity",
-          "progress": 40,
+          "name": "Games for Change Competition",
+          "tags": "Resilience · Memory",
+          "progress": 10,
           "progressLabel": "EARLY DEV",
           "progressVariant": "default",
           "progressAria": "Early development"
         },
         {
-          "name": "The Historians",
-          "tags": "Historical Arguments · Primary Sources",
-          "progress": 50,
-          "progressLabel": "DEMO",
-          "progressVariant": "default",
-          "progressAria": "Interactive demo"
+          "name": "Chiba",
+          "tags": "PUZZLE · PIXEL ART · COZY",
+          "progress": 100,
+          "progressLabel": "RELEASED",
+          "progressVariant": "success",
+          "progressAria": "Released game"
+        },
+        {
+          "name": "Corporation Inc.",
+          "tags": "INTERACTIVE FICTION · EDUCATION",
+          "progress": 100,
+          "progressLabel": "RELEASED",
+          "progressVariant": "success",
+          "progressAria": "Released game"
         }
       ]
     }
