@@ -19,9 +19,9 @@
       "id": "ccse",
       "title": "CCSE — College of Computing and Software Engineering",
       "sidebarLabel": "CCSE",
-      "sidebarAriaLabel": "CCSE: 13 faculty",
+      "sidebarAriaLabel": "CCSE: 14 faculty",
       "sidebarEmphasis": "accent",
-      "count": 13,
+      "count": 14,
       "members": [
         {
           "name": "Joy Li",
@@ -62,6 +62,11 @@
           "name": "M. Rasel Mahmud",
           "dept": "Department of Computer Science",
           "interest": "VR in healthcare, digital twins"
+        },
+        {
+          "name": "Nick Murphy",
+          "dept": "Department of Software Engineering and Game Development",
+          "interest": "Game development"
         },
         {
           "name": "Selena He",
@@ -324,9 +329,9 @@
       "id": "other",
       "title": "OTHER COLLEGES & DEPARTMENTS",
       "sidebarLabel": "OTHER",
-      "sidebarAriaLabel": "Other colleges: 15 faculty",
+      "sidebarAriaLabel": "Other colleges: 4 faculty",
       "sidebarEmphasis": null,
-      "count": 15,
+      "count": 4,
       "members": [
         {
           "name": "Mahyar Amirgholy",
@@ -342,26 +347,6 @@
           "name": "Pegah Zamani",
           "dept": "Architecture (ACM)",
           "interest": ""
-        },
-        {
-          "name": "Nick Murphy",
-          "dept": "Game Studio",
-          "interest": "Game development"
-        },
-        {
-          "name": "Robert Keyser",
-          "dept": "Industrial & Systems Engineering (SPCEET)",
-          "interest": ""
-        },
-        {
-          "name": "Lin Li",
-          "dept": "Industrial & Systems Engineering (SPCEET)",
-          "interest": ""
-        },
-        {
-          "name": "Kyusik Kim",
-          "dept": "Geographic Information Science",
-          "interest": "Digital twins"
         },
         {
           "name": "Hannah Mabry Wang",
