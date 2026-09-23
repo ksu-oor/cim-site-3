@@ -25,58 +25,68 @@
       "members": [
         {
           "name": "Joy Li",
-          "dept": "Software Engineering & Game Development",
-          "interest": "XR, HCI, serious games"
+          "dept": "Department of Software Engineering and Game Development",
+          "interest": "XR, HCI, and serious games"
         },
         {
           "name": "Lei Zhang",
-          "dept": "Software Engineering & Game Development",
+          "dept": "Department of Software Engineering and Game Development",
           "interest": "VR"
         },
         {
           "name": "Sungchul Jung",
-          "dept": "Software Engineering & Game Development",
+          "dept": "Department of Software Engineering and Game Development",
           "interest": "VR in education, affective computing"
         },
         {
           "name": "Brooke Zhao",
-          "dept": "Software Engineering & Game Development",
-          "interest": "VR/AR, HCI, cognitive psychology"
+          "dept": "Department of Software Engineering and Game Development",
+          "interest": "XR, HCI, cognitive psychology, spatial understanding"
         },
         {
           "name": "Chenyu Wang",
-          "dept": "Software Engineering & Game Development",
-          "interest": "Digital Twin Modeling"
+          "dept": "Department of Software Engineering and Game Development",
+          "interest": "Digital twin modeling"
         },
         {
           "name": "Honghui Xu",
-          "dept": "Information Technology",
-          "interest": "Cyber Security"
-        },
-        {
-          "name": "Amir Karami",
-          "dept": "School of Data Science & Analytics",
-          "interest": "Computational linguistics, AI"
+          "dept": "Department of Information Technology",
+          "interest": "Cybersecurity"
         },
         {
           "name": "Selena He",
-          "dept": "Computer Science",
-          "interest": "AI-Driven Healthcare, Computing Ed"
+          "dept": "Department of Computer Science",
+          "interest": "AI-driven healthcare, AI-enabled computing education"
         },
         {
           "name": "M. Rasel Mahmud",
-          "dept": "Computer Science",
-          "interest": "VR in healthcare, digital twin"
+          "dept": "Department of Computer Science",
+          "interest": "VR in healthcare, digital twins"
         },
         {
-          "name": "Soo Il Shin",
-          "dept": "CCSE",
-          "interest": "AI & entertainment"
+          "name": "Kevin Gittner",
+          "dept": "School of Data Science and Analytics",
+          "interest": "Data fraud"
         },
         {
-          "name": "Maria Valero de Clemente",
-          "dept": "Information Technology",
+          "name": "Lauren Matheny",
+          "dept": "School of Data Science and Analytics",
+          "interest": "Data fraud"
+        },
+        {
+          "name": "Shakiba Davari-Najafabadi",
+          "dept": "Department of Software Engineering and Game Development",
+          "interest": "XR, context-aware and intelligent systems"
+        },
+        {
+          "name": "Soomok Lee",
+          "dept": "Department of Computer Science",
           "interest": ""
+        },
+        {
+          "name": "Xin \"Shirley\" Tian",
+          "dept": "Department of Information Technology",
+          "interest": "Cyber AI education, social media analytics"
         }
       ]
     },
