@@ -69,21 +69,21 @@
         },
         {
           "variant": "alt3",
-          "count": 4,
-          "title": "WCHHS: 4",
-          "ariaLabel": "WCHHS 4 faculty"
+          "count": 6,
+          "title": "CCB: 6",
+          "ariaLabel": "CCB 4 faculty"
         },
         {
           "variant": "alt4",
           "count": 4,
-          "title": "Other: 4",
-          "ariaLabel": "Other 4 faculty"
+          "title": "WCHHS: 4",
+          "ariaLabel": "WCHSS 4 faculty"
         },
         {
-          "variant": "",
-          "count": 13,
-          "title": "Bagwell/SPCEET/CCB/Unspec: 13",
-          "ariaLabel": "Other colleges 13 faculty"
+          "variant": "alt5",
+          "count": 4,
+          "title": "BCOE: 4",
+          "ariaLabel": "BCOE 4 faculty"
         }
       ],
       "legend": [
@@ -92,11 +92,10 @@
         "GCA",
         "CCB",
         "WCHHS",
-        "BCOE",
-        "OTHER"
+        "BCOE"
       ],
       "cta": {
-        "text": "VIEW ALL 49 FACULTY",
+        "text": "VIEW ALL 54 FACULTY",
         "href": "faculty.html"
       }
     },
