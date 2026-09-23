@@ -15,27 +15,35 @@
       "projects": [
         {
           "name": "ParentShield XR: Child Injury Prevention",
-          "tags": "NIH R15",
-          "progress": 50,
-          "progressLabel": "PROTOTYPE",
-          "progressVariant": "active",
-          "progressAria": "Prototype"
-        },
-        {
-          "name": "Dementia Healthcare XR Training",
-          "tags": "Macy Foundation · NIH R15",
-          "progress": 20,
-          "progressLabel": "PLANNING",
-          "progressVariant": "active",
-          "progressAria": "Planning"
-        },
-        {
-          "name": "VR Blood Donation",
-          "tags": "NIH R15 · $530K",
+          "tags": "NIH R15 · VR",
           "progress": 60,
           "progressLabel": "SUBMITTED",
           "progressVariant": "active",
           "progressAria": "Submitted"
+        },
+        {
+          "name": "Dementia Healthcare XR Training",
+          "tags": "AACN · Macy Foundation · NIH R15 · VR",
+          "progress": 40,
+          "progressLabel": "SUBMITTED",
+          "progressVariant": "active",
+          "progressAria": "Submitted"
+        },
+        {
+          "name": "VR Blood Donation",
+          "tags": "NIH R15 · $530K · VR",
+          "progress": 60,
+          "progressLabel": "SUBMITTED",
+          "progressVariant": "active",
+          "progressAria": "Submitted"
+        },
+        {
+          "name": "VR Counseling Assistance to Support Students' Mental Health",
+          "tags": "NIH R15 · VR",
+          "progress": 20,
+          "progressLabel": "EARLY DEV",
+          "progressVariant": "default",
+          "progressAria": "Early development"
         },
         {
           "name": "Multi-user XR in Healthcare",
@@ -207,7 +215,7 @@
           "tags": "G4C · RESILIENCE · MEMORY",
           "progress": 10,
           "progressLabel": "EARLY DEV",
-          "progressVariant": "active",
+          "progressVariant": "default",
           "progressAria": "Early development"
         },
         {
