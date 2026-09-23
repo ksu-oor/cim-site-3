@@ -17,7 +17,7 @@
       "dotLabel": "At a Glance",
       "stats": [
         {
-          "value": "49",
+          "value": "54",
           "label": "FACULTY"
         },
         {
@@ -46,26 +46,26 @@
       "type": "faculty-bar",
       "label": "FACULTY NETWORK",
       "dotLabel": "Faculty Network",
-      "total": 49,
+      "total": 54,
       "barAriaLabel": "Faculty distribution by college",
       "segments": [
         {
           "variant": "",
-          "count": 12,
-          "title": "RCHSS: 12",
-          "ariaLabel": "RCHSS 12 faculty"
+          "count": 16,
+          "title": "RCHSS: 16",
+          "ariaLabel": "RCHSS 16 faculty"
         },
         {
           "variant": "alt1",
-          "count": 11,
-          "title": "CCSE: 11",
-          "ariaLabel": "CCSE 11 faculty"
+          "count": 14,
+          "title": "CCSE: 14",
+          "ariaLabel": "CCSE 14 faculty"
         },
         {
           "variant": "alt2",
-          "count": 5,
-          "title": "GCA: 5",
-          "ariaLabel": "GCA 5 faculty"
+          "count": 6,
+          "title": "GCA: 6",
+          "ariaLabel": "GCA 6 faculty"
         },
         {
           "variant": "alt3",
@@ -80,7 +80,7 @@
           "ariaLabel": "Other 4 faculty"
         },
         {
-          "variant": "alt5",
+          "variant": "",
           "count": 13,
           "title": "Bagwell/SPCEET/CCB/Unspec: 13",
           "ariaLabel": "Other colleges 13 faculty"
@@ -90,7 +90,9 @@
         "RCHSS",
         "CCSE",
         "GCA",
+        "CCB",
         "WCHHS",
+        "BCOE",
         "OTHER"
       ],
       "cta": {
