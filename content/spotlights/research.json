@@ -77,7 +77,7 @@
       "type": "project-list",
       "label": "IMMERSIVE EDUCATION",
       "dotLabel": "Immersive Education",
-      "tagline": "AI meets the classroom",
+      "tagline": "Immersion meets the classroom",
       "projectsAriaLabel": "Immersive education projects",
       "heroStat": null,
       "projects": [
@@ -174,7 +174,7 @@
       "tagline": "",
       "projectsAriaLabel": "KSU Game Studio projects",
       "heroStat": {
-        "value": "23",
+        "value": "20+",
         "unit": "STUDENTS"
       },
       "projects": [
