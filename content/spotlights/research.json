@@ -18,7 +18,7 @@
           "tags": "NIH R15 · Prototype",
           "progress": 45,
           "progressLabel": "PROTOTYPE",
-          "progressVariant": "warning",
+          "progressVariant": "active",
           "progressAria": "Prototype"
         },
         {
@@ -26,7 +26,7 @@
           "tags": "Macy Foundation · NIH R15",
           "progress": 20,
           "progressLabel": "PLANNING",
-          "progressVariant": "default",
+          "progressVariant": "active",
           "progressAria": "Planning"
         },
         {
@@ -34,7 +34,31 @@
           "tags": "NIH R15 · $530K",
           "progress": 60,
           "progressLabel": "SUBMITTED",
-          "progressVariant": "success",
+          "progressVariant": "active",
+          "progressAria": "Submitted"
+        },
+        {
+          "name": "Multi-user XR in Healthcare",
+          "tags": "NSF · IRB",
+          "progress": 30,
+          "progressLabel": "APPROVED",
+          "progressVariant": "active",
+          "progressAria": "Approved"
+        },
+        {
+          "name": "Interactivity and User Interface Design",
+          "tags": "NSF",
+          "progress": 10,
+          "progressLabel": "SUBMITTED",
+          "progressVariant": "default",
+          "progressAria": "Submitted"
+        },
+        {
+          "name": "CAREER: Understanding and Mitigating Imbalance Induced by VR",
+          "tags": "NSF · VR",
+          "progress": 10,
+          "progressLabel": "SUBMITTED",
+          "progressVariant": "default",
           "progressAria": "Submitted"
         }
       ]
