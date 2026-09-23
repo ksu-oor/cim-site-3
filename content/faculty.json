@@ -20,7 +20,7 @@
       "title": "RCHSS — Norman J. Radow College of Humanities and Social Sciences",
       "sidebarLabel": "RCHSS",
       "sidebarAriaLabel": "RCHSS: 16 faculty",
-      "sidebarEmphasis": "interactive",
+      "sidebarEmphasis": "",
       "count": 16,
       "members": [
         {
@@ -110,7 +110,7 @@
       "title": "CCSE — College of Computing and Software Engineering",
       "sidebarLabel": "CCSE",
       "sidebarAriaLabel": "CCSE: 14 faculty",
-      "sidebarEmphasis": "accent",
+      "sidebarEmphasis": "",
       "count": 14,
       "members": [
         {
@@ -190,7 +190,7 @@
       "title": "GCA — Geer College of the Arts",
       "sidebarLabel": "GCA",
       "sidebarAriaLabel": "GCA: 6 faculty",
-      "sidebarEmphasis": null,
+      "sidebarEmphasis": "",
       "count": 6,
       "members": [
         {
@@ -270,7 +270,7 @@
       "title": "WCHHS — Wellstar College of Health and Human Services",
       "sidebarLabel": "WCHHS",
       "sidebarAriaLabel": "WCHHS: 4 faculty",
-      "sidebarEmphasis": null,
+      "sidebarEmphasis": "",
       "count": 4,
       "members": [
         {
@@ -300,7 +300,7 @@
       "title": "BCOE — BAGWELL COLLEGE OF EDUCATION",
       "sidebarLabel": "BCOE",
       "sidebarAriaLabel": "BCOE: 4 faculty",
-      "sidebarEmphasis": null,
+      "sidebarEmphasis": "",
       "count": 4,
       "members": [
         {
@@ -330,7 +330,7 @@
       "title": "OTHER COLLEGES & DEPARTMENTS",
       "sidebarLabel": "OTHER",
       "sidebarAriaLabel": "Other colleges: 4 faculty",
-      "sidebarEmphasis": null,
+      "sidebarEmphasis": "",
       "count": 4,
       "members": [
         {
