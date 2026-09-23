@@ -20,17 +20,17 @@
       "title": "RCHSS — Norman J. Radow College of Humanities and Social Sciences",
       "sidebarLabel": "RCHSS",
       "sidebarAriaLabel": "RCHSS: 16 faculty",
-      "sidebarEmphasis": "",
+      "sidebarEmphasis": "interactive",
       "count": 16,
       "members": [
         {
           "name": "Victoria Lagrange",
-          "dept": "CIM Director",
+          "dept": "CIM Director - Department of English",
           "interest": "Game design, interactive narrative, AI"
         },
         {
           "name": "Dominique McDaniel",
-          "dept": "Social Media & Digital Communities Cluster Lead",
+          "dept": "Social Media & Digital Communities Cluster Lead - Department of English",
           "interest": "Digital literacy practices in social media communities and teacher education"
         },
         {
@@ -110,12 +110,12 @@
       "title": "CCSE — College of Computing and Software Engineering",
       "sidebarLabel": "CCSE",
       "sidebarAriaLabel": "CCSE: 14 faculty",
-      "sidebarEmphasis": "",
+      "sidebarEmphasis": "interactive",
       "count": 14,
       "members": [
         {
           "name": "Joy Li",
-          "dept": "Immersive Education Cluster Lead",
+          "dept": "Immersive Education Cluster Lead - Department of Software Engineering and Game Development",
           "interest": "XR, HCI, and serious games"
         },
         {
@@ -190,12 +190,12 @@
       "title": "GCA — Geer College of the Arts",
       "sidebarLabel": "GCA",
       "sidebarAriaLabel": "GCA: 6 faculty",
-      "sidebarEmphasis": "",
+      "sidebarEmphasis": "interactive",
       "count": 6,
       "members": [
         {
           "name": "Jeremy Speed-Schwartz",
-          "dept": "Digital Humanities & Arts Cluster Lead",
+          "dept": "Digital Humanities & Arts Cluster Lead - School of Art and Design",
           "interest": "Digital animation, motion tracking, physical interface, immersive projection"
         },
         {
@@ -230,7 +230,7 @@
       "title": "CCB — Coles College of Business",
       "sidebarLabel": "CCB",
       "sidebarAriaLabel": "CCB: 6 faculty",
-      "sidebarEmphasis": "",
+      "sidebarEmphasis": "interactive",
       "count": 6,
       "members": [
         {
@@ -270,12 +270,12 @@
       "title": "WCHHS — Wellstar College of Health and Human Services",
       "sidebarLabel": "WCHHS",
       "sidebarAriaLabel": "WCHHS: 4 faculty",
-      "sidebarEmphasis": "",
+      "sidebarEmphasis": "interactive",
       "count": 4,
       "members": [
         {
           "name": "Melissa Osborne",
-          "dept": "XR & Healthcare Cluster Lead",
+          "dept": "XR & Healthcare Cluster Lead - Wellstar School of Nursing",
           "interest": "Immersive VR, home safety"
         },
         {
@@ -300,7 +300,7 @@
       "title": "BCOE — BAGWELL COLLEGE OF EDUCATION",
       "sidebarLabel": "BCOE",
       "sidebarAriaLabel": "BCOE: 4 faculty",
-      "sidebarEmphasis": "",
+      "sidebarEmphasis": "interactive",
       "count": 4,
       "members": [
         {
@@ -330,12 +330,12 @@
       "title": "OTHER COLLEGES & DEPARTMENTS",
       "sidebarLabel": "OTHER",
       "sidebarAriaLabel": "Other colleges: 4 faculty",
-      "sidebarEmphasis": "",
+      "sidebarEmphasis": "interactive",
       "count": 4,
       "members": [
         {
           "name": "Mahyar Amirgholy",
-          "dept": "Digital Twin & Smart Environments Cluster Lead",
+          "dept": "Digital Twin & Smart Environments Cluster Lead - Department of Civil and Environmental Engineering (SPCEET)",
           "interest": "Traffic, supply chain simulation"
         },
         {
