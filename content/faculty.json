@@ -237,11 +237,11 @@
     },
     {
       "id": "ccb",
-      "title": "CCB",
-      "sidebarLabel": "CCB — Coles College of Business",
-      "sidebarAriaLabel": "CCB: 4 faculty",
+      "title": "CCB — Coles College of Business",
+      "sidebarLabel": "CCB",
+      "sidebarAriaLabel": "CCB: 6 faculty",
       "sidebarEmphasis": "",
-      "count": 4,
+      "count": 6,
       "members": [
         {
           "name": "Aaron French",
