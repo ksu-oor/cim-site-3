@@ -25,18 +25,8 @@
       "members": [
         {
           "name": "Joy Li",
-          "dept": "Department of Software Engineering and Game Development",
+          "dept": "Immersive Education Cluster Lead",
           "interest": "XR, HCI, and serious games"
-        },
-        {
-          "name": "Lei Zhang",
-          "dept": "Department of Software Engineering and Game Development",
-          "interest": "VR"
-        },
-        {
-          "name": "Sungchul Jung",
-          "dept": "Department of Software Engineering and Game Development",
-          "interest": "VR in education, affective computing"
         },
         {
           "name": "Brooke Zhao",
@@ -54,16 +44,6 @@
           "interest": "Cybersecurity"
         },
         {
-          "name": "Selena He",
-          "dept": "Department of Computer Science",
-          "interest": "AI-driven healthcare, AI-enabled computing education"
-        },
-        {
-          "name": "M. Rasel Mahmud",
-          "dept": "Department of Computer Science",
-          "interest": "VR in healthcare, digital twins"
-        },
-        {
           "name": "Kevin Gittner",
           "dept": "School of Data Science and Analytics",
           "interest": "Data fraud"
@@ -74,6 +54,21 @@
           "interest": "Data fraud"
         },
         {
+          "name": "Lei Zhang",
+          "dept": "Department of Software Engineering and Game Development",
+          "interest": "VR"
+        },
+        {
+          "name": "M. Rasel Mahmud",
+          "dept": "Department of Computer Science",
+          "interest": "VR in healthcare, digital twins"
+        },
+        {
+          "name": "Selena He",
+          "dept": "Department of Computer Science",
+          "interest": "AI-driven healthcare, AI-enabled computing education"
+        },
+        {
           "name": "Shakiba Davari-Najafabadi",
           "dept": "Department of Software Engineering and Game Development",
           "interest": "XR, context-aware and intelligent systems"
@@ -82,6 +77,11 @@
           "name": "Soomok Lee",
           "dept": "Department of Computer Science",
           "interest": ""
+        },
+        {
+          "name": "Sungchul Jung",
+          "dept": "Department of Software Engineering and Game Development",
+          "interest": "VR in education, affective computing"
         },
         {
           "name": "Xin \"Shirley\" Tian",
@@ -105,23 +105,8 @@
         },
         {
           "name": "Dominique McDaniel",
-          "dept": "Department of English",
+          "dept": "Social Media & Digital Communities Cluster Lead",
           "interest": "Digital literacy practices in social media communities and teacher education"
-        },
-        {
-          "name": "Laura Palmer",
-          "dept": "Department of Technical Communication & Interactive Design",
-          "interest": "UX research"
-        },
-        {
-          "name": "Shadi Beshai",
-          "dept": "Department of Psychological Science",
-          "interest": "Adult depression and anxiety, VR"
-        },
-        {
-          "name": "Kanu Priya Singh",
-          "dept": "Department of Technical Communication & Interactive Design",
-          "interest": ""
         },
         {
           "name": "David Bennett",
@@ -129,18 +114,13 @@
           "interest": ""
         },
         {
-          "name": "Russel James",
-          "dept": "School of Communication & Media",
-          "interest": ""
-        },
-        {
-          "name": "Ian Dunham",
-          "dept": "School of Communication & Media",
-          "interest": "Critical data studies"
-        },
-        {
-          "name": "Lydia Ferguson",
+          "name": "Diva Smriti",
           "dept": "Department of English",
+          "interest": "XR and healthcare, immersive education, dementia caregivers, parent and child nutrition"
+        },
+        {
+          "name": "Elaine Venter",
+          "dept": "School of Communication & Media",
           "interest": ""
         },
         {
@@ -149,8 +129,33 @@
           "interest": ""
         },
         {
-          "name": "Elaine Venter",
+          "name": "Ian Dunham",
           "dept": "School of Communication & Media",
+          "interest": "Critical data studies"
+        },
+        {
+          "name": "Jeffrey Greene",
+          "dept": "Department of English",
+          "interest": "Metaverse education"
+        },
+        {
+          "name": "Kanu Priya Singh",
+          "dept": "Department of Technical Communication & Interactive Design",
+          "interest": ""
+        },
+        {
+          "name": "Laura Palmer",
+          "dept": "Department of Technical Communication & Interactive Design",
+          "interest": "UX research"
+        },
+        {
+          "name": "Liping Yang",
+          "dept": "Department of English",
+          "interest": "Digital humanities, computational rhetoric, human–machine collaboration, writing technology"
+        },
+        {
+          "name": "Lydia Ferguson",
+          "dept": "Department of English",
           "interest": ""
         },
         {
@@ -159,24 +164,19 @@
           "interest": "Immersive education"
         },
         {
-          "name": "Diva Smriti",
-          "dept": "Department of English",
-          "interest": "XR and healthcare, immersive education, dementia caregivers, parent and child nutrition"
-        },
-        {
-          "name": "Jeffrey Greene",
-          "dept": "Department of English",
-          "interest": "Metaverse education"
-        },
-        {
-          "name": "Liping Yang",
-          "dept": "Department of English",
-          "interest": "Digital humanities, computational rhetoric, human–machine collaboration, writing technology"
+          "name": "Russel James",
+          "dept": "School of Communication & Media",
+          "interest": ""
         },
         {
           "name": "Sergio Figueredo",
           "dept": "Department of English",
           "interest": "Metaverse education, rhetoric"
+        },
+        {
+          "name": "Shadi Beshai",
+          "dept": "Department of Psychological Science",
+          "interest": "Adult depression and anxiety, VR"
         }
       ]
     },
@@ -189,24 +189,9 @@
       "count": 6,
       "members": [
         {
-          "name": "Helena Shaskevich",
-          "dept": "School of Art and Design",
-          "interest": "New media practices, AI in art, history of experimental film, computer and video art"
-        },
-        {
-          "name": "Shuchita Mishra",
-          "dept": "School of Art and Design",
-          "interest": "Immersive storytelling, comics, XR"
-        },
-        {
           "name": "Jeremy Speed-Schwartz",
-          "dept": "School of Art and Design",
+          "dept": "Digital Humanities & Arts Cluster Lead",
           "interest": "Digital animation, motion tracking, physical interface, immersive projection"
-        },
-        {
-          "name": "Kyungeun Lim",
-          "dept": "School of Art and Design",
-          "interest": ""
         },
         {
           "name": "Andrea Knowlton",
@@ -214,9 +199,24 @@
           "interest": "Performance, embodiment, AI"
         },
         {
+          "name": "Helena Shaskevich",
+          "dept": "School of Art and Design",
+          "interest": "New media practices, AI in art, history of experimental film, computer and video art"
+        },
+        {
           "name": "Kristine Hwang Kim",
           "dept": "School of Art and Design",
           "interest": ""
+        },
+        {
+          "name": "Kyungeun Lim",
+          "dept": "School of Art and Design",
+          "interest": ""
+        },
+        {
+          "name": "Shuchita Mishra",
+          "dept": "School of Art and Design",
+          "interest": "Immersive storytelling, comics, XR"
         }
       ]
     },
@@ -229,14 +229,14 @@
       "count": 4,
       "members": [
         {
-          "name": "Modupe Akintomide",
-          "dept": "Wellstar School of Nursing",
-          "interest": "Dementia care, VR, gamification"
+          "name": "Melissa Osborne",
+          "dept": "XR & Healthcare Cluster Lead",
+          "interest": "Immersive VR, home safety"
         },
         {
-          "name": "Melissa Osborne",
+          "name": "Kawther Hamash",
           "dept": "Wellstar School of Nursing",
-          "interest": "Immersive VR, home safety"
+          "interest": "Oncology, nursing education, AI in healthcare and education, Interactive education tools"
         },
         {
           "name": "Kyu-soo Chung",
@@ -244,9 +244,9 @@
           "interest": ""
         },
         {
-          "name": "Kawther Hamash",
+          "name": "Modupe Akintomide",
           "dept": "Wellstar School of Nursing",
-          "interest": "Oncology, nursing education, AI in healthcare and education, Interactive education tools"
+          "interest": "Dementia care, VR, gamification"
         }
       ]
     },
@@ -259,14 +259,14 @@
       "count": 4,
       "members": [
         {
-          "name": "Ivan Jorrin Abellan",
-          "dept": "Department of Secondary and Middle Grades Education",
-          "interest": ""
-        },
-        {
           "name": "Christine Wusylko",
           "dept": "School of Instructional Technology and Innovation",
           "interest": "Cyber awareness, digital security, cyberliteracy, AI literacy, STEM education"
+        },
+        {
+          "name": "Ivan Jorrin Abellan",
+          "dept": "Department of Secondary and Middle Grades Education",
+          "interest": ""
         },
         {
           "name": "Jayoung Choi",
