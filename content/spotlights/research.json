@@ -105,7 +105,7 @@
         },
         {
           "name": "AI for Real-Time Supply Chain & Logistics",
-          "tags": "GDOT · NSF · Industry · AI",
+          "tags": "GDOT · NSF · INDUSTRY · AI",
           "progress": 20,
           "progressLabel": "DEVELOPMENT",
           "progressVariant": "default",
@@ -113,7 +113,7 @@
         },
         {
           "name": "Trustworthy Spatial Web for Unity-Based Digital Twins",
-          "tags": "Unity · LLM ·AI",
+          "tags": "UNITY · LLM ·AI",
           "progress": 20,
           "progressLabel": "CONCEPT",
           "progressVariant": "default",
@@ -131,7 +131,7 @@
       "projects": [
         {
           "name": "AI Avatar Coaching for CS Education",
-          "tags": "Spencer Foundation · $371K · AI",
+          "tags": "SPENCER FOUNDATION · $371K · AI",
           "progress": 20,
           "progressLabel": "EARLY DEV",
           "progressVariant": "default",
@@ -163,7 +163,7 @@
         },
         {
           "name": "VR Driving Simulation Game for Autism",
-          "tags": "Norton Children's Autism Center · IRB",
+          "tags": "NORTON CHILDREN'S AUTISM CENTER · IRB",
           "progress": 20,
           "progressLabel": "TESTING",
           "progressVariant": "default",
@@ -182,34 +182,82 @@
         {
           "name": "Playable Archives",
           "tags": "NEH · $350K · Game Preservation",
-          "progress": 25,
+          "progress": 20,
           "progressLabel": "PLANNING",
           "progressVariant": "default",
           "progressAria": "Planning"
         },
         {
-          "name": "Applied Cartooning & Folklore",
-          "tags": "FYS · Ethnographic Comics",
+          "name": "Applied Cartooning, Folklore, and Auto/Ethnographic Research",
+          "tags": "FYS",
           "progress": 100,
-          "progressLabel": "COMPLETE",
+          "progressLabel": "COMPLETED",
           "progressVariant": "success",
           "progressAria": "Completed"
         },
         {
-          "name": "H'MMM Journal",
-          "tags": "Networked Media Ecologies",
+          "name": "H’MMM: A Journal of Networked Media Ecologies",
+          "tags": "PATENT",
           "progress": 20,
-          "progressLabel": "PLATFORM",
+          "progressLabel": "FINDING PLATFORM",
           "progressVariant": "default",
           "progressAria": "Finding platform"
         },
         {
-          "name": "BodyBrush",
-          "tags": "Embodied Drawing · XR Art",
+          "name": "BodyBrush: Integration of Visual Arts & Dance for Embodied XR Learning",
+          "tags": "XR · DANCE",
           "progress": 20,
-          "progressLabel": "FUNDING",
+          "progressLabel": "SEEKING FUNDING",
           "progressVariant": "default",
           "progressAria": "Seeking funding"
+        },
+        {
+          "name": "Graphic Access Lab: Using Comics to Discuss SDS Process",
+          "tags": "SDS",
+          "progress": 20,
+          "progressLabel": "SEEKING FUNDING",
+          "progressVariant": "default",
+          "progressAria": "Seeking funding"
+        },
+        {
+          "name": "Immersive Media Lab: Prototyping Immersive Projection Mapping Interconnected with Motion Tracking",
+          "tags": "MOTION TRACKING",
+          "progress": 20,
+          "progressLabel": "EARLY STAGE",
+          "progressVariant": "default",
+          "progressAria": "Early stage"
+        },
+        {
+          "name": "Using Interactive Digital Narrative Co-Authored with AI for STEM Learning",
+          "tags": "NSF K-12",
+          "progress": 20,
+          "progressLabel": "DRAFTING",
+          "progressVariant": "default",
+          "progressAria": "Drafting"
+        },
+        {
+          "name": "Book People, Book Places: An Annotated Bibliography and Examination of Libraries and Children's Reading Culture",
+          "tags": "LITERATURE",
+          "progress": 20,
+          "progressLabel": "SEEKING FUNDING",
+          "progressVariant": "default",
+          "progressAria": "Seeking funding"
+        },
+        {
+          "name": "Narrative Meaning Making in Global Contex",
+          "tags": "TEMPLETON FOUNDATION",
+          "progress": 60,
+          "progressLabel": "SUBMITTED",
+          "progressVariant": "active",
+          "progressAria": "Submitted"
+        },
+        {
+          "name": "LoCKS (Learning to Create Kid-safe Spaces): Firearm Storage Module for Evidence-Based Home Visiting Programs",
+          "tags": "NIH R2",
+          "progress": 60,
+          "progressLabel": "SUBMITTED",
+          "progressVariant": "active",
+          "progressAria": "Submitted"
         }
       ]
     },
