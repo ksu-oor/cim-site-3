@@ -72,10 +72,10 @@
         {
           "name": "AR Mobility and Navigation Support for People with Low Vision",
           "tags": "NSF ERI· SPECS· AR",
-          "progress": 40,
-          "progressLabel": "DRAFTED",
-          "progressVariant": "active",
-          "progressAria": "Drafted"
+          "progress": 20,
+          "progressLabel": "DRAFTING",
+          "progressVariant": "default",
+          "progressAria": "Drafting"
         }
       ]
     },
@@ -181,7 +181,7 @@
       "projects": [
         {
           "name": "Playable Archives",
-          "tags": "NEH · $350K · Game Preservation",
+          "tags": "NEH · $350K · GAME PRESERVATION",
           "progress": 20,
           "progressLabel": "PLANNING",
           "progressVariant": "default",
@@ -270,12 +270,44 @@
       "heroStat": null,
       "projects": [
         {
-          "name": "Projects Coming Soon",
-          "tags": "In Progress",
-          "progress": 0,
-          "progressLabel": "LOADING",
+          "name": "Georgia Center for Digital Literacy",
+          "tags": "GPB",
+          "progress": 20,
+          "progressLabel": "CONCEPT",
           "progressVariant": "default",
-          "progressAria": "Coming soon"
+          "progressAria": "Concept"
+        },
+        {
+          "name": "Books and Belonging: #BlackBookTok as Digital Community and Identity Development",
+          "tags": "WTG FOUNDATION · ACLS · NCTE",
+          "progress": 40,
+          "progressLabel": "SUBMITTED",
+          "progressVariant": "active",
+          "progressAria": "Submitted"
+        },
+        {
+          "name": "Understanding the Readers of #BlackBookTok",
+          "tags": "WTG FOUNDATION · ACLS",
+          "progress": 20,
+          "progressLabel": "REVIEW",
+          "progressVariant": "default",
+          "progressAria": "Review"
+        },
+        {
+          "name": "How and Why People Choose to Believe and Spread False Information Online",
+          "tags": "Nokia",
+          "progress": 20,
+          "progressLabel": "CONCEPT",
+          "progressVariant": "default",
+          "progressAria": "Concept"
+        },
+        {
+          "name": "CyberAI Education and Social Media Analytics",
+          "tags": "AI",
+          "progress": 20,
+          "progressLabel": "CONCEPT",
+          "progressVariant": "default",
+          "progressAria": "Concept"
         }
       ]
     },
