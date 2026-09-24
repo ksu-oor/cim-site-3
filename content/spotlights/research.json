@@ -336,7 +336,7 @@
           "progress": 100,
           "progressLabel": "RELEASED",
           "progressVariant": "success",
-          "progressAria": "Released game"
+          "progressAria": "Released"
         },
         {
           "name": "Corporation Inc.",
@@ -344,7 +344,7 @@
           "progress": 100,
           "progressLabel": "RELEASED",
           "progressVariant": "success",
-          "progressAria": "Released game"
+          "progressAria": "Released"
         }
       ]
     }
