@@ -47,27 +47,35 @@
         },
         {
           "name": "Multi-user XR in Healthcare",
-          "tags": "NSF · IRB",
-          "progress": 30,
+          "tags": "NSF · IRB· XR",
+          "progress": 80,
           "progressLabel": "APPROVED",
-          "progressVariant": "active",
+          "progressVariant": "success",
           "progressAria": "Approved"
         },
         {
           "name": "Interactivity and User Interface Design",
           "tags": "NSF",
-          "progress": 10,
+          "progress": 60,
           "progressLabel": "SUBMITTED",
-          "progressVariant": "default",
+          "progressVariant": "active",
           "progressAria": "Submitted"
         },
         {
           "name": "Understanding and Mitigating Imbalance Induced by VR",
-          "tags": "NSF · VR",
-          "progress": 10,
+          "tags": "NSF CAREER · VR",
+          "progress": 60,
           "progressLabel": "SUBMITTED",
-          "progressVariant": "default",
+          "progressVariant": "active",
           "progressAria": "Submitted"
+        },
+        {
+          "name": "AR Mobility and Navigation Support for People with Low Vision",
+          "tags": "NSF ERI· SPECS· AR",
+          "progress": 50,
+          "progressLabel": "DRAFTED",
+          "progressVariant": "active",
+          "progressAria": "Drafted"
         }
       ]
     },
