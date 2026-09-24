@@ -72,7 +72,7 @@
         {
           "name": "AR Mobility and Navigation Support for People with Low Vision",
           "tags": "NSF ERI· SPECS· AR",
-          "progress": 50,
+          "progress": 40,
           "progressLabel": "DRAFTED",
           "progressVariant": "active",
           "progressAria": "Drafted"
@@ -88,28 +88,36 @@
       "heroStat": null,
       "projects": [
         {
-          "name": "Smart Transportation",
-          "tags": "3 projects · ARC · NSF",
-          "progress": 50,
-          "progressLabel": "ACTIVE",
+          "name": "AI for Smart Transportation",
+          "tags": "NSF · GDOT · AI",
+          "progress": 40,
+          "progressLabel": "SUBMITTED",
           "progressVariant": "active",
-          "progressAria": "Active development"
+          "progressAria": "Submitted"
         },
         {
-          "name": "Communication & Cybersecurity",
-          "tags": "NSF · DOT/DOD",
+          "name": "AI for Real-Time Sensing for Communication & Cybersecurity for Flying Ad Hoc Networks",
+          "tags": "NSF · GDOT · DOD · AI",
           "progress": 20,
-          "progressLabel": "LIT REVIEW",
+          "progressLabel": "PREPARATION",
           "progressVariant": "default",
-          "progressAria": "Literature review"
+          "progressAria": "Preparation"
         },
         {
-          "name": "Supply Chain & Logistics",
-          "tags": "Framework Design",
-          "progress": 10,
+          "name": "AI for Real-Time Supply Chain & Logistics",
+          "tags": "GDOT · NSF · Industry · AI",
+          "progress": 20,
+          "progressLabel": "DEVELOPMENT",
+          "progressVariant": "default",
+          "progressAria": "Development"
+        },
+        {
+          "name": "Trustworthy Spatial Web for Unity-Based Digital Twins",
+          "tags": "Unity · LLM ·AI",
+          "progress": 20,
           "progressLabel": "CONCEPT",
           "progressVariant": "default",
-          "progressAria": "Conceptualization"
+          "progressAria": "Concept"
         }
       ]
     },
@@ -122,28 +130,44 @@
       "heroStat": null,
       "projects": [
         {
-          "name": "AI Avatar Coaching",
-          "tags": "Spencer · $371K",
-          "progress": 40,
+          "name": "AI Avatar Coaching for CS Education",
+          "tags": "Spencer Foundation · $371K · AI",
+          "progress": 20,
           "progressLabel": "EARLY DEV",
           "progressVariant": "default",
           "progressAria": "Early development"
         },
         {
-          "name": "AI + Digital Narrative for STEM",
-          "tags": "NSF K-12 · $750K",
-          "progress": 30,
-          "progressLabel": "DRAFTING",
-          "progressVariant": "default",
-          "progressAria": "Drafting proposal"
+          "name": "AI Explorer: Building Public AI Literacy Infrastructure through Collaborative, Game-Based Human–AI Co-Training",
+          "tags": "NSF K-12 · $750K · AI",
+          "progress": 60,
+          "progressLabel": "SUBMITTED",
+          "progressVariant": "active",
+          "progressAria": "Submitted"
         },
         {
-          "name": "VR Driving — Autism",
-          "tags": "Norton Center · Prototype",
-          "progress": 50,
+          "name": "Context-Responsive Spatial Learning Resource System for K-12 STEM",
+          "tags": "NSF",
+          "progress": 20,
+          "progressLabel": "DRAFTING",
+          "progressVariant": "default",
+          "progressAria": "Drafting"
+        },
+        {
+          "name": "E-VATAR: Enhancing CS Teacher Competence and Effectiveness with Empathic AI Agents in VR Classroom Simulations",
+          "tags": "NSF K-12 · AI",
+          "progress": 60,
+          "progressLabel": "SUBMITTED",
+          "progressVariant": "active",
+          "progressAria": "Submitted"
+        },
+        {
+          "name": "VR Driving Simulation Game for Autism",
+          "tags": "Norton Children's Autism Center · IRB",
+          "progress": 20,
           "progressLabel": "TESTING",
-          "progressVariant": "warning",
-          "progressAria": "Testing prototype"
+          "progressVariant": "default",
+          "progressAria": "Testing"
         }
       ]
     },
